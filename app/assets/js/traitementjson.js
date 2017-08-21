@@ -13,6 +13,7 @@ function displayWeather(response) {
 
 }
 
+/** Get Json DATA transport  **/
 function displayTransport(response) {
 
     $('#distance_result').text(response.data.distance);
