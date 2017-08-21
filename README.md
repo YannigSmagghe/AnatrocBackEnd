@@ -42,7 +42,7 @@ https://github.com/GoogleChrome/webplatform-samples/blob/master/webspeechdemo/we
 
 
 
-## Setup project
+## Setup project details
 
 To start all containers
 
@@ -80,3 +80,4 @@ You can execute domain.sh to add hostname for ip container
 - 10137:10137 Blackfire
 - 9000:9000 xdebug
 - 8888:80 phpmyadmin
+
