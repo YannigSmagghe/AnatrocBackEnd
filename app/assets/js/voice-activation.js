@@ -1,5 +1,7 @@
-// // $('#message-accueil').trigger('click');
+$('#message-accueil').trigger('click');
 $('#div_language').hide();
+
+
 $( document ).ready(function() {
     $('#start_button').trigger('click');
 });
@@ -35,7 +37,7 @@ var recognizing = false;
 var ignore_onend;
 var start_timestamp;
 if (!('webkitSpeechRecognition' in window)) {
-    upgrade();
+    console.log('upgrade browser');
 } else {
     start_button.style.display = 'inline-block';
     var recognition = new webkitSpeechRecognition();
