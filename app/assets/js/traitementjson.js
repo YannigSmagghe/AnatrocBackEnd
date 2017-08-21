@@ -1,22 +1,5 @@
 //Traitement Json
 
-$.ajax({
-    url : 'http://localhost:8080',
-    type : 'GET',
-    dataType : 'JSON',
-    success : function(data){
-
-
-        console.log(data + 'succes');
-
-    },
-
-    error : function(data){
-        console.log(data + 'erreur');
-    },
-
-
-});
 
 function displayWeather(response) {
 
@@ -30,6 +13,7 @@ function displayWeather(response) {
 
 }
 
+/** Get Json DATA transport  **/
 function displayTransport(response) {
 
     $('#distance_result').text(response.data.distance);
@@ -61,8 +45,8 @@ $.getJSON( "result.json", function( data ) {
     // console.log(data.data[0].data.temperature);
     //console.log(data.data[0].data.temps);
     displayFromResponse(data.data);
-    displayTransport(data.data);
-    recupLocation(data.data);
+    displayTransport(data);
+    //recupLocation(data.data);
     $('.result_type').text(data.data[0].type);
 
 
