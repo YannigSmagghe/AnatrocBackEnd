@@ -1,0 +1,29 @@
+version: '3.0'
+services:
+    node:
+        build:
+            context: ./dockerfiles/node
+        volumes:
+            - ./app:/app
+        networks:
+            static-network:
+
+    nginx:
+        build:
+            context: dockerfiles/nginx/node
+        volumes:
+            - ./app:/usr/share/nginx/html
+        depends_on:
+            - node
+        links:
+            - node
+        networks:
+            static-network:
+                ipv4_address: 172.41.0.10
+
+
+networks:
+    static-network:
+        ipam:
+            config:
+                - subnet: 172.41.0.0/24
