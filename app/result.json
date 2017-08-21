@@ -1,0 +1,259 @@
+{
+  "errors": [],
+  "data": [
+    {
+      "errors": [],
+      "data": {
+        "distance": "57.6 km",
+        "duration": "50 mins",
+        "start_address_name": "1313 Disneyland Dr, Anaheim, CA 92802, USA",
+        "end_address_name": "100 Universal City Plaza, Universal City, CA 91608, USA",
+        "start_location": {
+          "lat": 33.8162219,
+          "lng": -117.9224731
+        },
+        "end_location": {
+          "lat": 34.1339489,
+          "lng": -118.350456
+        }
+      },
+      "type": "transport.google_direction.driving"
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Saint Paul / Place Gerson",
+        "address": "Place Gerson",
+        "commune": "Lyon 5 ème",
+        "localisation": {
+          "lat": 45.7670444714525,
+          "lng": 4.82698432330627
+        },
+        "bike_stands": 20,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Tabareau",
+        "address": "Rue Tabareau",
+        "commune": "Lyon 4 ème",
+        "localisation": {
+          "lat": 45.7740460473114,
+          "lng": 4.82519257109699
+        },
+        "bike_stands": 15,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Place Danton",
+        "address": "4 place Danton",
+        "commune": "Lyon 3 ème",
+        "localisation": {
+          "lat": 45.7548339947211,
+          "lng": 4.85754639852135
+        },
+        "bike_stands": 18,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Lafayette /Corneille",
+        "address": "Rue Corneille",
+        "commune": "Lyon 6 ème",
+        "localisation": {
+          "lat": 45.7637499956122,
+          "lng": 4.8437425783907
+        },
+        "bike_stands": 13,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Place Juliette Récamier",
+        "address": "44 bd des Brotteaux",
+        "commune": "Lyon 6 ème",
+        "localisation": {
+          "lat": 45.7662960771169,
+          "lng": 4.85683338586512
+        },
+        "bike_stands": 15,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Charcot / Albéric Po",
+        "address": "Rue Dr Albéric Pont",
+        "commune": "Lyon 5 ème",
+        "localisation": {
+          "lat": 45.7534421942217,
+          "lng": 4.80445892719369
+        },
+        "bike_stands": 16,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "St Rambert - Ile Barbe",
+        "address": "3 quai Paul Sédallian",
+        "commune": "Lyon 9 ème",
+        "localisation": {
+          "lat": 45.7973912412806,
+          "lng": 4.82908444349794
+        },
+        "bike_stands": 16,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Rossellini / 11 Novembre",
+        "address": "29, Boulevard du 11 Novembre 1918",
+        "commune": "VILLEURBANNE",
+        "localisation": {
+          "lat": 45.779408313608,
+          "lng": 4.86290216902877
+        },
+        "bike_stands": 20,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Mémoire & Société",
+        "address": "Rue Hauy",
+        "commune": "VILLEURBANNE",
+        "localisation": {
+          "lat": 45.7595768332516,
+          "lng": 4.88275786249483
+        },
+        "bike_stands": 18,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Longefer / Kruger",
+        "address": "10 rue Paul Kruger",
+        "commune": "Lyon 8 ème",
+        "localisation": {
+          "lat": 45.7386678839509,
+          "lng": 4.87813090555283
+        },
+        "bike_stands": 16,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Gailleton",
+        "address": "4 place Gailleton",
+        "commune": "Lyon 2 ème",
+        "localisation": {
+          "lat": 45.7534549142114,
+          "lng": 4.83335384395724
+        },
+        "bike_stands": 16,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Place Lebret",
+        "address": "Place Lebret",
+        "commune": "Lyon 8 ème",
+        "localisation": {
+          "lat": 45.7356139906482,
+          "lng": 4.85299655686574
+        },
+        "bike_stands": 16,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Mairie du 4e",
+        "address": "Boulevard de la Croix Rousse",
+        "commune": "Lyon 4 ème",
+        "localisation": {
+          "lat": 45.7742004407,
+          "lng": 4.82776522186418
+        },
+        "bike_stands": 20,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Montgolfier / Château Gaillard",
+        "address": "135 rue Château Gaillard",
+        "commune": "VILLEURBANNE",
+        "localisation": {
+          "lat": 45.7715577376675,
+          "lng": 4.89036956577188
+        },
+        "bike_stands": 17,
+        "status": "OPEN"
+      }
+    },
+    {
+      "type": "transport.velov",
+      "errors": [],
+      "data": {
+        "name": "Maisons Neuves",
+        "address": "Place des Maisons Neuves",
+        "commune": "VILLEURBANNE",
+        "localisation": {
+          "lat": 45.7559510292356,
+          "lng": 4.87734642987402
+        },
+        "bike_stands": 13,
+        "status": "OPEN"
+      }
+    },
+    {
+      "errors": [],
+      "data": {
+        "temperature": 29.75,
+        "city": "Lyon",
+        "wind_force": 6,
+        "weather": "soleil"
+      },
+      "type": "weather"
+    }
+  ],
+  "type": "main"
+}
