@@ -5,7 +5,6 @@ services:
             context: ./dockerfiles/node
         volumes:
             - ./app:/app
-        command: "tail -f /dev/null"
         networks:
             static-network:
 
