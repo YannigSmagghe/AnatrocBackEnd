@@ -4,11 +4,13 @@ $( document ).ready(function() {
     function resultPage() {
         $(".input-container").fadeOut();
         $(".result-container").fadeIn();
-        getLocation();
-        google.maps.event.trigger(map, 'resize');
+
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
     }
     var timer = null;
-    $("#search-input").on("keyup", function() {
+    $("#search-input-to").on("keyup", function() {
         console.log(timer);
         if (timer) {
             clearTimeout(timer); //cancel the previous timer.
@@ -56,7 +58,8 @@ $( document ).ready(function() {
     window.setInterval(function(){
         var voiceSpan = '#interim_span';
         if ($(voiceSpan).text().length > 0){
-            $('#search-input').hide();
+            $('#search-input-to').hide();
+            $('#search-input-from').hide();
         }
 
     }, 1000);
