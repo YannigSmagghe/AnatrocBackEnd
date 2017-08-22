@@ -4,8 +4,10 @@ $( document ).ready(function() {
     function resultPage() {
         $(".input-container").fadeOut();
         $(".result-container").fadeIn();
-        getLocation();
-        google.maps.event.trigger(map, 'resize');
+
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
     }
     var timer = null;
     $("#search-input").on("keyup", function() {
