@@ -1,16 +1,17 @@
-$( document ).ready(function() {
+$(document).ready(function () {
 
+    /** INPUT PART**/
     //send input
     function resultPage() {
-        $(".input-container").fadeOut();
-        $(".result-container").fadeIn();
+        if    ($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
+            showResultsPage();
+        }
 
-        var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
+
     }
+
     var timer = null;
-    $("#search-input-to").on("keyup", function() {
+    $("#search-input-to").on("keyup", function () {
         console.log(timer);
         if (timer) {
             clearTimeout(timer); //cancel the previous timer.
@@ -18,16 +19,25 @@ $( document ).ready(function() {
         timer = setTimeout(resultPage, 3000);
         return timer;
     });
-    
+
+    // Clear input From if clicked
+    function clearInputFrom() {
+        $( "#search-input-from" ).val('');
+    }
+    function clearInputTo() {
+        $( "#search-input-to" ).val('');
+    }
+    $( "#search-input-from" ).on( "click", clearInputFrom );
+    $( "#search-input-to" ).on( "click", clearInputTo );
 
 
-
-    $("#menu_connexion").click(function() {
+    /** MENU PART **/
+    $("#menu_connexion").click(function () {
         $(".input-container").hide();
         $(".connexion-container").show();
     });
 
-    $("#menu_accueil").click(function() {
+    $("#menu_accueil").click(function () {
         $(".connexion-container").hide();
         $(".meteo-container").hide();
         $(".input-container").show();
@@ -36,7 +46,7 @@ $( document ).ready(function() {
 
     //title Animation
 
-    $('.tlt').textillate( {
+    $('.tlt').textillate({
 
         loop: false,
 
@@ -53,25 +63,40 @@ $( document ).ready(function() {
         type: 'char'
     });
 
-
-    //Swap voice inpu
-    window.setInterval(function(){
+    /** VOICE ACTIVATION INIT **/
+    //Swap voice input
+    window.setInterval(function () {
         var voiceSpan = '#interim_span';
-        if ($(voiceSpan).text().length > 0){
-            $('#search-input-to').hide();
-            $('#search-input-from').hide();
+        if ($(voiceSpan).text().length > 0) {
+            $(voiceSpan).hide();
+            /** target input2 if 1 is not empty **/
+            if ($('#search-input-from').val() !== '' && !$("#search-input-from").is(":focus")) {
+                $('#search-input-to').val($(voiceSpan).text());
+            }else{
+                $('#search-input-from').val($(voiceSpan).text());
+            }
         }
 
     }, 1000);
 
     //Swap to result page
-    window.setInterval(function(){
+    window.setInterval(function () {
         var voiceSpan = '#final_span';
-        if ($(voiceSpan).text().length > 0){
+        if ($(voiceSpan).text().length > 0) {
             resultPage();
         }
 
-    }, 100);
+    }, 5000);
 
+    /** RESULT PAGE PART**/
+    function showResultsPage() {
+        $(".input-container").fadeOut();
+        $(".result-container").fadeIn();
 
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
+    }
 });
+
+
