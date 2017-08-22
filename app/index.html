@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./assets/compiled/css/app.min.css">
     <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css">
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 </head>
 <body>
@@ -22,8 +23,8 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a href="#" id="menu_accueil">Accueil</a></li>
                 <li><a href="#" id="menu_connexion">Connexion</a></li>
-                <li><a href="#">Deconnexion</a></li>
-                <li><a href="#">Inscriptiopn</a></li>
+                <li><a href="#">Deconnexion (si connecté)</a></li>
+                <li><a href="#">Inscription</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Separated link</a></li>
             </ul>
@@ -64,7 +65,8 @@
                 <p>
             </div>
 
-            <input  id="search-input" type="search" class="form-control box-shadow col-lg-8">
+            <input  id="search-input-from" type="search" placeholder="Départ" class="form-control box-shadow col-lg-8">
+            <input  id="search-input-to" type="search" placeholder="Arrivée" class="form-control box-shadow col-lg-8">
             <!--<span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>-->
         </div>
     </section>
@@ -81,6 +83,9 @@
 
             <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2">
         </div>
+
+        <div id="captcha" class="g-recaptcha" data-sitekey="6Ld9oS0UAAAAADeHwHPWZhHFkZgCsStaosGykw-1"></div>
+
 
         <button type="button" class="btn btn-default btn-lg valid-connexion">
              Connexion
