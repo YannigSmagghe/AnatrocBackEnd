@@ -5,7 +5,8 @@ var lngFrom = 0;
 /** To **/
 var latTo = 0;
 var lngTo = 0;
-
+/** get Json position to dont refresh **/
+var didOnlyOnce = 0;
 
 /** init **/
 $.getJSON('https://ipinfo.io/geo', function(response) {
@@ -39,7 +40,8 @@ function setSearchInputFrom(latFrom,lngFrom) {
     $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+latFrom+','+lngFrom+'&key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I', function(response) {
         var loc = response.results[0].formatted_address;
 
-        if (loc){
+        if (loc && didOnlyOnce === 0){
+            didOnlyOnce = 1;
             $('#search-input-from').val(loc).fadeIn();
 
         }

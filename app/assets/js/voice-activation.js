@@ -1,10 +1,17 @@
+
+/** activer le message d'accueil **/
 $('#message-accueil').trigger('click');
+
 $('#div_language').hide();
 
 
-$( document ).ready(function() {
-    $('#start_button').trigger('click');
-});
+/** init voice activation **/
+    $( document ).ready(function() {
+        $('#start_button').trigger('click');
+    });
+
+
+/** Options **/
 var langs =
     [['Français', ['fr-FR']]];
 for (var i = 0; i < langs.length; i++) {
@@ -107,7 +114,7 @@ if (!('webkitSpeechRecognition' in window)) {
             return timer;
 
         }
-        console.log(getTimer());
+        // console.log(getTimer());
 
     };
 }
