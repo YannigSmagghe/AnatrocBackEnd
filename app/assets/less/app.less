@@ -211,7 +211,7 @@ body {
       -o-animation: fadein 10s; /* Opera */
       // fin animation
 
-      position: fixed;
+   //   position: fixed;
       top: 0;
       bottom: 0;
       left: 0;
@@ -219,7 +219,17 @@ body {
       margin: auto;
 
       width: 40%;
+
     }
+    @media screen and (-webkit-min-device-pixel-ratio:0) {
+      .input-group{position: fixed;}
+    }
+
+    @-moz-document url-prefix() {
+        .input-group {
+          margin-top: 11%;
+        }
+      }
 
     .form-control {
       display: inline-block;

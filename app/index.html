@@ -14,11 +14,11 @@
 <body>
 <canvas id="canvas" height="975" width="850"></canvas>
 <section class="main-container col-lg-12 col-md-12 col-sm-12 container-fluid">
-    <h1 id="main-title" class="tlt">Anatroc</h1>
-    <input id="message-accueil"
-           onclick='responsiveVoice.speak("Bonjour. Je suis Anatroc. Que puis-je faire pour vous ?", "French Female");'
-           type='button' value='voice-accueil'/>
-
+    <section class="login-container col-lg-offset-10 col-lg-2">
+        <div id="login">
+            <p>Nom Prénom <i class="fa fa-user-circle" aria-hidden="true"></i></p>
+        </div>
+    </section>
     <section class="menu-container col-lg-12 col-md-12 col-sm-12">
         <div class="dropdown col-md-1 col-sm-1">
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -34,6 +34,12 @@
             </ul>
         </div>
     </section>
+    <h1 id="main-title" class="tlt">Anatroc</h1>
+    <input id="message-accueil"
+           onclick='responsiveVoice.speak("Bonjour. Je suis Anatroc. Que puis-je faire pour vous ?", "French Female");'
+           type='button' value='voice-accueil'/>
+
+
     <section id="voice-activation-container">
         <div id="info">
         </div>
@@ -48,11 +54,7 @@
         </div>
     </section>
 
-    <section class="login-container col-lg-offset-10 col-lg-2">
-        <div id="login">
-            <p>Nom Prénom <i class="fa fa-user-circle" aria-hidden="true"></i></p>
-        </div>
-    </section>
+
 
     <section class="input-container col-lg-12 col-md-12 col-sm-12">
         <div class="input-group col-lg-12 col-md-12 col-sm-12">
