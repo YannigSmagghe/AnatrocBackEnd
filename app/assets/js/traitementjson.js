@@ -9,9 +9,10 @@ function displayWeather(response) {
 
     $('#temperature').text(response.data.temperature+'°');
     $('#ville').text(response.data.city);
-
-
 }
+
+
+
 
 /** Get Json DATA transport  **/
 function displayTransport(response) {
