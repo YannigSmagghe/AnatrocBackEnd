@@ -22,6 +22,9 @@ function displayTransport(response) {
     $('#end_address_result').text(response.data.end_address_name);
     $('#duration_result').text(response.data.duration);
 }
+
+
+
 function displayFromResponse(response) {
 
     for (var i in response) {
