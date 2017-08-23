@@ -64,9 +64,22 @@
                 <p>
             </div>
 
-            <input id="search-input-from" type="search" placeholder="Départ" class="form-control box-shadow col-lg-8">
-            <input id="search-input-to" type="search" placeholder="Arrivée" class="form-control box-shadow col-lg-8">
+            <input id="search-input-from"
+                   type="search"
+                   placeholder="Départ"
+                   onchange="geolocate('search-input-from')"
+                   class="form-control box-shadow col-lg-8"
+            >
+            <input id="search-input-to"
+                   type="search"
+                   placeholder="Arrivée"
+                   onchange="geolocate('search-input-to')"
+                   class="form-control box-shadow col-lg-8"
+            >
+            <span class="notice-textToSpeech">Cliquer sur votre phrase pour valider</span>
             <!--<span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>-->
+        </div>
+        <div class="btn-account col-lg-12 col-md-12 col-sm-12">
         </div>
     </section>
 
@@ -104,8 +117,6 @@
         <p id="favoris">
             ajouter des favoris
         </p>
-
-
     </section>
 
 
@@ -379,7 +390,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="./assets/compiled/js/app.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW7AzbAbd14Pt807-HAPh4zSCBw7_3zZg&callback=initMap"
+    <!--Geolocalisation-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW7AzbAbd14Pt807-HAPh4zSCBw7_3zZg&callback=initMap"-->
+            <!--async defer></script>-->
+
+    <!--Autocomplete adress-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I&libraries=places&callback=initAutocomplete"
             async defer></script>
 </footer>
 </html>
