@@ -66,6 +66,7 @@ $(document).ready(function () {
             $(voiceSpan).hide();
             /** target input2 if 1 is not empty **/
             if ($('#search-input-from').val() !== '' && !$("#search-input-from").is(":focus")) {
+                $('.notice-textToSpeech').fadeIn();
                 $('#search-input-to').val($(voiceSpan).text());
             }else{
                 $('#search-input-from').val($(voiceSpan).text());
