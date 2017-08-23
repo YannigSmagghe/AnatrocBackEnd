@@ -1,0 +1,36 @@
+{
+  "errors": [],
+  "data": [
+    {
+      "errors": [],
+      "home": {
+        "start_address_name": "home adress"
+      }
+    },
+    {
+      "errors": [],
+      "job": {
+        "start_address_name": "job adress"
+      }
+    },
+    {
+      "errors": [],
+      "favorite": {
+        "start_address_name": "favorite 1 adress"
+      }
+    },
+    {
+      "errors": [],
+      "favorite": {
+        "start_address_name": "favorite 2 adress"
+      }
+    },
+    {
+      "errors": [],
+      "favorite": {
+        "start_address_name": "favorite 3 adress"
+      }
+    }
+  ],
+  "type": "main-account"
+}
