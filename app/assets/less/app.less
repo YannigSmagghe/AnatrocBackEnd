@@ -22,7 +22,7 @@ body {
   div.main {
     text-align: center;
   }
-  ul{
+  ul {
     //animation
     animation: fadein 1s;
     -moz-animation: fadein 1s; /* Firefox */
@@ -76,6 +76,38 @@ body {
     text-align: center;
   }
   //end placeholder
+  // start btn account
+  .btn-account{
+    top: 325px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: fadein 10s;
+    -moz-animation: fadein 10s; /* Firefox */
+    -webkit-animation: fadein 10s; /* Safari et Chrome */
+    -o-animation: fadein 10s; /* Opera */
+    button{
+      margin-left: 9px;
+      display: inline-block;
+      .box-sizing(content-box);
+      cursor: pointer;
+      padding: 10px 20px;
+      border: 3px solid rgba(180,180,180,1);
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      font: normal 16px/normal "Times New Roman", Times, serif;
+      color: rgba(255,255,255,0.9);
+      -o-text-overflow: clip;
+      text-overflow: clip;
+      background: hsla(0,0%,100%,.9);
+      .box-shadow(0 0 0 2px rgba(0,0,0,0.2) );
+      text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+      .transition(all 300ms cubic-bezier(0.42, 0, 0.58, 1));
+    }
+  }
+
+
 
   // Menu du haut
   .dropdown {
@@ -102,9 +134,14 @@ body {
     }
   }
   // fin menu du haut
-
+//input container
+  .notice-textToSpeech{
+    margin-top: 5px;
+    display: none;
+  }
+  // fin input container
   //Login
-  .login-container{
+  .login-container {
     //animation
     animation: fadein 10s;
     -moz-animation: fadein 10s; /* Firefox */
@@ -112,26 +149,24 @@ body {
     -o-animation: fadein 10s; /* Opera */
     // fin animation
     margin-top: 10px;
-    position:absolute;
+    position: absolute;
     background-color: @bgTransparent;
-    i{
+    i {
       font-size: 1.5em;
     }
   }
 
   @media screen and (max-width: 886px) {
     .login-container {
-     right: 20px;
+      right: 20px;
       top: 0;
     }
   }
 
-
-
 }
 
 /*Start Captcha*/
-#captcha{
+#captcha {
   position: relative;
   margin-left: 25%;
   margin-top: 1%;
@@ -142,212 +177,233 @@ body {
 /** Responsive **/
 
 @media screen and (max-width: 640px) {
-  #captcha{
+  #captcha {
     position: relative;
     margin-left: 16px;
     margin-top: 10px;
   }
 }
 
-
-
-  .footer-container {
-    position: absolute;
-    bottom: 0px;
-    //animation
-    animation: fadein 10s;
-    -moz-animation: fadein 10s; /* Firefox */
-    -webkit-animation: fadein 10s; /* Safari et Chrome */
-    -o-animation: fadein 10s; /* Opera */
-    // fin animation
-    // aide en bas à droite
-    .dropup {
-      position: fixed;
-      bottom: 0px;
-      right: 0px;
-      margin-bottom: 20px;
-      margin-right: 20px;
-      .btn-default {
-        background-color: @bgTransparent;
-        margin-top: 10px;
-        border-radius: 100%;
-        border: @border;
-      }
-      .btn-default[aria-expanded~=true] {
-        background-color: @bgTransparent;
-      }
-
-      .dropdown-menu {
-        left: -160px;
-        background-color: @bgTransparentMenu;
-        li > a:focus, li > a:hover {
-          background-color: @bgTransparentFocus;
-        }
-        p {
-          padding: 4px 15px;
-        }
-      }
-    }
-    //fin aide en bas à  droite
-  }
-
-  // section connexion
-  .connexion-container {
-
-    left: 0px;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-
-    padding: 34px;
+.footer-container {
+  position: absolute;
+  bottom: 0px;
+  //animation
+  animation: fadein 10s;
+  -moz-animation: fadein 10s; /* Firefox */
+  -webkit-animation: fadein 10s; /* Safari et Chrome */
+  -o-animation: fadein 10s; /* Opera */
+  // fin animation
+  // aide en bas à droite
+  .dropup {
     position: fixed;
-    margin: auto;
-    margin-top: 265px;
-
-    text-align: center;
-    height: 500px;
-
-    .input-group {
-      position: relative;
-      margin-top: 25px;
-      width: 86%;
-      margin-left: 4px;
-    }
-
-    .valid-connexion {
-      margin-top: 35px;
+    bottom: 0px;
+    right: 0px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    .btn-default {
       background-color: @bgTransparent;
+      margin-top: 10px;
+      border-radius: 100%;
       border: @border;
     }
-  }
-  // end section connexion
-
-  //Css Title
-
-  #main-title {
-    font-size: 58px;
-    text-align: center;
-    margin-top: 200px;
-  }
-  #final_span{
-    display: none;
-  }
-  #interim_span{
-  display: none
-   ;
-   }
-
-  // End Css Title
-  .input-container {
-    // Style input
-    .input-group {
-      //animation
-      animation: fadein 10s;
-      -moz-animation: fadein 10s; /* Firefox */
-      -webkit-animation: fadein 10s; /* Safari et Chrome */
-      -o-animation: fadein 10s; /* Opera */
-      // fin animation
-
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-
-      width: 40%;
-    }
-    @media screen and (-webkit-min-device-pixel-ratio:0) {
-      .input-group{position: fixed;}
+    .btn-default[aria-expanded~=true] {
+      background-color: @bgTransparent;
     }
 
-    @-moz-document url-prefix() {
-      .input-group {
-        margin-top: 11%;
+    .dropdown-menu {
+      left: -160px;
+      background-color: @bgTransparentMenu;
+      li > a:focus, li > a:hover {
+        background-color: @bgTransparentFocus;
+      }
+      p {
+        padding: 4px 15px;
       }
     }
-
-    .form-control {
-      display: inline-block;
-      .box-sizing(content-box);
-      padding: 10px 20px;
-      border: 0 solid rgba(183, 183, 183, 0);
-      border-bottom: 1px solid @text-color;
-      -webkit-border-radius: 3px;
-      border-radius: 3px;
-      font: @fontPrimary;
-      color: @text-color;
-      -o-text-overflow: clip;
-      text-overflow: clip;
-      background: rgba(252, 252, 252, 0.03);
-      .box-shadow(0 0 0 0 rgba(40, 40, 40, 1));
-      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
-      // .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), border-width 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
-    }
-
-    .form-control:hover {
-      border: 0 solid rgba(90, 90, 90, 1);
-      border-bottom-width: 1px;
-      .box-shadow(none);
-      // .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1));
-    }
-
-    .form-control:focus {
-      border: 0 solid rgba(183, 183, 183, 0);
-      border-bottom: 1px solid #5a5a5a;
-      //.transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
-    }
-
-    .voice-activation {
-      position: absolute;
-      margin-left: 10px;
-      margin-top: -10px;
-    }
   }
-  #voice-activation-container{
-    display: none;
+  //fin aide en bas à  droite
+}
+
+// section connexion
+.connexion-container {
+
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  padding: 34px;
+  position: fixed;
+  margin: auto;
+  margin-top: 265px;
+
+  text-align: center;
+  height: 500px;
+
+  .input-group {
+    position: relative;
+    margin-top: 25px;
+    width: 86%;
+    margin-left: 4px;
   }
-  // message accueil
-  #message-accueil {
-    display: none;
+
+  .valid-connexion {
+    margin-top: 35px;
+    background-color: @bgTransparent;
+    border: @border;
   }
-  // end message accueil
+}
 
-  //result container
-  .result-container {
-    display: none;
-    text-align: center;
+// end section connexion
+
+//Start My Account
+
+.myAccount-container {
+  #myAccount-title{
+    margin-bottom: 10%;
   }
-  //end result container
-
-  // css Meteo
-  .meteo-container{
-    font-size: 63px;
-
-    .stage {
-      //position: absolute;
-      //top: 20%;
-      //left: 50%;
-      //width: 600px;
-      //height: 96px;
-      //margin-left: -300px;
-      //margin-top: -30px;
-      top: -39px;
-    }
-  }// end CSS Meteo
-
-  // css localisation
-  .localisation-container{
-    //border: 1px solid black;
-    #start_address_result{
-      font-weight: bold;
-      font-size: 32px;
-    }
-
+  p{
+    text-align: left;
+    margin-bottom: 10%;
   }
-  //end css localisation
+}
 
+//End My Account
 
-#map-container{
+//Css Title
+
+#main-title {
+  font-size: 58px;
+  text-align: center;
+  margin-top: 200px;
+}
+
+#final_span {
+  display: none;
+}
+
+#interim_span {
+  display: none;
+}
+
+// End Css Title
+// Style input
+.input-group {
+  //animation
+  animation: fadein 10s;
+  -moz-animation: fadein 10s; /* Firefox */
+  -webkit-animation: fadein 10s; /* Safari et Chrome */
+  -o-animation: fadein 10s; /* Opera */
+  // fin animation
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  width: 40%;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .input-group {
+    position: fixed;
+  }
+}
+
+@-moz-document url-prefix() {
+  .input-group {
+    margin-top: 11%;
+  }
+}
+
+.form-control {
+  display: inline-block;
+  .box-sizing(content-box);
+  padding: 10px 20px;
+  border: 0 solid rgba(183, 183, 183, 0);
+  border-bottom: 1px solid @text-color;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font: @fontPrimary;
+  color: @text-color;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252, 252, 252, 0.03);
+  .box-shadow(0 0 0 0 rgba(40, 40, 40, 1));
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
+  // .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), border-width 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
+}
+
+.form-control:hover {
+  border: 0 solid rgba(90, 90, 90, 1);
+  border-bottom-width: 1px;
+  .box-shadow(none);
+  // .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1));
+}
+
+.form-control:focus {
+  border: 0 solid rgba(183, 183, 183, 0);
+  border-bottom: 1px solid #5a5a5a;
+  //.transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
+}
+
+.voice-activation {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: -10px;
+}
+
+#voice-activation-container {
+  display: none;
+}
+
+// message accueil
+#message-accueil {
+  display: none;
+}
+
+// end message accueil
+
+//result container
+.result-container {
+  display: none;
+  text-align: center;
+}
+
+//end result container
+
+// css Meteo
+.meteo-container {
+  font-size: 63px;
+
+  .stage {
+    //position: absolute;
+    //top: 20%;
+    //left: 50%;
+    //width: 600px;
+    //height: 96px;
+    //margin-left: -300px;
+    //margin-top: -30px;
+    top: -39px;
+  }
+}
+
+// end CSS Meteo
+
+// css localisation
+.localisation-container {
+  //border: 1px solid black;
+  #start_address_result {
+    font-weight: bold;
+    font-size: 32px;
+  }
+
+}
+
+//end css localisation
+
+#map-container {
   height: 300px;
 }
 
@@ -546,7 +602,6 @@ canvas {
     opacity: 1;
   }
 }
-
 
 svg {
   width: 68px;
@@ -781,23 +836,26 @@ svg {
   animation: ray-show-one 4s infinite linear;
   transform-origin: center right;
 }
+
 #Nuageux .ray-two {
   animation: ray-show-two 4s infinite linear;
   transform-origin: bottom right;
 }
+
 #Nuageux .ray-three {
   animation: ray-show-three 4s infinite linear;
   transform-origin: bottom center;
 }
+
 #Nuageux .ray-four {
   animation: ray-show-four 4s infinite linear;
   transform-origin: bottom left;
 }
+
 #Nuageux .ray-five {
   animation: ray-show-five 4s infinite linear;
   transform-origin: center left;
 }
-
 
 // bug sur le titre en fip in jusqu'à la prochaine marque
 @keyframes sun-grow {
@@ -948,18 +1006,22 @@ svg {
 
 /* Windy Cloud Animation */
 #Venteux .cloud-wrap {
-  animation: bob 2s infinite cubic-bezier(0,0,.5,1.5);
+  animation: bob 2s infinite cubic-bezier(0, 0, .5, 1.5);
 }
+
 #Venteux .cloud {
   animation: cloud-push 4s infinite;
   transform-origin: left center;
 }
+
 #Venteux .wind-one {
   animation: wind-slide-one 4s infinite;
 }
+
 #Venteux .wind-two {
   animation: wind-slide-two 4s infinite;
 }
+
 #Venteux .wind-three {
   animation: wind-slide-three 4s infinite;
 }

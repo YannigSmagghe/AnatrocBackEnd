@@ -18,12 +18,16 @@ $(document).ready(function () {
         return timer;
     });
 
+
     // Clear input From if clicked
     function clearInputFrom() {
         $( "#search-input-from" ).val('');
+        $('#interim_span').val();
+
     }
     function clearInputTo() {
         $( "#search-input-to" ).val('');
+        $('#interim_span').val();
     }
     $( "#search-input-from" ).on( "click", clearInputFrom );
     $( "#search-input-to" ).on( "click", clearInputTo );
@@ -63,25 +67,23 @@ $(document).ready(function () {
 
     /** VOICE ACTIVATION INIT **/
     //Swap voice input
+
+    //Change to get select of autocompelete gl hf
     window.setInterval(function () {
         var voiceSpan = '#interim_span';
         if ($(voiceSpan).text().length > 0) {
             $(voiceSpan).hide();
             /** target input2 if 1 is not empty **/
             if ($('#search-input-from').val() !== '' && !$("#search-input-from").is(":focus")) {
+                $('.notice-textToSpeech').fadeIn();
                 $('#search-input-to').val($(voiceSpan).text());
             }else{
                 $('#search-input-from').val($(voiceSpan).text());
+                $('.notice-textToSpeech').fadeIn();
             }
-        }
+        }else{
+            $('.notice-textToSpeech').fadeOut();
 
-    }, 1000);
-
-    //Swap to result page
-    window.setInterval(function () {
-        var voiceSpan = '#final_span';
-        if ($(voiceSpan).text().length > 0) {
-            resultPage();
         }
 
     }, 5000);
@@ -95,6 +97,7 @@ $(document).ready(function () {
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     }
+
 
 });
 
