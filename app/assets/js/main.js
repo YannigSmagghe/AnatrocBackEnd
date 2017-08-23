@@ -8,15 +8,15 @@ $(document).ready(function () {
         }
     }
 
-    var timer = null;
-    $("#search-input-to").on("keyup", function () {
-        console.log(timer);
-        if (timer) {
-            clearTimeout(timer); //cancel the previous timer.
-        }
-        timer = setTimeout(resultPage, 3000);
-        return timer;
-    });
+     //var timer = null;
+     //$("#search-input-to").on("keyup", function () {
+     //    console.log(timer);
+     //    if (timer) {
+      //       clearTimeout(timer); //cancel the previous timer.
+      //   }
+      //   timer = setTimeout(resultPage, 3000);
+       //  return timer;
+     //});
 
 
     // Clear input From if clicked
