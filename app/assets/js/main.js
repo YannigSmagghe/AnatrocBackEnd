@@ -2,23 +2,16 @@ $(document).ready(function () {
 
     /** INPUT PART**/
     //send input
-    function resultPage() {
-        if    ($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
-            showResultsPage();
-        }
-
-
-    }
-
-    var timer = null;
-    $("#search-input-to").on("keyup", function () {
-        console.log(timer);
-        if (timer) {
-            clearTimeout(timer); //cancel the previous timer.
-        }
-        timer = setTimeout(resultPage, 3000);
-        return timer;
-    });
+    //
+    // var timer = null;
+    // $("#search-input-to").on("keyup", function () {
+    //     console.log(timer);
+    //     if (timer) {
+    //         clearTimeout(timer); //cancel the previous timer.
+    //     }
+    //     timer = setTimeout(resultPage, 3000);
+    //     return timer;
+    // });
 
     // Clear input From if clicked
     function clearInputFrom() {
@@ -65,6 +58,8 @@ $(document).ready(function () {
 
     /** VOICE ACTIVATION INIT **/
     //Swap voice input
+
+    //Change to get select of autocompelete gl hf
     window.setInterval(function () {
         var voiceSpan = '#interim_span';
         if ($(voiceSpan).text().length > 0) {
@@ -79,24 +74,6 @@ $(document).ready(function () {
 
     }, 1000);
 
-    //Swap to result page
-    window.setInterval(function () {
-        var voiceSpan = '#final_span';
-        if ($(voiceSpan).text().length > 0) {
-            resultPage();
-        }
-
-    }, 5000);
-
-    /** RESULT PAGE PART**/
-    function showResultsPage() {
-        $(".input-container").fadeOut();
-        $(".result-container").fadeIn();
-
-        var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
-    }
 });
 
 
