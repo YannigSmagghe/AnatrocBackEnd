@@ -46,9 +46,6 @@ function setSearchInputFrom(latFrom,lngFrom) {
 
         }
     });
-
-
-
 }
 
 
@@ -69,17 +66,29 @@ function geo_error() {
 
 function initMap() {
     var map;
+
     window.initMap = function () {
         var myLatLng = {lat: lat, lng: lng};
         map = new google.maps.Map(document.getElementById('map-container'), {
             zoom: 10,
             center: myLatLng
         });
+
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsDisplay.setMap(map);
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
             title: 'Vous etes ici!'
         });
+        var onChangeHandler = function(origin,destination,travelMode) {
+            calculateAndDisplayRoute(directionsService, directionsDisplay,origin,destination,travelMode);
+        };
+        // document.getElementById('start').addEventListener('change', onChangeHandler);
+        // document.getElementById('end').addEventListener('change', onChangeHandler);
+        onChangeHandler(origin,destination,travelMode);
+
         var styles = [
             {
                 "featureType": "administrative",
@@ -263,6 +272,23 @@ function initMap() {
         map.setOptions({styles: styles});
 
     }
+
+
+}
+
+/*Calcul l'itineraire de l'origine à la destination avec le moyen de transport*/
+function calculateAndDisplayRoute(directionsService, directionsDisplay,origin, destination,travelMode) {
+    directionsService.route({
+        origin: origin,
+        destination: destination,
+        travelMode: travelMode
+    }, function(response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
 }
 
 function getLocation() {

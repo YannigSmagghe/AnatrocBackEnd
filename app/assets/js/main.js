@@ -6,8 +6,6 @@ $(document).ready(function () {
         if    ($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
             showResultsPage();
         }
-
-
     }
 
     var timer = null;
@@ -92,11 +90,12 @@ $(document).ready(function () {
     function showResultsPage() {
         $(".input-container").fadeOut();
         $(".result-container").fadeIn();
-
+        initMap();
         var center = map.getCenter();
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     }
+
 });
 
 

@@ -1,6 +1,5 @@
 //Traitement Json
 
-
 function displayWeather(response) {
 
     $(".temps").hide();
@@ -11,9 +10,6 @@ function displayWeather(response) {
     $('#ville').text(response.data.city);
 }
 
-
-
-
 /** Get Json DATA transport  **/
 function displayTransport(response) {
 
@@ -22,8 +18,6 @@ function displayTransport(response) {
     $('#end_address_result').text(response.data.end_address_name);
     $('#duration_result').text(response.data.duration);
 }
-
-
 
 function displayFromResponse(response) {
 
@@ -36,13 +30,17 @@ function displayFromResponse(response) {
             lat = response[i].data.start_location.lat;
             lng = response[i].data.start_location.lng;
 
+
+
         }
     }
 }
 
-
-
-
+function GetJsonPosition(ori,dest,travelM){
+    origin = ori;
+    destination = dest;
+    travelMode = travelM;
+}
 
 $.getJSON( "result.json", function( data ) {
     // console.log(data.data[0].type);
@@ -50,8 +48,7 @@ $.getJSON( "result.json", function( data ) {
     //console.log(data.data[0].data.temps);
     displayFromResponse(data.data);
     displayTransport(data);
+    GetJsonPosition('grenoble','lyon','WALKING');
     //recupLocation(data.data);
     $('.result_type').text(data.data[0].type);
-
-
 });
