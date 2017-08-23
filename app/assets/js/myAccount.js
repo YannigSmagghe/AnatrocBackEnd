@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#menu_connexion').trigger('click');
+    //$('#menu_connexion').trigger('click');
 
     $('#button-connect').on("click", function () {
         showMyAccount();

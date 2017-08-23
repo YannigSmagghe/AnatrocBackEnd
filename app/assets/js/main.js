@@ -91,12 +91,46 @@ $(document).ready(function () {
     /** RESULT PAGE PART**/
     function showResultsPage() {
         $(".input-container").fadeOut();
-        $(".result-container").fadeIn();
+        $(".travel-container").fadeIn();
+        $("#main-title").fadeOut();
 
         var center = map.getCenter();
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     }
+
+    /** Afficher le chemin **/
+    /*
+    $(".travel-path").click(function(){
+        $id = $(this).parent().parent().parent().parent().id;
+        if ($(this).hasClass(".is-open")) {
+            appendChild()
+        } else if ($(this).hasClass(".is-close")) {
+            var paths = [];
+            paths = getPath();
+            divActuel = document.getElementById("div1");
+            $(id).("div").("div").("div").("div").removeChild();
+            var ulPath = document.createElement("ul");
+            ulPath.addClass("list-path");
+            for(var i= 0; i < paths.length; i++)
+            {
+                var liPath = document.createElement("li");
+                liPath.innerText(paths(i));
+                ulPath.appendChild(liPath);
+            }
+            $(id).("div").("div").("div").("div").appendChild();
+        }
+    });
+
+    function getPath() {
+        var paths = [];
+        paths.push("- Tout droit sur 500m");
+        paths.push("- Tournez à gauche sur la rue Carlingue");
+        paths.push("- Avancez 200m");
+        paths.push("- Tournez à droite sur la rue Hocho");
+
+        return paths;
+    }*/
 });
 
 
