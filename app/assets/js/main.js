@@ -16,9 +16,12 @@ $(document).ready(function () {
     // Clear input From if clicked
     function clearInputFrom() {
         $( "#search-input-from" ).val('');
+        $('#interim_span').val();
+
     }
     function clearInputTo() {
         $( "#search-input-to" ).val('');
+        $('#interim_span').val();
     }
     $( "#search-input-from" ).on( "click", clearInputFrom );
     $( "#search-input-to" ).on( "click", clearInputTo );
@@ -70,7 +73,11 @@ $(document).ready(function () {
                 $('#search-input-to').val($(voiceSpan).text());
             }else{
                 $('#search-input-from').val($(voiceSpan).text());
+                $('.notice-textToSpeech').fadeIn();
             }
+        }else{
+            $('.notice-textToSpeech').fadeOut();
+
         }
 
     }, 1000);
