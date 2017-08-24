@@ -89,10 +89,22 @@ $(document).ready(function () {
 
     //Swap to result page
     window.setInterval(function () {
-        var voiceSpan = '#final_span';
+        var voiceSpan = '#interim_span';
         if ($(voiceSpan).text().length > 0) {
-            resultPage();
+            $(voiceSpan).hide();
+            /** target input2 if 1 is not empty **/
+            if ($('#search-input-from').val() !== '' && !$("#search-input-from").is(":focus")) {
+                $('.notice-textToSpeech').fadeIn();
+                $('#search-input-to').val($(voiceSpan).text());
+            }else{
+                $('#search-input-from').val($(voiceSpan).text());
+                $('.notice-textToSpeech').fadeIn();
+            }
+        }else{
+            $('.notice-textToSpeech').fadeOut();
+
         }
+
     }, 5000);
 
     /** RESULT PAGE PART**/
@@ -108,6 +120,39 @@ $(document).ready(function () {
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
     }
+
+    /** Afficher le chemin **/
+    /*
+    $(".travel-path").click(function(){
+        $id = $(this).parent().parent().parent().parent().id;
+        if ($(this).hasClass(".is-open")) {
+            appendChild()
+        } else if ($(this).hasClass(".is-close")) {
+            var paths = [];
+            paths = getPath();
+            divActuel = document.getElementById("div1");
+            $(id).("div").("div").("div").("div").removeChild();
+            var ulPath = document.createElement("ul");
+            ulPath.addClass("list-path");
+            for(var i= 0; i < paths.length; i++)
+            {
+                var liPath = document.createElement("li");
+                liPath.innerText(paths(i));
+                ulPath.appendChild(liPath);
+            }
+            $(id).("div").("div").("div").("div").appendChild();
+        }
+    });
+
+    function getPath() {
+        var paths = [];
+        paths.push("- Tout droit sur 500m");
+        paths.push("- Tournez à gauche sur la rue Carlingue");
+        paths.push("- Avancez 200m");
+        paths.push("- Tournez à droite sur la rue Hocho");
+
+        return paths;
+    }*/
 });
 
 
