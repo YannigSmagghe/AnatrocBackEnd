@@ -120,25 +120,38 @@ $(document).ready(function () {
     }
 
     /** Afficher le chemin **/
-    /*
+
     $(".travel-path").click(function(){
-        $id = $(this).parent().parent().parent().parent().id;
+
+        $id = $(this).parent().parent().parent().id;
+        var travel_div = $(id+".travel-path");
+        var children_path = travel_div.children;
+
         if ($(this).hasClass(".is-open")) {
-            appendChild()
+
+            travel_div.removeChild(children_path);
+
+            var spanPath = document.createElement("span");
+            spanPath.innerText("Chemin");
+            travel_div.appendChild(spanPath);
+
         } else if ($(this).hasClass(".is-close")) {
+
             var paths = [];
             paths = getPath();
-            divActuel = document.getElementById("div1");
-            $(id).("div").("div").("div").("div").removeChild();
+
+            travel_div.removeChild(children_path);
+
             var ulPath = document.createElement("ul");
             ulPath.addClass("list-path");
             for(var i= 0; i < paths.length; i++)
             {
                 var liPath = document.createElement("li");
-                liPath.innerText(paths(i));
+                liPath.innerText(paths[i]);
                 ulPath.appendChild(liPath);
             }
-            $(id).("div").("div").("div").("div").appendChild();
+            travel_div.appendChild(ulPath);
+
         }
     });
 
@@ -150,7 +163,7 @@ $(document).ready(function () {
         paths.push("- Tournez à droite sur la rue Hocho");
 
         return paths;
-    }*/
+    }
 });
 
 
