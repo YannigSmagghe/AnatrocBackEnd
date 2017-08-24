@@ -3,11 +3,9 @@ $(document).ready(function () {
     /** INPUT PART**/
     //send input
     function resultPage() {
-        if    ($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
+        if($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
             showResultsPage();
         }
-
-
     }
 
     // var timer = null;
@@ -111,9 +109,13 @@ $(document).ready(function () {
 
     /** RESULT PAGE PART**/
     function showResultsPage() {
+        var addressFrom = $('#search-input-from').val();
+        var  addressTo = $('#search-input-to').val();
+        GetPosition(addressFrom,addressTo,'WALKING');
+        traitementAjax();
         $(".input-container").fadeOut();
         $(".result-container").fadeIn();
-
+        initMap();
         var center = map.getCenter();
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
