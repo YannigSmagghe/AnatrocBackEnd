@@ -8,6 +8,11 @@ var lngTo = 0;
 /** get Json position to dont refresh **/
 var didOnlyOnce = 0;
 
+latVelov = [];
+lngVelov =[];
+var features =[];
+
+
 /** init **/
 $.getJSON('https://ipinfo.io/geo', function(response) {
     var loc = response.loc.split(',');
@@ -32,6 +37,14 @@ var geo_options = {
 var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
 
 
+/**Function Appel inimap et autocomplete**/
+
+function initialize() {
+    initMap();
+    initAutocomplete();
+}
+
+
 /** Function **/
 
 function setSearchInputFrom(latFrom,lngFrom) {
@@ -45,10 +58,9 @@ function setSearchInputFrom(latFrom,lngFrom) {
             $('#search-input-from').val(loc).fadeIn();
 
         }
+
+
     });
-
-
-
 }
 
 
@@ -69,17 +81,61 @@ function geo_error() {
 
 function initMap() {
     var map;
+
+
     window.initMap = function () {
+
         var myLatLng = {lat: lat, lng: lng};
         map = new google.maps.Map(document.getElementById('map-container'), {
             zoom: 10,
             center: myLatLng
         });
+
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsDisplay.setMap(map);
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
             title: 'Vous etes ici!'
         });
+        var onChangeHandler = function(origin,destination,travelMode) {
+            calculateAndDisplayRoute(directionsService, directionsDisplay,origin,destination,travelMode);
+        };
+        // document.getElementById('start').addEventListener('change', onChangeHandler);
+        // document.getElementById('end').addEventListener('change', onChangeHandler);
+        onChangeHandler(origin,destination,travelMode);
+
+
+        var icons = {
+            volov: {
+                icon: 'https://velov.grandlyon.com/typo3conf/ext/gl_stationsvelov/Resources/Public/Icons/Map/station-0.png',
+
+            }
+        };
+
+        for (var i in latVelov) {
+                 features[i] = [
+                    {
+                        position: new google.maps.LatLng(latVelov[i], lngVelov[i]),
+                        type: 'volov'
+                    }
+                ];
+        }
+
+        // Create markers.
+        for (var i in features) {
+            features[i].forEach(function (feature) {
+                var marker = new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map,
+                    size:new google.maps.Size(1, 1)
+
+                });
+            });
+        }
+        /* style map*/
         var styles = [
             {
                 "featureType": "administrative",
@@ -261,8 +317,22 @@ function initMap() {
         ]
 
         map.setOptions({styles: styles});
-
     }
+}
+
+/*Calcul l'itineraire de l'origine à la destination avec le moyen de transport*/
+function calculateAndDisplayRoute(directionsService, directionsDisplay,origin, destination,travelMode) {
+    directionsService.route({
+        origin: origin,
+        destination: destination,
+        travelMode: travelMode
+    }, function(response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
 }
 
 function getLocation() {

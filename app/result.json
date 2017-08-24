@@ -27,8 +27,8 @@
         "address": "Place Gerson",
         "commune": "Lyon 5 ème",
         "localisation": {
-          "lat": 45.7670444714525,
-          "lng": 4.82698432330627
+          "lat": 45.7616029,
+          "lng": 4.862770800000021
         },
         "bike_stands": 20,
         "status": "OPEN"
@@ -43,7 +43,7 @@
         "commune": "Lyon 4 ème",
         "localisation": {
           "lat": 45.7740460473114,
-          "lng": 4.82519257109699
+          "lng": 2.82519257109699
         },
         "bike_stands": 15,
         "status": "OPEN"

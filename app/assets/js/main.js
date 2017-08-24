@@ -2,7 +2,12 @@ $(document).ready(function () {
 
     /** INPUT PART**/
     //send input
-    //
+    function resultPage() {
+        if($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
+            showResultsPage();
+        }
+    }
+
     // var timer = null;
     // $("#search-input-to").on("keyup", function () {
     //     console.log(timer);
@@ -82,6 +87,27 @@ $(document).ready(function () {
 
     }, 1000);
 
+    //Swap to result page
+    window.setInterval(function () {
+        var voiceSpan = '#final_span';
+        if ($(voiceSpan).text().length > 0) {
+            resultPage();
+        }
+    }, 5000);
+
+    /** RESULT PAGE PART**/
+    function showResultsPage() {
+        var addressFrom = $('#search-input-from').val();
+        var  addressTo = $('#search-input-to').val();
+        GetPosition(addressFrom,addressTo,'WALKING');
+        traitementAjax();
+        $(".input-container").fadeOut();
+        $(".result-container").fadeIn();
+        initMap();
+        var center = map.getCenter();
+        google.maps.event.trigger(map, "resize");
+        map.setCenter(center);
+    }
 });
 
 
