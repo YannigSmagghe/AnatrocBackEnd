@@ -42,11 +42,20 @@ $(document).ready(function () {
         $(".connexion-container").hide();
         $(".meteo-container").hide();
         $(".input-container").show();
+        showHideTitle();
     });
 
 
     //title Animation
 
+    // show/hide title
+    function showHideTitle(){
+        if ($('#main-title').is(":visible")){
+            $('#main-title').fadeOut();
+        }else{
+            $('#main-title').fadeIn();
+        }
+    }
     $('.tlt').textillate({
 
         loop: false,
@@ -108,18 +117,20 @@ $(document).ready(function () {
     }, 5000);
 
     /** RESULT PAGE PART**/
-    function showResultsPage() {
-        var addressFrom = $('#search-input-from').val();
-        var  addressTo = $('#search-input-to').val();
-        GetPosition(addressFrom,addressTo,'WALKING');
-        traitementAjax();
-        $(".input-container").fadeOut();
-        $(".result-container").fadeIn();
-        initMap();
-        var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
-    }
+    // voir resultPage.js
+    // function showResultsPage() {
+    //     showHideTitle();
+    //     var addressFrom = $('#search-input-from').val();
+    //     var  addressTo = $('#search-input-to').val();
+    //     GetPosition(addressFrom,addressTo,'WALKING');
+    //     traitementAjax();
+    //     $(".input-container").fadeOut();
+    //     $(".result-container").fadeIn();
+    //     initMap();
+    //     var center = map.getCenter();
+    //     google.maps.event.trigger(map, "resize");
+    //     map.setCenter(center);
+    // }
 
     /** Afficher le chemin **/
     /*
