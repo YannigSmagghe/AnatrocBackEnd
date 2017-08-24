@@ -40,9 +40,8 @@ $(document).ready(function () {
         });
     });
 
-    $( "#menu_accueil" ).click(function() {
+    $( "#menu_accueil, #button-back" ).click(function() {
         showHideTitle();
-        console.log('acceuil');
         $.each(arrayContainer, function( index, value ) {
             if (value !== 'input-container'){
                 $('.'+value).fadeOut();
@@ -51,9 +50,41 @@ $(document).ready(function () {
             }
         });
     });
+
+    $( "#dropdownMenu1" ).click(function() {
+
+        if ($( "#dropdownMenu1" ).attr('aria-expanded') === "false"){
+            console.log('hi');
+            $( "#button-back" ).animate({
+                "margin-top": "-51px",
+                "margin-left": "+54px"
+            }, 1500 );
+        }else{
+            $( "#button-back" ).animate({
+                "margin-top": "+=61px",
+                "margin-left": "-=54px"
+            }, 1500 );
+        }
+    });
+
+
+
+
+    // $( "#dropdownMenu1" ).is(':aria-expanded')(function() {
+    //     $( "#button-back" ).animate({
+    //         "margin-top": "-=51px",
+    //         "margin-left": "+=54px"
+    //     }, 1500 );
+    // });
+    // !$( "#dropdownMenu1" ).is(':aria-expanded')(function() {
+    //     $( "#button-back" ).animate({
+    //         "margin-top": "+=51px",
+    //         "margin-left": "-=54px"
+    //     }, 1500 );
+    // });
     // show/hide title
     function showHideTitle(){
-        if ($('#main-title').is(":visible")){
+        if ($('#main-title').is(":visible") && !$('.input-container').is(':visible')){
             $('#main-title').fadeOut();
         }else{
             $('#main-title').fadeIn();
