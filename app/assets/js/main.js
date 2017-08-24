@@ -108,6 +108,7 @@ $(document).ready(function () {
     }, 5000);
 
     /** RESULT PAGE PART**/
+    /*
     function showResultsPage() {
         var addressFrom = $('#search-input-from').val();
         var  addressTo = $('#search-input-to').val();
@@ -119,39 +120,49 @@ $(document).ready(function () {
         var center = map.getCenter();
         google.maps.event.trigger(map, "resize");
         map.setCenter(center);
-    }
+    }*/
 
     /** Afficher le chemin **/
 
     $(".travel-path").click(function(){
 
-        $id = $(this).parent().parent().parent().id;
-        var travel_div = $(id+".travel-path");
-        var children_path = travel_div.children;
+        //$id = $(this).parent("div").parent("div").parent("div").id;
+        $id = $(this).parents("div")[2].id;
 
-        if ($(this).hasClass(".is-open")) {
+        var travel_div = document.getElementById("path-"+$id);
+        var children_path;
 
-            travel_div.removeChild(children_path);
+        if (travel_div.classList.contains("is-open")) {
+            console.log('is open');
+
+            travel_div.innerHTML = "";
 
             var spanPath = document.createElement("span");
-            spanPath.innerText("Chemin");
+            spanPath.innerText ="Chemin";
+
+            travel_div.classList.remove("is-open");
+            travel_div.classList.add("is-close");
             travel_div.appendChild(spanPath);
 
-        } else if ($(this).hasClass(".is-close")) {
+        } else if (travel_div.classList.contains("is-close")) {
+            console.log('is close');
 
             var paths = [];
             paths = getPath();
 
-            travel_div.removeChild(children_path);
+            travel_div.innerHTML = "";
 
             var ulPath = document.createElement("ul");
-            ulPath.addClass("list-path");
+            ulPath.className = "list-path";
+
             for(var i= 0; i < paths.length; i++)
             {
                 var liPath = document.createElement("li");
-                liPath.innerText(paths[i]);
+                liPath.innerText = paths[i];
                 ulPath.appendChild(liPath);
             }
+            travel_div.classList.remove("is-close");
+            travel_div.classList.add("is-open");
             travel_div.appendChild(ulPath);
 
         }
@@ -166,6 +177,8 @@ $(document).ready(function () {
 
         return paths;
     }
+
+
 });
 
 
