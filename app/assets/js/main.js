@@ -1,13 +1,6 @@
 $(document).ready(function () {
 
     /** INPUT PART**/
-    //send input
-    function resultPage() {
-        if($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
-            showResultsPage();
-        }
-    }
-
     // var timer = null;
     // $("#search-input-to").on("keyup", function () {
     //     console.log(timer);
@@ -33,21 +26,31 @@ $(document).ready(function () {
 
 
     /** MENU PART **/
+    var arrayContainer = ['travel-container','input-container','connexion-container','myAccount-container','result-container'];
     $("#menu_connexion").click(function () {
-        $(".input-container").hide();
-        $(".connexion-container").show();
-    });
-
-    $("#menu_accueil").click(function () {
-        $(".connexion-container").hide();
-        $(".meteo-container").hide();
-        $(".input-container").show();
         showHideTitle();
+        $.each(arrayContainer, function( index, value ) {
+
+            if (value !== 'connexion-container'){
+                console.log( $('#'+value).fadeOut());
+                $('.'+value).fadeOut();
+            }else{
+                $('.connexion-container').fadeIn();
+            }
+        });
     });
 
-
-    //title Animation
-
+    $( "#menu_accueil" ).click(function() {
+        showHideTitle();
+        console.log('acceuil');
+        $.each(arrayContainer, function( index, value ) {
+            if (value !== 'input-container'){
+                $('.'+value).fadeOut();
+            }else{
+                $('.input-container').fadeIn();
+            }
+        });
+    });
     // show/hide title
     function showHideTitle(){
         if ($('#main-title').is(":visible")){
