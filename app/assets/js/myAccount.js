@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#button-connect').on("click", function () {
         showMyAccount();
     });
