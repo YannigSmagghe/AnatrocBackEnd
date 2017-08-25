@@ -1,6 +1,6 @@
 /** RESULT PAGE PART**/
-function showResultsPage() {
-    console.log('dans mshow result page');
+function showResultsPage(data) {
+    ResultResponse(data.data);
     showHideTitle();
     $(".input-container").fadeOut();
     $(".travel-container").fadeIn();
@@ -19,16 +19,16 @@ function showResultsPage() {
 
     $( "#walk" ).on( "click", function() {
         console.log( 'walk click');
-        hideChoice()
+        hideChoice();
 
     });
     $( "#bike" ).on( "click", function() {
         console.log( 'bike click');
-        hideChoice()
+        hideChoice();
     });
     $( "#car" ).on( "click", function() {
         console.log( 'car click');
-        hideChoice()
+        hideChoice();
     });
 
 }

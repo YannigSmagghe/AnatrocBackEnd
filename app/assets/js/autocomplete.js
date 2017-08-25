@@ -17,6 +17,7 @@ function initAutocomplete() {
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
+
         autocomplete.addListener('place_changed', showResults);
 
     }
@@ -24,9 +25,27 @@ function initAutocomplete() {
 }
 function showResults() {
     // Get the place details from the autocomplete object.
-    if    ($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
-        console.log('ma page resutlat');
-        showResultsPage();
+
+
+    var addressFrom = $('#search-input-from').val();
+    var  addressTo = $('#search-input-to').val();
+
+    if    (addressFrom !== '' && addressTo !== ''){
+        $.ajax({
+            url : 'https://api.anatroc/app_dev.php/',
+            type : 'POST',
+            data : 'addressFrom='+addressFrom + '&addressTo='+addressTo,
+            dataType : 'JSON',
+            success : function(data){
+                console.log(data + 'succes');
+
+                showResultsPage(data);
+            },
+            error : function(data){
+                console.log(data + 'erreur');
+            },
+        });
+        //showResultsPage();
     }
 }
 // Bias the autocomplete object to the user's geographical location,

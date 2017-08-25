@@ -1,20 +1,29 @@
 //Traitement Json
 
+var WeatherFrom = {};
+var WeatherTo = {};
+var VelovFrom = {};
+var VelovTo = {};
+
+
 function traitementAjax(){
     var addressFrom = $('#search-input-from').val();
     var  addressTo = $('#search-input-to').val();
     $.ajax({
-    url : 'https://api.anatroc/app_dev.php/',
-    type : 'POST',
-    data : 'addressFrom='+addressFrom + '&addressTo='+addressTo,
-    dataType : 'JSON',
-    success : function(data){
-        console.log(data + 'succes');
-    },
-    error : function(data){
-        console.log(data + 'erreur');
-    },
-});
+        url : 'https://api.anatroc/app_dev.php/',
+        type : 'POST',
+        data : 'addressFrom='+addressFrom + '&addressTo='+addressTo,
+        dataType : 'JSON',
+        success : function(data)
+        {
+            console.log(data + 'succes');
+            showResultsPage(data);
+        },
+        error : function(data)
+        {
+            console.log(data + 'erreur');
+        }
+    });
 }
 /**
  *  recupere les info pour la meteo
@@ -41,19 +50,52 @@ function displayTransport(response) {
 /**
  *  Recuper les valeurs du Json, check les differents types.
  * **/
-function ResultResponse(response){
+function ResultResponse(response) {
+    var date = new Date();
+    var duration;
 
+
+    console.log("result");
+    console.log(response);
     for (var i in response) {
-        if (response[i].type == "weather") {
-            displayWeather(response[i]);
+        if (response[i].hasOwnProperty('type')) {
+            if (response[i].type === "transport.google_direction.walking") {
 
-        } else if (response[i].type == "transport.google_direction.driving") {
-            displayTransport(response[i]);
-            lat = response[i].data.start_location.lat;
-            lng = response[i].data.start_location.lng;
-        }else if(response[i].type == "transport.velov"){
-            latVelov[i] = response[i].data.localisation.lat;
-            lngVelov[i] = response[i].data.localisation.lng;
+                duration = new Date(response[i].data.duration * 1000);
+                duration.setHours(duration.getHours() - 1);
+                $('.actual-time-span-walk').text(getFormatedTime(date));
+                $('.arrival-time-span-walk').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('#walk-range').text(response[i].data.distance);
+                $('#walk-time').text(getFormatedTime(duration));
+            }
+            else if (response[i].type === "transport.google_direction.bicycling") {
+
+
+                duration = new Date(response[i].data.duration * 1000);
+                duration.setHours(duration.getHours() - 1);
+                $('.actual-time-span-bike').text(getFormatedTime(date));
+                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('#bike-range').text(response[i].data.distance);
+                $('#bike-time').text(getFormatedTime(duration));
+            }
+            else if (response[i].type === "transport.google_direction.driving") {
+
+
+                duration = new Date(response[i].data.duration * 1000);
+                duration.setHours(duration.getHours() - 1);
+                $('.actual-time-span-car').text(getFormatedTime(date));
+                $('.arrival-time-span-car').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('#car-range').text(response[i].data.distance);
+                $('#car-time').text(getFormatedTime(duration));
+            }
+            else if (response[i].type === "weatherTo")
+            {
+                weatherShow(response[i].data.weather, "To");
+            }
+            else if (response[i].type === "weatherFrom")
+            {
+                weatherShow(response[i].data.weather, "From");
+            }
         }
     }
 }
@@ -67,13 +109,71 @@ function GetPosition(ori,dest,travelM){
     travelMode = travelM;
 }
 
-$.getJSON( "result.json", function( data ) {
-    // console.log(data.data[0].type);
-    // console.log(data.data[0].data.temperature);
-    //console.log(data.data[0].data.temps);
-    displayFromResponse(data.data);
-    displayTransport(data);
-    GetJsonPosition('grenoble','lyon','WALKING');
-    //recupLocation(data.data);
-    $('.result_type').text(data.data[0].type);
-});
+// $.getJSON( "result.json", function( data ) {
+//     // console.log(data.data[0].type);
+//     // console.log(data.data[0].data.temperature);
+//     //console.log(data.data[0].data.temps);
+//     displayFromResponse(data.data);
+//     displayTransport(data);
+//     GetJsonPosition('grenoble','lyon','WALKING');
+//     //recupLocation(data.data);
+//     $('.result_type').text(data.data[0].type);
+// });
+
+
+function getFormatedTime(date)
+{
+    var dateArriveStr ;
+    if(date.getHours() < 10)
+    {
+        dateArriveStr = '0' + date.getHours();
+    }
+    else
+    {
+        dateArriveStr = date.getHours();
+    }
+    dateArriveStr += ":";
+    if(date.getMinutes() < 10)
+    {
+        dateArriveStr += '0' + date.getMinutes();
+    }
+    else
+    {
+        dateArriveStr += date.getMinutes();
+
+    }
+    return dateArriveStr;
+
+}
+
+function getDateEnd(dateEndData)
+{
+
+    var dateEnd = new Date();
+    dateEnd.setSeconds(dateEndData);
+    return dateEnd;
+}
+
+function weatherShow(weather, where)
+{
+    var temps = [];
+    temps[0] = "orage";
+    temps[1] = "pluie";
+    temps[2] = "soleil";
+    temps[3] = "nuage";
+    temps[4] = "neige";
+    temps[5] = "venteux";
+
+    for(var i in temps)
+    {
+        if(weather === temps[i])
+        {
+            $("#"+temps[i]+where).show();
+        }
+        else
+        {
+            $("#"+temps[i]+where).hide();
+        }
+    }
+
+}
