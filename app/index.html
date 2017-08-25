@@ -24,20 +24,20 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="ul-menu">
                     <li><a href="#" id="menu_home">Accueil</a></li>
                     <li><a href="#" id="menu_login">Connexion</a></li>
-                    <li><a href="#"  id="menu_logout">Deconnexion (si connecté)</a></li>
+                    <li><a href="#" id="menu_logout">Deconnexion (si connecté)</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Separated link</a></li>
                 </ul>
             </div>
         </div>
-       <div class="row">
-           <div class="dropdown col-md-1 col-sm-1">
-               <button class="btn btn-default" type="button" id="button-back"
-                       aria-haspopup="true" aria-expanded="true">
-                   <i class="fa fa-arrow-left" aria-hidden="true"></i>
-               </button>
-           </div>
-       </div>
+        <div class="row">
+            <div class="dropdown col-md-1 col-sm-1">
+                <button class="btn btn-default" type="button" id="button-back"
+                        aria-haspopup="true" aria-expanded="true">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
     </section>
     <section class="login-container col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 ">
         <div id="login">
@@ -88,7 +88,21 @@
             <span class="notice-textToSpeech">Cliquer sur votre phrase pour valider</span>
             <!--<span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>-->
         </div>
-        <div class="btn-account col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 ">
+            <div class="btn-account col-lg-8 col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="btn-home col-lg-6 col-md-6 col-sm-6">
+
+                    </div>
+                    <div class="btn-job col-lg-6 col-md-6 col-sm-6">
+
+                    </div>
+                </div>
+                <div class="favorite-btn">
+
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -191,74 +205,74 @@
                     "
              style="display: none">
 
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="row travel-container-result choice" id="walk">
-                    <div class="col-lg-2 col-md-2 col-sm-2">
-                        <img src="../assets/medias/pedestrian-walking.png"/>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-10">
-                        <div class="row">
-                            <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row travel-container-result choice" id="walk">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <img src="../assets/medias/pedestrian-walking.png"/>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
                                         col-md-offset-1 col-md-10 col-md-offset-1
                                         col-lg-offset-1 col-lg-10 col-lg-offset-1">
-                                <div class="timeline-container col-lg-12 col-md-12 col-sm-12">
-                                    <div class="actual-time col-lg-2 col-md-2 col-sm-2">
-                                        <span class="actual-time-span-walk">10:00</span>
-                                    </div>
-                                    <div class="timeandrange col-lg-8 col-md-8 col-sm-8">
-                                        <span id="walk-time">Temps: 2:00</span>
-                                        <span id="walk-range">Distance: 5.6 km</span>
-                                    </div>
-                                    <div class="arrival-time col-lg-2 col-md-2 col-sm-2">
-                                        <span class="arrival-time-span-walk">12:00</span>
-                                    </div>
+                            <div class="timeline-container col-lg-12 col-md-12 col-sm-12">
+                                <div class="actual-time col-lg-2 col-md-2 col-sm-2">
+                                    <span class="actual-time-span-walk">10:00</span>
+                                </div>
+                                <div class="timeandrange col-lg-8 col-md-8 col-sm-8">
+                                    <span id="walk-time">Temps: 2:00</span>
+                                    <span id="walk-range">Distance: 5.6 km</span>
+                                </div>
+                                <div class="arrival-time col-lg-2 col-md-2 col-sm-2">
+                                    <span class="arrival-time-span-walk">12:00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="travel-path col-lg-12 col-md-12 col-sm-12 is-close">
-                                <span>Chemin</span>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="travel-path col-lg-12 col-md-12 col-sm-12 is-close">
+                            <span>Chemin</span>
                         </div>
                     </div>
                 </div>
-                <div class="row travel-container-result choice" id="bike">
-                    <div class="col-lg-2 col-md-2 col-sm-2">
-                        <img src="../assets/medias/bike.png"/>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-10">
-                        <div class="row">
-                            <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
+            </div>
+            <div class="row travel-container-result choice" id="bike">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <img src="../assets/medias/bike.png"/>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
                                         col-md-offset-1 col-md-10 col-md-offset-1
                                         col-lg-offset-1 col-lg-10 col-lg-offset-1">
-                                <div class="timeline-container col-lg-12 col-md-12 col-sm-12">
-                                    <div class="actual-time col-lg-2 col-md-2 col-sm-2">
-                                        <span class="actual-time-span-bike">10:00</span>
-                                    </div>
-                                    <div class="timeandrange col-lg-8 col-md-8 col-sm-8">
-                                        <span id="bike-time">Temps: 2:00</span>
-                                        <span id="bike-range">Distance: 5.6 km</span>
-                                    </div>
-                                    <div class="arrival-time col-lg-2 col-md-2 col-sm-2">
-                                        <span class="arrival-time-span-bike">12:00</span>
-                                    </div>
+                            <div class="timeline-container col-lg-12 col-md-12 col-sm-12">
+                                <div class="actual-time col-lg-2 col-md-2 col-sm-2">
+                                    <span class="actual-time-span-bike">10:00</span>
+                                </div>
+                                <div class="timeandrange col-lg-8 col-md-8 col-sm-8">
+                                    <span id="bike-time">Temps: 2:00</span>
+                                    <span id="bike-range">Distance: 5.6 km</span>
+                                </div>
+                                <div class="arrival-time col-lg-2 col-md-2 col-sm-2">
+                                    <span class="arrival-time-span-bike">12:00</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="travel-path col-lg-12 col-md-12 col-sm-12 is-close">
-                                <span>Chemin</span>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="travel-path col-lg-12 col-md-12 col-sm-12 is-close">
+                            <span>Chemin</span>
                         </div>
                     </div>
                 </div>
-                <div class="row travel-container-result choice" id="car">
-                    <div class="col-lg-2 col-md-2 col-sm-2">
-                        <img src="../assets/medias/car.png"/>
-                    </div>
-                    <div class="col-lg-10 col-md-10 col-sm-10">
-                        <div class="row">
-                            <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
+            </div>
+            <div class="row travel-container-result choice" id="car">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <img src="../assets/medias/car.png"/>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
                                         col-md-offset-1 col-md-10 col-md-offset-1
                                         col-lg-offset-1 col-lg-10 col-lg-offset-1">
                                 <div class="timeline-container col-lg-12 col-md-12 col-sm-12">
@@ -564,7 +578,5 @@
     <!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I&libraries=places&callback=initialize"
             async defer></script>
-
-
 </footer>
 </html>
