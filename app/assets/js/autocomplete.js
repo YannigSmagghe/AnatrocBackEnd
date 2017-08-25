@@ -8,7 +8,6 @@ function initAutocomplete() {
     if ($("#search-input-from").is(":focus")){
         inputAutocomplete = 'search-input-from';
     }
-    console.log(inputAutocomplete);
 
     if(document.getElementById(inputAutocomplete)){
         autocomplete = new google.maps.places.Autocomplete(

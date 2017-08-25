@@ -27,7 +27,7 @@ $(document).ready(function () {
 
     /** MENU PART **/
     var arrayContainer = ['travel-container','input-container','connexion-container','myAccount-container','result-container'];
-    $("#menu_connexion").click(function () {
+    $("#menu_login").click(function () {
         showHideTitle();
         $.each(arrayContainer, function( index, value ) {
 
@@ -67,8 +67,6 @@ $(document).ready(function () {
                 "margin-top": "15px",
                 "margin-left": "0px"
             }, 1500 );
-        console.log(token,'dans docu');
-        console.log($( "#button-back" ).position().top);
         }
     });
 
