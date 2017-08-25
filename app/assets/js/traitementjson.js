@@ -1,10 +1,30 @@
 //Traitement Json
 
+var urlRoot = "https://api.anatroc/";
+var dev = 1;
+
+var urlApi;
+
+if(dev === 1)
+{
+    urlApi = urlRoot + "app_dev.php";
+}
+else
+{
+    urlApi = urlRoot;
+}
+
+
+
 function traitementAjax(){
     var addressFrom = $('#search-input-from').val();
     var  addressTo = $('#search-input-to').val();
+
+    console.log(addressTo);
+    console.log(addressFrom);
+
     $.ajax({
-        url : 'https://api.anatroc/app_dev.php/',
+        url : urlApi,
         type : 'POST',
         data : 'addressFrom='+addressFrom + '&addressTo='+addressTo,
         dataType : 'JSON',
@@ -47,6 +67,7 @@ function displayTransport(response) {
 function ResultResponse(response) {
     var date = new Date();
     var duration;
+
 
     for (var i in response) {
         if (response[i].hasOwnProperty('type')) {

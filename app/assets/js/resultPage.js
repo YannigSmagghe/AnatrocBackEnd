@@ -1,5 +1,7 @@
 /** RESULT PAGE PART**/
-function showResultsPage() {
+function showResultsPage(data) {
+    console.log(data);
+    ResultResponse(data.data);
     showHideTitle();
     $(".input-container").fadeOut();
     $(".travel-container").fadeIn();
