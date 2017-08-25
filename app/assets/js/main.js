@@ -162,62 +162,7 @@ $(document).ready(function () {
     /** Afficher le chemin **/
 
 
-    getItinerary();
 
 
 });
-
-function getPath() {
-    var paths = [];
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-
-    return paths;
-}
-
-function getItinerary() {
-    var paths = [];
-    paths = getPath();
-
-    var itiContainer = document.getElementById('itinerary-board');
-
-    for(var i= 0; i < paths.length; i++) {
-        var rowDiv = document.createElement("div");
-        rowDiv.className = "row";
-
-        var itiDiv = document.createElement("div");
-        itiDiv.className = "col-lg-12 col-md-12 col-sm-12 one-itinerary";
-
-        var itiSpan = document.createElement("span");
-        itiSpan.innerHTML = paths[i];
-
-        rowDiv.appendChild(itiDiv);
-        itiDiv.appendChild(itiSpan);
-        itiContainer.appendChild(rowDiv);
-    }
-
-}
-
 

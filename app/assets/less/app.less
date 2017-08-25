@@ -369,13 +369,13 @@ body {
 
 #map-board {
   border-left: solid 1px rgba(255,255,255,0.87);
-  height: 800px;
+  height: 716px;
 }
 
 #itinerary-board {
   border-bottom: solid 1px rgba(255,255,255,0.87);
   overflow-y: scroll;
-  height: 800px;
+  height: 714px;
   text-align: left;
 }
 
@@ -389,61 +389,6 @@ body {
   background-color: whitesmoke;
 }
 
-
-// page résultat final en fonction du mobile
-@media screen and (max-width: 1366px) {
-  #map-board {
-    border-left: solid 1px rgba(255,255,255,0.87);
-    height: 600px;
-  }
-
-  #itinerary-board {
-    overflow-y: scroll;
-    height: 600px;
-    text-align: left;
-  }
-
-}
-
-@media screen and (max-width < 990px) {
-
-  #map-board {
-    height: 360px;
-  }
-
-  #itinerary-board {
-    border-bottom: solid 1px rgba(255,255,255,0.87);
-    overflow-y: scroll;
-    height: 160px;
-    text-align: left;
-  }
-}
-
-@media screen and (max-width < 360px) {
-  #map-board {
-    height: 360px;
-  }
-
-  #itinerary-board {
-    border-bottom: solid 1px rgba(255,255,255,0.87);
-    overflow-y: scroll;
-    height: 200px;
-    text-align: left;
-  }
-
-  @media screen and (max-height < 600px) {
-    #map-board {
-      height: 260px;
-    }
-
-    #itinerary-board {
-      border-bottom: solid 1px rgba(255,255,255,0.87);
-      overflow-y: scroll;
-      height: 100px;
-      text-align: left;
-    }
-  }
-}
 
 
 
@@ -480,7 +425,8 @@ body {
 //end css localisation
 
 #map-container {
-  height: 300px;
+  height: 100%;
+  position: relative;
 }
 
 // background
@@ -607,6 +553,9 @@ canvas {
       .fa.fa-bars{
         font-size: 32px;
       }
+      .fa-arrow-left{
+        font-size: 32px;
+      }
       .dropdown-menu{
         font-size: 33px;
         max-width: 251px;
@@ -631,6 +580,11 @@ canvas {
     .pac-item-query{
       font-size: 28px;
     }
+  }
+
+  //map
+  #map-board{
+    height: 600px;
   }
 
 

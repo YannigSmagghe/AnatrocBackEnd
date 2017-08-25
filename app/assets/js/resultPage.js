@@ -5,31 +5,36 @@ function showResultsPage() {
     $(".travel-container").fadeIn();
 
 
-    // var addressFrom = $('#search-input-from').val();
-    // var  addressTo = $('#search-input-to').val();
-    // GetPosition(addressFrom,addressTo,'WALKING');
-    // traitementAjax();
-    // initMap();
-    // var center = map.getCenter();
-    // google.maps.event.trigger(map, "resize");
-    // map.setCenter(center);
 
     /** Go to selected result **/
 
     $( "#walk" ).on( "click", function() {
         console.log( 'walk click');
-        hideChoice()
+        hideChoice();
+        displayMap('WALKING')
+
+
+  ;
 
     });
     $( "#bike" ).on( "click", function() {
         console.log( 'bike click');
-        hideChoice()
+        hideChoice();
+        displayMap('BICYCLING');
     });
     $( "#car" ).on( "click", function() {
         console.log( 'car click');
-        hideChoice()
+        hideChoice();
+        displayMap('DRIVING');
     });
 
+}
+
+function displayMap(travelMode){
+    var addressFrom = $('#search-input-from').val();
+    var  addressTo = $('#search-input-to').val();
+    GetPosition(addressFrom,addressTo,travelMode);
+    initMap();
 }
 
 // hide other choice
