@@ -26,7 +26,6 @@ $.getJSON("myaccount.json", function (data) {
             var item = 'favorite-btn'+count;
             if (count % 2 === 0){
                 $('.favorite-btn').append('<div  class="row" id='+count+'>');
-                // $('#'+item).append('<div  class="row" id='+count+'>');
                 //Create item
                 $('#'+count).append('<div class="btn-favorite btn-favorite-'+count+' col-lg-6 col-md-6 col-sm-6">');
                 $(".btn-favorite-"+count).append("<div class='col-lg-2 col-md-2 col-sm-2'><button type='button' title='" + addressName + "'  class='col-lg-3 col-md-3 col-sm-3  btn btn-primary btn-favorite address-btn' data-address='" + addressName + "'> <i class='fa fa-star' aria-hidden='true'></i></button> </div><div class='col-lg-9 col-md-9 col-sm-6 col-sm-offset-3 col-md-offset-0 col-lg-offset-0'> favorite address"+count+"</div></div>")
