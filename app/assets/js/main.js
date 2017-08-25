@@ -161,50 +161,6 @@ $(document).ready(function () {
 
     /** Afficher le chemin **/
 
-    $(".travel-path").click(function(){
-
-        //$id = $(this).parent("div").parent("div").parent("div").id;
-        $id = $(this).parents("div")[2].id;
-
-        var travel_div = document.getElementById("path-"+$id);
-        var children_path;
-
-        if (travel_div.classList.contains("is-open")) {
-            console.log('is open');
-
-            travel_div.innerHTML = "";
-
-            var spanPath = document.createElement("span");
-            spanPath.innerText ="Chemin";
-
-            travel_div.classList.remove("is-open");
-            travel_div.classList.add("is-close");
-            travel_div.appendChild(spanPath);
-
-        } else if (travel_div.classList.contains("is-close")) {
-            console.log('is close');
-
-            var paths = [];
-            paths = getPath();
-
-            travel_div.innerHTML = "";
-
-            var ulPath = document.createElement("ul");
-            ulPath.className = "list-path";
-
-            for(var i= 0; i < paths.length; i++)
-            {
-                var liPath = document.createElement("li");
-                liPath.innerText = paths[i];
-                ulPath.appendChild(liPath);
-            }
-            travel_div.classList.remove("is-close");
-            travel_div.classList.add("is-open");
-            travel_div.appendChild(ulPath);
-
-        }
-    });
-
 
     getItinerary();
 

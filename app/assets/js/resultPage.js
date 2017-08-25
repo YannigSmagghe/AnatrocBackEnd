@@ -1,6 +1,5 @@
 /** RESULT PAGE PART**/
 function showResultsPage() {
-    console.log('dans mshow result page');
     showHideTitle();
     $(".input-container").fadeOut();
     $(".travel-container").fadeIn();
