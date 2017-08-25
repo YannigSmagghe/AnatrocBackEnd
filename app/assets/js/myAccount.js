@@ -40,7 +40,6 @@ $.getJSON("myaccount.json", function (data) {
             if (count % 2 !== 0){
 
             }
-            console.log($(item));
             count++;
         })​
     })​
