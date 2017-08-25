@@ -71,9 +71,9 @@ $.getJSON( "result.json", function( data ) {
     // console.log(data.data[0].type);
     // console.log(data.data[0].data.temperature);
     //console.log(data.data[0].data.temps);
-    displayFromResponse(data.data);
-    displayTransport(data);
-    GetJsonPosition('grenoble','lyon','WALKING');
+    // displayFromResponse(data.data);
+    // displayTransport(data);
+    // GetJsonPosition('grenoble','lyon','WALKING');
     //recupLocation(data.data);
     $('.result_type').text(data.data[0].type);
 });
