@@ -167,6 +167,34 @@ $(document).ready(function () {
 
         return paths;
     }*/
+
+
+
+    /**
+     * Modif de la taille des icons en fontion de la taille de l'ecran
+     * **/
+
+    // if ($(window).width() < 1200) {
+    //     resizeIcon();
+    // }
+    // resizeIcon();
+    //         function resizeIcon() {
+    //             $(window).resize(function() {
+    //             if ($(window).width() < 1200) {
+    //
+    //                         $(".btn-primary.address-btn .fa").addClass('fa-5x').removeClass('fa-2x');
+    //                         console.log($(".btn-primary.address-btn .fa").attr("class"));
+    //
+    //                     } else {
+    //                         $(".btn-primary.address-btn .fa").addClass('fa-2x').removeClass('fa-5x');
+    //                         console.log('bbbbbbbbbbbbbbb');
+    //                     }
+    //               });
+    //         }
+
+
+
+
 });
 
 
