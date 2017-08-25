@@ -139,7 +139,7 @@ $(document).ready(function () {
 
         }
 
-    }, 5000);
+    }, 3000);
 
     /** RESULT PAGE PART**/
     // voir resultPage.js
