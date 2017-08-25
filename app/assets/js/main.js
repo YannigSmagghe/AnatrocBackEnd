@@ -51,37 +51,29 @@ $(document).ready(function () {
         });
     });
 
+    //Move back button
     $( "#dropdownMenu1" ).click(function() {
-
-        if ($( "#dropdownMenu1" ).attr('aria-expanded') === "false"){
-            console.log('hi');
             $( "#button-back" ).animate({
                 "margin-top": "-51px",
                 "margin-left": "+54px"
             }, 1500 );
-        }else{
+
+    });
+
+    $(document).click(function() {
+        if ($( "#button-back" ).position().top !== 0){
             $( "#button-back" ).animate({
-                "margin-top": "+=61px",
-                "margin-left": "-=54px"
+                "margin-top": "15px",
+                "margin-left": "0px"
             }, 1500 );
+        console.log(token,'dans docu');
+        console.log($( "#button-back" ).position().top);
         }
     });
 
 
 
 
-    // $( "#dropdownMenu1" ).is(':aria-expanded')(function() {
-    //     $( "#button-back" ).animate({
-    //         "margin-top": "-=51px",
-    //         "margin-left": "+=54px"
-    //     }, 1500 );
-    // });
-    // !$( "#dropdownMenu1" ).is(':aria-expanded')(function() {
-    //     $( "#button-back" ).animate({
-    //         "margin-top": "+=51px",
-    //         "margin-left": "-=54px"
-    //     }, 1500 );
-    // });
     // show/hide title
     function showHideTitle(){
         if ($('#main-title').is(":visible") && !$('.input-container').is(':visible')){
