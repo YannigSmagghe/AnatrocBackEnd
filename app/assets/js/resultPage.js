@@ -1,29 +1,35 @@
 /** RESULT PAGE PART**/
-function showResultsPage() {
+function showResultsPage(data) {
+    ResultResponse(data.data);
     showHideTitle();
     $(".input-container").fadeOut();
     $(".travel-container").fadeIn();
 
 
+    // var addressFrom = $('#search-input-from').val();
+    // var  addressTo = $('#search-input-to').val();
+    // GetPosition(addressFrom,addressTo,'WALKING');
+    // traitementAjax();
+    // initMap();
+    // var center = map.getCenter();
+    // google.maps.event.trigger(map, "resize");
+    // map.setCenter(center);
 
     /** Go to selected result **/
 
     $( "#walk" ).on( "click", function() {
-        console.log( 'walk click');
         hideChoice();
-        displayMap('WALKING')
+        displayMap('WALKING');
 
 
   ;
 
     });
     $( "#bike" ).on( "click", function() {
-        console.log( 'bike click');
         hideChoice();
         displayMap('BICYCLING');
     });
     $( "#car" ).on( "click", function() {
-        console.log( 'car click');
         hideChoice();
         displayMap('DRIVING');
     });
