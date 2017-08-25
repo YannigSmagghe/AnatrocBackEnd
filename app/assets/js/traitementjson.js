@@ -20,8 +20,6 @@ function traitementAjax(){
     var addressFrom = $('#search-input-from').val();
     var  addressTo = $('#search-input-to').val();
 
-    console.log(addressTo);
-    console.log(addressFrom);
 
     $.ajax({
         url : urlApi,
