@@ -8,6 +8,7 @@ var lngTo = 0;
 /** get Json position to dont refresh **/
 var didOnlyOnce = 0;
 
+
 latVelov = [];
 lngVelov =[];
 var features =[];
@@ -85,20 +86,21 @@ function initMap() {
 
     window.initMap = function () {
 
-        var myLatLng = {lat: lat, lng: lng};
+        var myLatLng = {lat: 45.764043, lng: 4.835659};
         map = new google.maps.Map(document.getElementById('map-container'), {
-            zoom: 10,
+            zoom: 16,
             center: myLatLng
         });
 
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         directionsDisplay.setMap(map);
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Vous etes ici!'
-        });
+        directionsDisplay.setPanel(document.getElementById('itinerary-board'));
+        // var marker = new google.maps.Marker({
+        //     position: myLatLng,
+        //     map: map,
+        //     title: 'Vous etes ici!'
+        // });
         var onChangeHandler = function(origin,destination,travelMode) {
             calculateAndDisplayRoute(directionsService, directionsDisplay,origin,destination,travelMode);
         };
@@ -318,6 +320,8 @@ function initMap() {
 
         map.setOptions({styles: styles});
     }
+
+
 }
 
 /*Calcul l'itineraire de l'origine à la destination avec le moyen de transport*/

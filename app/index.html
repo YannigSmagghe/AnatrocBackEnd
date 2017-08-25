@@ -150,27 +150,19 @@
                                      col-md-offset-1 col-md-10 col-md-offset-1
                                      col-lg-offset-1 col-lg-10 col-lg-offset-1">
         <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12" id="map-board">
+                <div id="map-container">
+
+                </div>
+            </div>
+
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12" id="itinerary-board">
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12" id="map-board">
-                <div id="map">
-                    <h1>Map</h1><br>
-                    <h1>Map</h1><br>
-                    <h1>Map</h1><br>
-                    <h1>Map</h1><br>
-                </div>
-                <br>
-                <div class="duration">
-                     <span id="duration_name">
-                       Durée:
-                     </span>
-                    <span id="duration_result"></span>
-                </div>
-            </div>
+
         </div>
     </section>
 
@@ -434,6 +426,7 @@
                                       d="M16,256h64c8.8,0,16-7.2,16-16s-7.2-16-16-16H16c-8.8,0-16,7.2-16,16S7.2,256,16,256z"/>
                             </svg>
                         </div>
+                        <!--attention div-->
                         <div class="col-lg-6"></div>
                         <div class="col-lg-3">
                             <svg class="temps" id="orageTo" xmlns="http://www.w3.org/2000/svg"
@@ -564,6 +557,7 @@
                         </div>
                     </div>
                 </div>
+                <!--attention div-->
             </div>
         </div>
 
@@ -582,5 +576,7 @@
     <!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I&libraries=places&callback=initialize"
             async defer></script>
+
+
 </footer>
 </html>
