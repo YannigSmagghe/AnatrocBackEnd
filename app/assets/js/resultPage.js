@@ -1,6 +1,5 @@
 /** RESULT PAGE PART**/
 function showResultsPage(data) {
-    console.log(data);
     ResultResponse(data.data);
     showHideTitle();
     $(".input-container").fadeOut();
