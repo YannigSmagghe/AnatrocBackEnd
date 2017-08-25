@@ -167,35 +167,6 @@ $(document).ready(function () {
 
 });
 
-function getPath() {
-    var paths = [];
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-    paths.push("- Tout droit sur 500m");
-    paths.push("- Tournez à gauche sur la rue Carlingue");
-    paths.push("- Avancez 200m");
-    paths.push("- Tournez à droite sur la rue Hocho");
-
-    return paths;
-}
 
 function getItinerary() {
     var paths = [];
