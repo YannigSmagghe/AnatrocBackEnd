@@ -15,22 +15,31 @@
 <canvas id="canvas" height="975" width="850"></canvas>
 <section class="main-container col-lg-12 col-md-12 col-sm-12 container-fluid">
     <section class="menu-container col-lg-12 col-md-12 col-sm-12">
-        <div class="dropdown col-md-1 col-sm-1">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="true">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="#" id="menu_accueil">Accueil</a></li>
-                <li><a href="#" id="menu_connexion">Connexion</a></li>
-                <li><a href="#">Deconnexion (si connecté)</a></li>
-                <li><a href="#">Inscription</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
+        <div class="row">
+            <div class="dropdown col-md-1 col-sm-1">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="ul-menu">
+                    <li><a href="#" id="menu_home">Accueil</a></li>
+                    <li><a href="#" id="menu_login">Connexion</a></li>
+                    <li><a href="#"  id="menu_logout">Deconnexion (si connecté)</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
         </div>
+       <div class="row">
+           <div class="dropdown col-md-1 col-sm-1">
+               <button class="btn btn-default" type="button" id="button-back"
+                       aria-haspopup="true" aria-expanded="true">
+                   <i class="fa fa-arrow-left" aria-hidden="true"></i>
+               </button>
+           </div>
+       </div>
     </section>
-    <section class="login-container col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 ">
+    <section class="login-container col-md-offset-10 col-md-2 col-sm-offset-8 col-sm-4 ">
         <div id="login">
             <p>Nom Prénom <i class="fa fa-user-circle" aria-hidden="true"></i></p>
         </div>
@@ -418,5 +427,7 @@
     <!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I&libraries=places&callback=initialize"
             async defer></script>
+
+
 </footer>
 </html>

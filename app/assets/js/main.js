@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-    $('.input-container').fadeOut();
-    $('.result-container').fadeIn();
-    showHideTitle();
     /** INPUT PART**/
     // var timer = null;
     // $("#search-input-to").on("keyup", function () {
@@ -29,6 +26,7 @@ $(document).ready(function () {
 
 
     /** MENU PART **/
+    var arrayContainer = ['travel-container','input-container','connexion-container','myAccount-container','result-container'];
     $("#menu_connexion").click(function () {
         showHideTitle();
         $.each(arrayContainer, function( index, value ) {
@@ -42,7 +40,7 @@ $(document).ready(function () {
         });
     });
 
-    $( "#menu_accueil" ).click(function() {
+    $( "#menu_accueil, #button-back" ).click(function() {
         showHideTitle();
         console.log('acceuil');
         $.each(arrayContainer, function( index, value ) {
@@ -53,9 +51,33 @@ $(document).ready(function () {
             }
         });
     });
+
+    //Move back button
+    $( "#dropdownMenu1" ).click(function() {
+            $( "#button-back" ).animate({
+                "margin-top": "-51px",
+                "margin-left": "+54px"
+            }, 1500 );
+
+    });
+
+    $(document).click(function() {
+        if ($( "#button-back" ).position().top !== 0){
+            $( "#button-back" ).animate({
+                "margin-top": "15px",
+                "margin-left": "0px"
+            }, 1500 );
+        console.log(token,'dans docu');
+        console.log($( "#button-back" ).position().top);
+        }
+    });
+
+
+
+
     // show/hide title
     function showHideTitle(){
-        if ($('#main-title').is(":visible")){
+        if ($('#main-title').is(":visible") && !$('.input-container').is(':visible')){
             $('#main-title').fadeOut();
         }else{
             $('#main-title').fadeIn();
