@@ -1,13 +1,6 @@
 $(document).ready(function () {
 
     /** INPUT PART**/
-    //send input
-    function resultPage() {
-        if($( "#search-input-from" ).val() !== '' && $( "#search-input-to" ).val() !== ''){
-            showResultsPage();
-        }
-    }
-
     // var timer = null;
     // $("#search-input-to").on("keyup", function () {
     //     console.log(timer);
@@ -33,24 +26,58 @@ $(document).ready(function () {
 
 
     /** MENU PART **/
+    var arrayContainer = ['travel-container','input-container','connexion-container','myAccount-container','result-container'];
     $("#menu_connexion").click(function () {
-        $(".input-container").hide();
-        $(".connexion-container").show();
-    });
-
-    $("#menu_accueil").click(function () {
-        $(".connexion-container").hide();
-        $(".meteo-container").hide();
-        $(".input-container").show();
         showHideTitle();
+        $.each(arrayContainer, function( index, value ) {
+
+            if (value !== 'connexion-container'){
+                console.log( $('#'+value).fadeOut());
+                $('.'+value).fadeOut();
+            }else{
+                $('.connexion-container').fadeIn();
+            }
+        });
+    });
+
+    $( "#menu_accueil, #button-back" ).click(function() {
+        showHideTitle();
+        console.log('acceuil');
+        $.each(arrayContainer, function( index, value ) {
+            if (value !== 'input-container'){
+                $('.'+value).fadeOut();
+            }else{
+                $('.input-container').fadeIn();
+            }
+        });
+    });
+
+    //Move back button
+    $( "#dropdownMenu1" ).click(function() {
+            $( "#button-back" ).animate({
+                "margin-top": "-51px",
+                "margin-left": "+54px"
+            }, 1500 );
+
+    });
+
+    $(document).click(function() {
+        if ($( "#button-back" ).position().top !== 0){
+            $( "#button-back" ).animate({
+                "margin-top": "15px",
+                "margin-left": "0px"
+            }, 1500 );
+        console.log(token,'dans docu');
+        console.log($( "#button-back" ).position().top);
+        }
     });
 
 
-    //title Animation
+
 
     // show/hide title
     function showHideTitle(){
-        if ($('#main-title').is(":visible")){
+        if ($('#main-title').is(":visible") && !$('.input-container').is(':visible')){
             $('#main-title').fadeOut();
         }else{
             $('#main-title').fadeIn();
@@ -133,37 +160,64 @@ $(document).ready(function () {
     // }
 
     /** Afficher le chemin **/
-    /*
-    $(".travel-path").click(function(){
-        $id = $(this).parent().parent().parent().parent().id;
-        if ($(this).hasClass(".is-open")) {
-            appendChild()
-        } else if ($(this).hasClass(".is-close")) {
-            var paths = [];
-            paths = getPath();
-            divActuel = document.getElementById("div1");
-            $(id).("div").("div").("div").("div").removeChild();
-            var ulPath = document.createElement("ul");
-            ulPath.addClass("list-path");
-            for(var i= 0; i < paths.length; i++)
-            {
-                var liPath = document.createElement("li");
-                liPath.innerText(paths(i));
-                ulPath.appendChild(liPath);
-            }
-            $(id).("div").("div").("div").("div").appendChild();
-        }
-    });
 
-    function getPath() {
-        var paths = [];
-        paths.push("- Tout droit sur 500m");
-        paths.push("- Tournez à gauche sur la rue Carlingue");
-        paths.push("- Avancez 200m");
-        paths.push("- Tournez à droite sur la rue Hocho");
 
-        return paths;
-    }*/
+    getItinerary();
+
+
 });
+
+function getPath() {
+    var paths = [];
+    paths.push("- Tout droit sur 500m");
+    paths.push("- Tournez à gauche sur la rue Carlingue");
+    paths.push("- Avancez 200m");
+    paths.push("- Tournez à droite sur la rue Hocho");
+    paths.push("- Tout droit sur 500m");
+    paths.push("- Tournez à gauche sur la rue Carlingue");
+    paths.push("- Avancez 200m");
+    paths.push("- Tournez à droite sur la rue Hocho");
+    paths.push("- Tout droit sur 500m");
+    paths.push("- Tournez à gauche sur la rue Carlingue");
+    paths.push("- Avancez 200m");
+    paths.push("- Tournez à droite sur la rue Hocho");
+    paths.push("- Tout droit sur 500m");
+    paths.push("- Tournez à gauche sur la rue Carlingue");
+    paths.push("- Avancez 200m");
+    paths.push("- Tournez à droite sur la rue Hocho");
+    paths.push("- Tout droit sur 500m");
+    paths.push("- Tournez à gauche sur la rue Carlingue");
+    paths.push("- Avancez 200m");
+    paths.push("- Tournez à droite sur la rue Hocho");
+    paths.push("- Tout droit sur 500m");
+    paths.push("- Tournez à gauche sur la rue Carlingue");
+    paths.push("- Avancez 200m");
+    paths.push("- Tournez à droite sur la rue Hocho");
+
+    return paths;
+}
+
+function getItinerary() {
+    var paths = [];
+    paths = getPath();
+
+    var itiContainer = document.getElementById('itinerary-board');
+
+    for(var i= 0; i < paths.length; i++) {
+        var rowDiv = document.createElement("div");
+        rowDiv.className = "row";
+
+        var itiDiv = document.createElement("div");
+        itiDiv.className = "col-lg-12 col-md-12 col-sm-12 one-itinerary";
+
+        var itiSpan = document.createElement("span");
+        itiSpan.innerHTML = paths[i];
+
+        rowDiv.appendChild(itiDiv);
+        itiDiv.appendChild(itiSpan);
+        itiContainer.appendChild(rowDiv);
+    }
+
+}
 
 

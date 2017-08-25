@@ -1,11 +1,5 @@
 //Traitement Json
 
-var WeatherFrom = {};
-var WeatherTo = {};
-var VelovFrom = {};
-var VelovTo = {};
-
-
 function traitementAjax(){
     var addressFrom = $('#search-input-from').val();
     var  addressTo = $('#search-input-to').val();
@@ -54,9 +48,6 @@ function ResultResponse(response) {
     var date = new Date();
     var duration;
 
-
-    console.log("result");
-    console.log(response);
     for (var i in response) {
         if (response[i].hasOwnProperty('type')) {
             if (response[i].type === "transport.google_direction.walking") {
@@ -109,16 +100,16 @@ function GetPosition(ori,dest,travelM){
     travelMode = travelM;
 }
 
-// $.getJSON( "result.json", function( data ) {
-//     // console.log(data.data[0].type);
-//     // console.log(data.data[0].data.temperature);
-//     //console.log(data.data[0].data.temps);
-//     displayFromResponse(data.data);
-//     displayTransport(data);
-//     GetJsonPosition('grenoble','lyon','WALKING');
-//     //recupLocation(data.data);
-//     $('.result_type').text(data.data[0].type);
-// });
+$.getJSON( "result.json", function( data ) {
+    // console.log(data.data[0].type);
+    // console.log(data.data[0].data.temperature);
+    //console.log(data.data[0].data.temps);
+    // displayFromResponse(data.data);
+    // displayTransport(data);
+    // GetJsonPosition('grenoble','lyon','WALKING');
+    //recupLocation(data.data);
+    $('.result_type').text(data.data[0].type);
+});
 
 
 function getFormatedTime(date)
