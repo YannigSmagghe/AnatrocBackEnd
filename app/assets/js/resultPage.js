@@ -18,16 +18,16 @@ function showResultsPage() {
 
     $( "#walk" ).on( "click", function() {
         console.log( 'walk click');
-        hideChoice()
+        hideChoice();
 
     });
     $( "#bike" ).on( "click", function() {
         console.log( 'bike click');
-        hideChoice()
+        hideChoice();
     });
     $( "#car" ).on( "click", function() {
         console.log( 'car click');
-        hideChoice()
+        hideChoice();
     });
 
 }
