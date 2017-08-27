@@ -1,26 +1,55 @@
-$(document).ready(function () {
+var xhrFavorites = null;
+function fetchUserFavorites(callback) {
+    if (typeof xhrFavorites === XMLHttpRequest) {
+        xhrFavorites.abort();
+    }
 
-    $('#button-connect').on("click", function () {
-        showMyAccount();
+    xhrFavorites = new XMLHttpRequest();
+    xhrFavorites.open('GET', App.baseUri+'/user/favorites?token='+getUserToken());
+    xhrFavorites.onload = function() {
+        var json = JSON.parse(xhrFavorites.responseText);
+
+        callback(json);
+    };
+    xhrFavorites.send();
+}
+var entityMap = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+    '/': '&#x2F;',
+    '`': '&#x60;',
+    '=': '&#x3D;'
+};
+
+function escapeHtml (string) {
+    return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+        return entityMap[s];
     });
-});
-
-function showMyAccount() {
-    $(".connexion-container").fadeOut();
-    $("#main-title").fadeOut();
-    $(".myAccount-container").fadeIn("slow");
 }
 
+function createFavoriteElement(address, description) {
+    address = escapeHtml(address);
+    description = escapeHtml(description);
 
-$.getJSON("myaccount.json", function (data) {
-    var count=0;
-    $.each(data.data, function (key, item) {
-        if (item.home) {
-            $('.btn-home').append("<div class='col-lg-2 col-md-2 col-sm-2'><button type='button' title='" + item.home["start_address_name"] + "'  class='col-lg-3 col-md-3 col-sm-3 btn btn-primary address-btn' data-address='" + item.home["start_address_name"] + "'> <i class='fa fa-home' aria-hidden='true'></i></button></div><div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0'>my home</div>")
-        }
-        if (item.job) {
-            $('.btn-job').append("<div class='col-lg-2 col-md-2 col-sm-2'><button type='button' title='" + item.job["start_address_name"] + "'  class='col-lg-3 col-md-3 col-sm-3 btn btn-primary address-btn' data-address='" + item.job["start_address_name"] + "'> <i class='fa fa-briefcase' aria-hidden='true'></i></button> </div><div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0'> my job</div>")
-        }
+     return "<div class='col-lg-2 col-md-2 col-sm-2'>" +
+         "<button type='button' title='" + address + "' class='col-lg-3 col-md-3 col-sm-3 btn btn-primary address-btn' data-address='" + address + "'> " +
+         "<i class='fa fa-star' aria-hidden='true'></i>" +
+         "</button>" +
+         "</div>" +
+         "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0'>" + description +"</div>";
+}
+
+function createFavoriteElements(data) {
+    var elements = '';
+    for (var i in data) {
+        elements += createFavoriteElement(data[i].address, data[i].description);
+    }
+
+    return elements;
+}
 
 function onSignIn(googleUser) {
     var id_token = googleUser.getAuthResponse().id_token;
@@ -47,7 +76,7 @@ function createCookieAuthToken(token) {
     document.cookie = AUTH_COOKIE_NAME + "=" + token + ";" + expires + ";path=/";
 }
 
-function getCookieAuthToken() {
+function getUserToken() {
     var name = AUTH_COOKIE_NAME + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -64,11 +93,48 @@ function getCookieAuthToken() {
     return "";
 }
 
-/** Add address when u click on button**/
-$(document).on('click', '.address-btn', function () {
-    if ($('#search-input-from').val() !== '') {
-        $('#search-input-to').val(($(this).data('address')));
-        showResultsPage();
-    }
+function showMyAccount() {
+    $(".connexion-container").fadeOut();
+    $("#main-title").fadeOut();
+    $(".myAccount-container").fadeIn("slow");
+}
 
+function responseApiHasError(response) {
+    return typeof response.hasOwnProperty('errors') && response.errors.length > 0;
+}
+
+$(function () {
+    fetchUserFavorites(function (response) {
+        if (!responseApiHasError(response)) {
+            $("#favorites").append(createFavoriteElements(response.data));
+        }
+    });
+
+    $("#favorites").on('click', 'button', function () {
+        var favorite = $(this).data('address');
+        var fromInput = $("#search-input-from");
+
+        if (($.trim(fromInput.val())).length === 0) {
+            fromInput.val(favorite);
+            return;
+        }
+
+        var toInput = $("#search-input-to");
+
+        if (($.trim(toInput.val())).length === 0) {
+            toInput.val(favorite);
+            return;
+        }
+    });
+
+    $('#button-connect').on("click", function () {
+        showMyAccount();
+    });
+
+    $(document).on('click', '.address-btn', function () {
+        if ($('#search-input-from').val() !== '') {
+            $('#search-input-to').val(($(this).data('address')));
+            showResultsPage();
+        }
+    });
 });
