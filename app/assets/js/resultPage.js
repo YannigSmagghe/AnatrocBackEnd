@@ -1,11 +1,7 @@
 /** RESULT PAGE PART**/
 function showResultsPage(data) {
-
-    $('#loader').fadeOut();
-
-    console.log(data);
     ResultResponse(data.data);
-    $('#loader').fadeOut();
+    $(".travel-container").fadeIn();
 
 
     // var addressFrom = $('#search-input-from').val();
@@ -52,4 +48,12 @@ function hideChoice(){
 }
 
 
+// show/hide title
+function showHideTitle(){
+    if ($('#main-title').is(":visible")){
+        $('#main-title').hide();
+    }else{
+        $('#main-title').show();
+    }
+}
 
