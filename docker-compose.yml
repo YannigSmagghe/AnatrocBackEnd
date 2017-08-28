@@ -12,7 +12,7 @@ services:
         build:
             context: dockerfiles/nginx/node
         volumes:
-            - ./app:/usr/share/nginx/html
+            - ./app:/app
         depends_on:
             - node
         links:
