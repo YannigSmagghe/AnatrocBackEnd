@@ -32,15 +32,14 @@ function loadAutocomplete(inputAutocomplete){
 }
 function showResults() {
     // Get the place details from the autocomplete object.
-    $('#loader').fadeIn();
-    showHideTitle();
-    $(".input-container").fadeOut();
-
 
     var addressFrom = $('#search-input-from').val();
     var  addressTo = $('#search-input-to').val();
 
     if    (addressFrom !== '' && addressTo !== ''){
+        $('#loader').fadeIn();
+        showHideTitle();
+        $(".input-container").fadeOut();
         $.ajax({
             url : 'https://api.anatroc/app_dev.php/',
             type : 'POST',
