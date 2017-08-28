@@ -104,28 +104,29 @@ function responseApiHasError(response) {
 }
 
 $(function () {
-    fetchUserFavorites(function (response) {
-        if (!responseApiHasError(response)) {
-            $("#favorites").append(createFavoriteElements(response.data));
-        }
-    });
 
-    $("#favorites").on('click', 'button', function () {
-        var favorite = $(this).data('address');
-        var fromInput = $("#search-input-from");
-
-        if (($.trim(fromInput.val())).length === 0) {
-            fromInput.val(favorite);
-            return;
-        }
-
-        var toInput = $("#search-input-to");
-
-        if (($.trim(toInput.val())).length === 0) {
-            toInput.val(favorite);
-            return;
-        }
-    });
+    // fetchUserFavorites(function (response) {
+    //     if (!responseApiHasError(response)) {
+    //         $("#favorites").append(createFavoriteElements(response.data));
+    //     }
+    // });
+    //
+    // $("#favorites").on('click', 'button', function () {
+    //     var favorite = $(this).data('address');
+    //     var fromInput = $("#search-input-from");
+    //
+    //     if (($.trim(fromInput.val())).length === 0) {
+    //         fromInput.val(favorite);
+    //         return;
+    //     }
+    //
+    //     var toInput = $("#search-input-to");
+    //
+    //     if (($.trim(toInput.val())).length === 0) {
+    //         toInput.val(favorite);
+    //         return;
+    //     }
+    // });
 
     $('#button-connect').on("click", function () {
         showMyAccount();
