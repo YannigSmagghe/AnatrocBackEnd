@@ -3,6 +3,10 @@ services:
     node:
         build:
             context: ./dockerfiles/node
+            args:
+                - USER=${USER}
+                - USER_GID=${USER_GID}
+                - USER_UID=${USER_UID}
         volumes:
             - ./app:/app
         networks:
