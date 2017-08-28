@@ -1,6 +1,7 @@
 /** RESULT PAGE PART**/
 function showResultsPage(data) {
     ResultResponse(data.data);
+    $('#loader').fadeOut();
     $(".travel-container").fadeIn();
 
 
