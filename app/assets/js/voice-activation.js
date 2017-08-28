@@ -1,6 +1,6 @@
 
 /** activer le message d'accueil **/
-$('#message-accueil').trigger('click');
+// $('#message-accueil').trigger('click');
 
 $('#div_language').hide();
 
