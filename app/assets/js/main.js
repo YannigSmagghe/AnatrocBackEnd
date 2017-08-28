@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-    $('.travel-container').show();
-    $('.input-container').hide();
-    $('#main-title').hide();
     /** INPUT PART**/
     // var timer = null;
     // $("#search-input-to").on("keyup", function () {
