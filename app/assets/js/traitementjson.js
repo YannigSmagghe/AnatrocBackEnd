@@ -63,6 +63,7 @@ function displayTransport(response) {
  *  Recuper les valeurs du Json, check les differents types.
  * **/
 function ResultResponse(response) {
+    console.log(response);
     var date = new Date();
     var duration;
 

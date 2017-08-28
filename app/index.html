@@ -4,10 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id"
+          content="81423710600-2h0eq7dsepglg6kuno9j6e6odi6bv23v.apps.googleusercontent.com">
     <link rel="stylesheet" href="./assets/compiled/css/vendor.min.css">
     <link rel="stylesheet" href="./assets/compiled/css/app.min.css">
     <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css">
+    <script>
+        var App = {};
 
+        App.baseUri = 'https://api.anatroc/app_dev.php';
+    </script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 </head>
@@ -98,7 +105,7 @@
 
                     </div>
                 </div>
-                <div class="favorite-btn">
+                <div class="favorite-btn" id="favorites">
 
                 </div>
 
@@ -111,24 +118,8 @@
                                          col-lg-offset-4 col-lg-4 col-lg-offset-4"
              style="display: none">
 
-        <div class="input-group col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
-
-            <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1"
-                   class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
-        </div>
-
-
-        <div class="input-group">
-
-            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2">
-        </div>
-
-        <div id="captcha" class="g-recaptcha" data-sitekey="6Ld9oS0UAAAAADeHwHPWZhHFkZgCsStaosGykw-1"></div>
-
-
-        <button id="button-connect" type="button" class="btn btn-default btn-lg valid-connexion">
-            Connexion
-        </button>
+        <!-- Google connect button  -->
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     </section>
     <section class="myAccount-container col-lg-6 col-md-6 col-sm-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2"
              style="display: none">
@@ -207,28 +198,15 @@
                     <img src="../assets/medias/pedestrian-walking.png"/>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10">
-                    <div class="row">
-                        <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
-                                        col-md-offset-1 col-md-10 col-md-offset-1
-                                        col-lg-offset-1 col-lg-10 col-lg-offset-1">
-                            <div class="timeline-container col-lg-12 col-md-12 col-sm-12">
-                                <div class="actual-time col-lg-2 col-md-2 col-sm-2">
-                                    <span class="actual-time-span-walk">10:00</span>
-                                </div>
-                                <div class="timeandrange col-lg-8 col-md-8 col-sm-8">
-                                    <span id="walk-time">Temps: 2:00</span>
-                                    <span id="walk-range">Distance: 5.6 km</span>
-                                </div>
-                                <div class="arrival-time col-lg-2 col-md-2 col-sm-2">
-                                    <span class="arrival-time-span-walk">12:00</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="timeandrange col-lg-12 col-md-12 col-sm-12">
+                        <span id="walk-time">Temps: 2:00</span>
+                        <span id="walk-range">Distance: 5.6 km</span>
                     </div>
-                    <div class="row">
-                        <div class="travel-path col-lg-12 col-md-12 col-sm-12 is-close">
-                            <span>Chemin</span>
-                        </div>
+                    <div class="actual-time col-lg-6 col-md-6 col-sm-6">
+                        <span class="actual-time-span-walk">10:00</span>
+                    </div>
+                    <div class="arrival-time col-lg-6 col-md-6 col-sm-6">
+                        <span class="arrival-time-span-walk">12:00</span>
                     </div>
                 </div>
             </div>
@@ -237,28 +215,16 @@
                     <img src="../assets/medias/bike.png"/>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10">
-                    <div class="row">
-                        <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
-                                        col-md-offset-1 col-md-10 col-md-offset-1
-                                        col-lg-offset-1 col-lg-10 col-lg-offset-1">
-                            <div class="timeline-container col-lg-12 col-md-12 col-sm-12">
-                                <div class="actual-time col-lg-2 col-md-2 col-sm-2">
-                                    <span class="actual-time-span-bike">10:00</span>
-                                </div>
-                                <div class="timeandrange col-lg-8 col-md-8 col-sm-8">
-                                    <span id="bike-time">Temps: 2:00</span>
-                                    <span id="bike-range">Distance: 5.6 km</span>
-                                </div>
-                                <div class="arrival-time col-lg-2 col-md-2 col-sm-2">
-                                    <span class="arrival-time-span-bike">12:00</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="timeandrange col-lg-12 col-md-12 col-sm-12">
+                        <span id="bike-time">Temps: 2:00</span>
+                        <span id="bike-range">Distance: 5.6 km</span>
                     </div>
-                    <div class="row">
-                        <div class="travel-path col-lg-12 col-md-12 col-sm-12 is-close">
-                            <span>Chemin</span>
-                        </div>
+                    <div class="actual-time col-lg-6 col-md-6 col-sm-6">
+                        <span class="actual-time-span-bike">10:00</span>
+                    </div>
+
+                    <div class="arrival-time col-lg-6 col-md-6 col-sm-6">
+                        <span class="arrival-time-span-bike">12:00</span>
                     </div>
                 </div>
             </div>
@@ -267,42 +233,30 @@
                     <img src="../assets/medias/car.png"/>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10">
-                    <div class="row">
-                        <div class="col-sm-offset-1 col-sm-10 col-sm-offset-1
-                                        col-md-offset-1 col-md-10 col-md-offset-1
-                                        col-lg-offset-1 col-lg-10 col-lg-offset-1">
-                            <div class="timeline-container col-lg-12 col-md-12 col-sm-12">
-                                <div class="actual-time col-lg-2 col-md-2 col-sm-2">
-                                    <span class="actual-time-span-car">10:00</span>
-                                </div>
-                                <div class="timeandrange col-lg-8 col-md-8 col-sm-8">
-                                    <span id="car-time">Temps: 2:00</span>
-                                    <span id="car-range">Distance: 5.6 km</span>
-                                </div>
-                                <div class="arrival-time col-lg-2 col-md-2 col-sm-2">
-                                    <span class="arrival-time-span-car">12:00</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="timeandrange col-lg-12 col-md-12 col-sm-12">
+                        <span id="car-time">Temps: 2:00</span>
+                        <span id="car-range">Distance: 5.6 km</span>
                     </div>
-                    <div class="row">
-                        <div class="travel-path col-lg-12 col-md-12 col-sm-12 is-close">
-                            <span>Chemin</span>
-                        </div>
+                    <div class="actual-time col-lg-6 col-md-6 col-sm-6">
+                        <span class="actual-time-span-car">10:00</span>
+                    </div>
+
+                    <div class="arrival-time col-lg-6 col-md-6 col-sm-6">
+                        <span class="arrival-time-span-car">12:00</span>
                     </div>
                 </div>
             </div>
-            <div class="row travel-container-result">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6" id="temperature"></div>
-                    <div class="col-lg-6 col-md-6 col-sm-6" id="city"></div>
-                </div>
-                <div class="row">
-                    <div class="stage col-lg-12 col-md-12 col-sm-12">
-                        <div class="col-lg-3">
-                            <svg class="temps" id="orageFrom" xmlns="http://www.w3.org/2000/svg"
-                                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
-                                <path d="M400,64c-5.3,0-10.6,0.4-15.8,1.1C354.3,24.4,307.2,0,256,0s-98.3,24.4-128.2,65.1c-5.2-0.8-10.5-1.1-15.8-1.1
+        <div class="row travel-container-result">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6" id="temperature"></div>
+                <div class="col-lg-6 col-md-6 col-sm-6" id="city"></div>
+            </div>
+            <div class="row">
+                <div class="stage col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-3">
+                        <svg class="temps" id="orageFrom" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+                            <path d="M400,64c-5.3,0-10.6,0.4-15.8,1.1C354.3,24.4,307.2,0,256,0s-98.3,24.4-128.2,65.1c-5.2-0.8-10.5-1.1-15.8-1.1
             C50.2,64,0,114.2,0,176s50.2,112,112,112c13.7,0,27.1-2.5,39.7-7.3c12.3,10.7,26.2,19,40.9,25.4l24.9-24.9
             c-23.5-7.6-44.2-21.3-59.6-39.9c-13,9.2-28.8,14.7-45.9,14.7c-44.2,0-80-35.8-80-80s35.8-80,80-80c10.8,0,21.1,2.2,30.4,6.1
             C163.7,60.7,206.3,32,256,32s92.3,28.7,113.5,70.1c9.4-3.9,19.7-6.1,30.5-6.1c44.2,0,80,35.8,80,80s-35.8,80-80,80
@@ -573,10 +527,7 @@
 
     <script type="text/javascript" src="./assets/compiled/js/app.min.js"></script>
 
-    <!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW7AzbAbd14Pt807-HAPh4zSCBw7_3zZg&libraries=places&callback=initialize"
-            async defer></script>
-
-
-</footer>
+<!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I&libraries=places&callback=initialize"
+        async defer></script>
 </html>

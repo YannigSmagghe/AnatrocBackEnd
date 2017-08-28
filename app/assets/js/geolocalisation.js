@@ -64,7 +64,7 @@ function initialize() {
 function setSearchInputFrom(latFrom,lngFrom) {
 
 
-    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+latFrom+','+lngFrom+'&key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I', function(response) {
+    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng='+latFrom+','+lngFrom+'&key=AIzaSyBPjUPXE5icND_vqVesg-ty-LbNSUgF2kY', function(response) {
         var loc = response.results[0].formatted_address;
 
         if (loc && didOnlyOnce === 0){
@@ -85,7 +85,7 @@ function geo_success(position) {
         lngFrom = position.coords.longitude;
     }
     /** input from **/
-    setSearchInputFrom(position.coords.latitude, position.coords.longitude);
+    // setSearchInputFrom(position.coords.latitude, position.coords.longitude);
 }
 
 function geo_error() {
