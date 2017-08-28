@@ -1,15 +1,6 @@
 $(document).ready(function () {
 
     /** INPUT PART**/
-    // var timer = null;
-    // $("#search-input-to").on("keyup", function () {
-    //     console.log(timer);
-    //     if (timer) {
-    //         clearTimeout(timer); //cancel the previous timer.
-    //     }
-    //     timer = setTimeout(resultPage, 3000);
-    //     return timer;
-    // });
 
     // Clear input From if clicked
     function clearInputFrom() {
@@ -157,8 +148,9 @@ $(document).ready(function () {
 
     /** Afficher le chemin **/
 
-
-
-
 });
 
+function getGoogleAuth() {
+    $('.g-signin2').trigger('click');
+    console.log('hi');
+}
