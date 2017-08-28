@@ -274,6 +274,13 @@ body {
   margin-top: 200px;
 }
 
+#loader{
+  position: absolute;
+  z-index: 999;
+  top: 37%;
+  left: 45%;
+}
+
 #final_span {
   display: none;
 }
@@ -549,7 +556,6 @@ canvas {
   .choice {
     //box-shadow: 0 0 0px 1px rgba(146, 146, 146, 0.37);
     margin-bottom: 15px;
-    cursor: url(../medias/pointer.png), pointer;
   }
 
   .choice img {
@@ -609,6 +615,11 @@ canvas {
 //** MOBILE RESPONSIVE **/
 
 @media screen and (max-width: 1200px) {
+  #loader{
+    top: 35%;
+    left: 43%;
+  }
+
   .connexion-container{
     #captcha {
       position: relative;
