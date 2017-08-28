@@ -1,3 +1,13 @@
+/** Connexion **/
+
+
+
+
+
+
+
+
+
 var xhrFavorites = null;
 function fetchUserFavorites(callback) {
     if (typeof xhrFavorites === XMLHttpRequest) {

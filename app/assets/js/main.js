@@ -32,7 +32,6 @@ $(document).ready(function () {
         $.each(arrayContainer, function( index, value ) {
 
             if (value !== 'connexion-container'){
-                console.log( $('#'+value).fadeOut());
                 $('.'+value).fadeOut();
             }else{
                 $('.connexion-container').fadeIn();
@@ -42,7 +41,6 @@ $(document).ready(function () {
 
     $( "#menu_accueil, #button-back" ).click(function() {
         showHideTitle();
-        console.log('acceuil');
         $.each(arrayContainer, function( index, value ) {
             if (value !== 'input-container'){
                 $('.'+value).fadeOut();
