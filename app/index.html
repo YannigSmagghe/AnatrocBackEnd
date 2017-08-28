@@ -31,7 +31,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="ul-menu">
                     <li><a href="#" id="menu_home">Accueil</a></li>
                     <li><a href="#" id="menu_login">Connexion</a></li>
-                    <li><a href="#" id="menu_logout">Deconnexion (si connecté)</a></li>
+                    <li><a href="#" id="menu_logout">Deconnexionzaaz</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Separated link</a></li>
                 </ul>
@@ -117,10 +117,16 @@
                                          col-md-offset-4 col-md-4 col-md-offset-4
                                          col-lg-offset-4 col-lg-4 col-lg-offset-4"
              style="display: none">
-
+        <button class="btn btn-default" type="button"
+                aria-haspopup="true" aria-expanded="false">
+            <div class="g-signin2" id="googleAuth" data-onsuccess="onSignIn" data-theme="dark"
+                 style="display: none"></div>
+            Se connecter via Google
+        </button>
         <!-- Google connect button  -->
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
     </section>
+
     <section class="myAccount-container col-lg-6 col-md-6 col-sm-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2"
              style="display: none">
         <h1 id="myAccount-title" class="tlt col-lg-offset-4 col-md-offset-4 col-sm-offset-4">Espace Personnel</h1>
@@ -199,8 +205,8 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10">
                     <div class="timeandrange col-lg-12 col-md-12 col-sm-12">
-                        <span id="walk-time">Temps: 2:00</span>
-                        <span id="walk-range">Distance: 5.6 km</span>
+                        <span>Temps:<span id="walk-time"></span></span> |
+                        <span>Distance: <span id="walk-range"></span></span>
                     </div>
                     <div class="actual-time col-lg-6 col-md-6 col-sm-6">
                         <span class="actual-time-span-walk">10:00</span>
@@ -216,8 +222,8 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10">
                     <div class="timeandrange col-lg-12 col-md-12 col-sm-12">
-                        <span id="bike-time">Temps: 2:00</span>
-                        <span id="bike-range">Distance: 5.6 km</span>
+                        <span>Temps: <span id="bike-time"></span></span> |
+                        <span>Distance:<span id="bike-range"></span></span>
                     </div>
                     <div class="actual-time col-lg-6 col-md-6 col-sm-6">
                         <span class="actual-time-span-bike">10:00</span>
@@ -228,14 +234,15 @@
                     </div>
                 </div>
             </div>
+
             <div class="row travel-container-result choice" id="car">
                 <div class="col-lg-2 col-md-2 col-sm-2">
                     <img src="../assets/medias/car.png"/>
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10">
                     <div class="timeandrange col-lg-12 col-md-12 col-sm-12">
-                        <span id="car-time">Temps: 2:00</span>
-                        <span id="car-range">Distance: 5.6 km</span>
+                        <span>Temps:<span id="car-time"></span></span> |
+                        <span>Distance: <span id="car-range"></span></span>
                     </div>
                     <div class="actual-time col-lg-6 col-md-6 col-sm-6">
                         <span class="actual-time-span-car">10:00</span>
@@ -246,17 +253,21 @@
                     </div>
                 </div>
             </div>
-        <div class="row travel-container-result">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6" id="temperature"></div>
-                <div class="col-lg-6 col-md-6 col-sm-6" id="city"></div>
-            </div>
-            <div class="row">
-                <div class="stage col-lg-12 col-md-12 col-sm-12">
-                    <div class="col-lg-3">
-                        <svg class="temps" id="orageFrom" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
-                            <path d="M400,64c-5.3,0-10.6,0.4-15.8,1.1C354.3,24.4,307.2,0,256,0s-98.3,24.4-128.2,65.1c-5.2-0.8-10.5-1.1-15.8-1.1
+            <div class="row travel-container-result">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6" id="temperature"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6" id="city"></div>
+                </div>
+                <div class="row">
+                    <div class="stage col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-sm-offset-1 col-sm-3
+                                    col-md-offset-1 col-md-3
+                                    col-lg-offset-1 col-lg-3
+                                    ">
+                            <span>nom de la ville</span>
+                            <svg class="temps" id="orageFrom" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+                                <path d="M400,64c-5.3,0-10.6,0.4-15.8,1.1C354.3,24.4,307.2,0,256,0s-98.3,24.4-128.2,65.1c-5.2-0.8-10.5-1.1-15.8-1.1
             C50.2,64,0,114.2,0,176s50.2,112,112,112c13.7,0,27.1-2.5,39.7-7.3c12.3,10.7,26.2,19,40.9,25.4l24.9-24.9
             c-23.5-7.6-44.2-21.3-59.6-39.9c-13,9.2-28.8,14.7-45.9,14.7c-44.2,0-80-35.8-80-80s35.8-80,80-80c10.8,0,21.1,2.2,30.4,6.1
             C163.7,60.7,206.3,32,256,32s92.3,28.7,113.5,70.1c9.4-3.9,19.7-6.1,30.5-6.1c44.2,0,80,35.8,80,80s-35.8,80-80,80
@@ -381,8 +392,10 @@
                             </svg>
                         </div>
                         <!--attention div-->
-                        <div class="col-lg-6"></div>
-                        <div class="col-lg-3">
+                        <div class="col-sm-offset-4 col-sm-3
+                                    col-md-offset-4 col-md-3
+                                    col-lg-offset-4 col-lg-3
+                                ">
                             <svg class="temps" id="orageTo" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
                                 <path d="M400,64c-5.3,0-10.6,0.4-15.8,1.1C354.3,24.4,307.2,0,256,0s-98.3,24.4-128.2,65.1c-5.2-0.8-10.5-1.1-15.8-1.1
@@ -508,6 +521,7 @@
                                 <path class="wind-one"
                                       d="M16,256h64c8.8,0,16-7.2,16-16s-7.2-16-16-16H16c-8.8,0-16,7.2-16,16S7.2,256,16,256z"/>
                             </svg>
+                            <span>nom de la ville</span>
                         </div>
                     </div>
                 </div>
@@ -520,14 +534,13 @@
 </section>
 
 </body>
-<footer>
-    <script type="text/javascript" src=""></script>
-    <script type="text/javascript" src="./assets/compiled/js/vendor.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src=""></script>
+<script type="text/javascript" src="./assets/compiled/js/vendor.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="./assets/compiled/js/app.min.js"></script>
+<script type="text/javascript" src="./assets/compiled/js/app.min.js"></script>
 
 <!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCW7AzbAbd14Pt807-HAPh4zSCBw7_3zZg&libraries=places&callback=initialize"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfCefb7M8oW96-I4pDtMqDZbBy0vQ91DI&libraries=places&callback=initialize"
         async defer></script>
 </html>
