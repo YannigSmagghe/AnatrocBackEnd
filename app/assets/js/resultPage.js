@@ -1,10 +1,11 @@
 /** RESULT PAGE PART**/
 function showResultsPage(data) {
-    console.log(data.data);
+
+    $('#loader').fadeOut();
+
+    console.log(data);
     ResultResponse(data.data);
-    showHideTitle();
-    $(".input-container").fadeOut();
-    $(".travel-container").fadeIn();
+    $('#loader').fadeOut();
 
 
     // var addressFrom = $('#search-input-from').val();
@@ -51,12 +52,4 @@ function hideChoice(){
 }
 
 
-// show/hide title
-function showHideTitle(){
-    if ($('#main-title').is(":visible")){
-        $('#main-title').hide();
-    }else{
-        $('#main-title').show();
-    }
-}
 
