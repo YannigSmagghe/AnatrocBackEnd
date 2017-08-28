@@ -106,6 +106,36 @@ function ResultResponse(response) {
             {
                 weatherShow(response[i].data.weather, "From");
             }
+            else if(response[i].type ==="transport.velov.nearFrom") {
+               // console.log(response[i].data[0].arret.localisation.lat);
+                for (var y in response[i].data[0].arret.localisation){
+                    latVelovFrom[y] =  response[i].data[0].arret.localisation.lat;
+                    lngVelovFrom[y]=  response[i].data[0].arret.localisation.lng;
+
+                }
+                adressStation.from = response[i].data[0].arret.address;
+                nameStation.from = response[i].data[0].arret.name;
+                placeDispo.from = response[i].data[0].arret.available_stand;
+                placeTotal.from = response[i].data[0].arret.bike_stands;
+                distanceVelov.from = response[i].data[0].distance;
+                statusVelov.from = response[i].data[0].arret.status;
+
+            } else if(response[i].type ==="transport.velov.nearTo") {
+                console.log(response[i].data[0].arret.localisation.lat);
+                for (var y in response[i].data[0].arret.localisation){
+                    latVelovTo[y] =  response[i].data[0].arret.localisation.lat;
+                    lngVelovTo[y]=  response[i].data[0].arret.localisation.lng;
+                }
+                adressStation.to = response[i].data[0].arret.address;
+                nameStation.to = response[i].data[0].arret.name;
+                placeDispo.to = response[i].data[0].arret.available_stand;
+                placeTotal.to = response[i].data[0].arret.bike_stands;
+                distanceVelov.to = response[i].data[0].distance;
+                console.log(response[i].data[0].distance);
+                statusVelov.to = response[i].data[0].arret.status;
+
+            }
+
         }
     }
 }
