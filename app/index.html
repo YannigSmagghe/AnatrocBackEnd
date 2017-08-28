@@ -4,10 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="81423710600-2h0eq7dsepglg6kuno9j6e6odi6bv23v.apps.googleusercontent.com">
     <link rel="stylesheet" href="./assets/compiled/css/vendor.min.css">
     <link rel="stylesheet" href="./assets/compiled/css/app.min.css">
     <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css">
+    <script>
+        var App = {};
 
+        App.baseUri = 'https://api.anatroc/app_dev.php';
+    </script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 </head>
@@ -98,7 +104,7 @@
 
                     </div>
                 </div>
-                <div class="favorite-btn">
+                <div class="favorite-btn" id="favorites">
 
                 </div>
 
@@ -111,24 +117,8 @@
                                          col-lg-offset-4 col-lg-4 col-lg-offset-4"
              style="display: none">
 
-        <div class="input-group col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
-
-            <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1"
-                   class="col-sm-offset-2 col-sm-8 col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
-        </div>
-
-
-        <div class="input-group">
-
-            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2">
-        </div>
-
-        <div id="captcha" class="g-recaptcha" data-sitekey="6Ld9oS0UAAAAADeHwHPWZhHFkZgCsStaosGykw-1"></div>
-
-
-        <button id="button-connect" type="button" class="btn btn-default btn-lg valid-connexion">
-            Connexion
-        </button>
+        <!-- Google connect button  -->
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     </section>
     <section class="myAccount-container col-lg-6 col-md-6 col-sm-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2"
              style="display: none">
@@ -150,27 +140,19 @@
                                      col-md-offset-1 col-md-10 col-md-offset-1
                                      col-lg-offset-1 col-lg-10 col-lg-offset-1">
         <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12" id="map-board">
+                <div id="map-container">
+
+                </div>
+            </div>
+
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12" id="itinerary-board">
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-8 col-sm-12" id="map-board">
-                <div id="map">
-                    <h1>Map</h1><br>
-                    <h1>Map</h1><br>
-                    <h1>Map</h1><br>
-                    <h1>Map</h1><br>
-                </div>
-                <br>
-                <div class="duration">
-                     <span id="duration_name">
-                       Durée:
-                     </span>
-                    <span id="duration_result"></span>
-                </div>
-            </div>
+
         </div>
     </section>
 
@@ -434,6 +416,7 @@
                                       d="M16,256h64c8.8,0,16-7.2,16-16s-7.2-16-16-16H16c-8.8,0-16,7.2-16,16S7.2,256,16,256z"/>
                             </svg>
                         </div>
+                        <!--attention div-->
                         <div class="col-lg-6"></div>
                         <div class="col-lg-3">
                             <svg class="temps" id="orageTo" xmlns="http://www.w3.org/2000/svg"
@@ -564,6 +547,7 @@
                         </div>
                     </div>
                 </div>
+                <!--attention div-->
             </div>
         </div>
 
@@ -572,15 +556,14 @@
 </section>
 
 </body>
-<footer>
-    <script type="text/javascript" src=""></script>
-    <script type="text/javascript" src="./assets/compiled/js/vendor.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src=""></script>
+<script type="text/javascript" src="./assets/compiled/js/vendor.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="./assets/compiled/js/app.min.js"></script>
+<script type="text/javascript" src="./assets/compiled/js/app.min.js"></script>
 
-    <!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I&libraries=places&callback=initialize"
-            async defer></script>
-</footer>
+<!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkq58QUf_6ZOm4MRr29H2-ZUQcLBHQ75I&libraries=places&callback=initialize"
+        async defer></script>
+<!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
 </html>
