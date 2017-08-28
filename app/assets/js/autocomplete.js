@@ -32,6 +32,9 @@ function loadAutocomplete(inputAutocomplete){
 }
 function showResults() {
     // Get the place details from the autocomplete object.
+    $('#loader').fadeIn();
+    showHideTitle();
+    $(".input-container").fadeOut();
 
 
     var addressFrom = $('#search-input-from').val();
@@ -71,5 +74,15 @@ function geolocate() {
             autocomplete.setBounds(circle.getBounds());
         });
         initAutocomplete();
+    }
+}
+
+
+// show/hide title
+function showHideTitle(){
+    if ($('#main-title').is(":visible")){
+        $('#main-title').hide();
+    }else{
+        $('#main-title').show();
     }
 }
