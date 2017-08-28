@@ -9,9 +9,22 @@ var lngTo = 0;
 var didOnlyOnce = 0;
 
 
-latVelov = [];
-lngVelov =[];
-var features =[];
+latVelovFrom = [];
+lngVelovFrom =[];
+latVelovTo=[];
+lngVelovTo=[];
+
+adressStation ={};
+nameStation ={};
+placeDispo = {};
+placeTotal = {};
+velovDispo = {};
+distanceVelov = {};
+statusVelov ={};
+var colorStatusVelov;
+
+var featuresTo =[];
+var featuresFrom =[];
 
 
 /** init **/
@@ -85,7 +98,7 @@ function initMap() {
 
 
     window.initMap = function () {
-
+        console.log('revoir els données lat lng');
         var myLatLng = {lat: 45.764043, lng: 4.835659};
         map = new google.maps.Map(document.getElementById('map-container'), {
             zoom: 16,
@@ -96,11 +109,6 @@ function initMap() {
         var directionsDisplay = new google.maps.DirectionsRenderer;
         directionsDisplay.setMap(map);
         directionsDisplay.setPanel(document.getElementById('itinerary-board'));
-        // var marker = new google.maps.Marker({
-        //     position: myLatLng,
-        //     map: map,
-        //     title: 'Vous etes ici!'
-        // });
         var onChangeHandler = function(origin,destination,travelMode) {
             calculateAndDisplayRoute(directionsService, directionsDisplay,origin,destination,travelMode);
         };
@@ -116,24 +124,92 @@ function initMap() {
             }
         };
 
-        for (var i in latVelov) {
-                 features[i] = [
+        for (var i in latVelovFrom) {
+                 featuresFrom[i] = [
                     {
-                        position: new google.maps.LatLng(latVelov[i], lngVelov[i]),
+                        position: new google.maps.LatLng(latVelovFrom[i], lngVelovFrom[i]),
                         type: 'volov'
                     }
                 ];
         }
+        for(var i in latVelovTo){
+            featuresTo[i] = [
+                {
+                    position: new google.maps.LatLng(latVelovTo[i], lngVelovTo[i]),
+                    type: 'volov'
+                }
+            ];
+        }
 
         // Create markers.
-        for (var i in features) {
-            features[i].forEach(function (feature) {
+        for (var i in featuresTo) {
+            featuresTo[i].forEach(function (feature) {
                 var marker = new google.maps.Marker({
                     position: feature.position,
                     icon: icons[feature.type].icon,
                     map: map,
                     size:new google.maps.Size(1, 1)
 
+                });
+                velovDispo.to=placeTotal.to-placeDispo.to;
+                if(statusVelov.to == "OPEN"){
+                    colorStatusVelov ='green';
+                }else {
+                    colorStatusVelov ='red';
+                }
+                var contentString = '<div id="InfoVelov">'+
+                        '<div id="statusVelov" style="background-color: '+colorStatusVelov+'; height: 10px"></div>'+
+                        '<h1 id="nameVelov">'+nameStation.to+'</h1>'+
+                        '<div id="adressVelov"> '+adressStation.to+'</div>'+
+
+                        '<div id="bodyContent">'+
+                    '<span><b>Distance par rapport à votre point de d\'arrivé :</b>'+distanceVelov.to+'Km</span><br>'+
+                            '<b>Velo Disponible: </b> '+velovDispo.to+'<br> ' +
+                            '<b>place Disponible:</b>'+placeDispo.to+
+                        '</div>'+
+                    '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+            });
+        }
+
+        for (var i in featuresFrom) {
+            featuresFrom[i].forEach(function (feature) {
+                var marker = new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map,
+                    size:new google.maps.Size(1, 1)
+
+                });
+                velovDispo.from=placeTotal.from-placeDispo.from;
+                if(statusVelov.from == "OPEN"){
+                    colorStatusVelov ='green';
+                }else {
+                    colorStatusVelov ='red';
+                }
+                var contentString = '<div id="InfoVelov">'+
+                        '<div id="statusVelov" style="background-color: '+colorStatusVelov+'; height: 10px"></div>'+
+                        '<h1 id="nameVelov">'+nameStation.from+'</h1>'+
+                        '<div id="adressVelov"> '+adressStation.from+'</div>'+
+
+                        '<div id="bodyContent">'+
+                            '<span><b>Distance par rapport à votre point de départ :</b>'+distanceVelov.from+'km</span><br>'+
+                            '<b>Velo Disponible: </b> '+velovDispo.from+'<br> ' +
+                            '<b>place Disponible:</b>'+placeDispo.from+
+                            '</div>'+
+                    '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
                 });
             });
         }
@@ -317,6 +393,7 @@ function initMap() {
                 ]
             }
         ]
+
 
         map.setOptions({styles: styles});
     }
