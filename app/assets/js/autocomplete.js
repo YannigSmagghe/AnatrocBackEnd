@@ -3,12 +3,22 @@ var placeSearch, autocomplete;
 function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
     // location types.
-    var inputAutocomplete = 'search-input-to';
+    var inputAutocompleteTo = 'search-input-to';
+    var  inputAutocompleteFrom = 'search-input-from';
 
-    if ($("#search-input-from").is(":focus")){
-        inputAutocomplete = 'search-input-from';
+    if(document.getElementById(inputAutocompleteTo)){
+        loadAutocomplete(inputAutocompleteTo);
+
+    }
+    if(document.getElementById(inputAutocompleteFrom)){
+        loadAutocomplete(inputAutocompleteFrom);
+
     }
 
+}
+
+
+function loadAutocomplete(inputAutocomplete){
     if(document.getElementById(inputAutocomplete)){
         autocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */(document.getElementById(inputAutocomplete)),
@@ -18,9 +28,7 @@ function initAutocomplete() {
         // fields in the form.
 
         autocomplete.addListener('place_changed', showResults);
-
     }
-
 }
 function showResults() {
     // Get the place details from the autocomplete object.
