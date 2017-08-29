@@ -1,8 +1,23 @@
 /** Connexion **/
 
+function verifyToken(){
+    $.get(App.baseUri+'/token/verify?token='+getUserToken())
+        .done(function (response) {
+            if (response.data === true){
+                $('#menu_login').text('Espace membre');
+            }
+            $("#menu_login").click(function () {
+                showMyAccount();
+            });
+        });
 
+}
 
-
+function showMyAccount() {
+    $(".connexion-container").fadeOut();
+    $("#main-title").fadeOut();
+    $(".myAccount-container").fadeIn("slow");
+}
 
 
 
@@ -103,11 +118,6 @@ function getUserToken() {
     return "";
 }
 
-function showMyAccount() {
-    $(".connexion-container").fadeOut();
-    $("#main-title").fadeOut();
-    $(".myAccount-container").fadeIn("slow");
-}
 
 function responseApiHasError(response) {
     return typeof response.hasOwnProperty('errors') && response.errors.length > 0;
@@ -115,6 +125,7 @@ function responseApiHasError(response) {
 
 $(function () {
 
+    verifyToken();
     // fetchUserFavorites(function (response) {
     //     if (!responseApiHasError(response)) {
     //         $("#favorites").append(createFavoriteElements(response.data));

@@ -132,6 +132,5 @@ $(document).ready(function () {
 });
 
 function getGoogleAuth() {
-    $('.g-signin2').trigger('click');
-    console.log('hi');
+    $('.abcRioButtonContentWrapper').trigger('click');
 }
