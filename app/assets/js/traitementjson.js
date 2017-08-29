@@ -73,30 +73,32 @@ function ResultResponse(response) {
 
                 duration = new Date(response[i].data.duration * 1000);
                 duration.setHours(duration.getHours() - 1);
-                $('.actual-time-span-walk').text(getFormatedTime(date));
-                $('.arrival-time-span-walk').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('.actual-time-span-walk').text(getFormatedTime(date,0));
+                $('.arrival-time-span-walk').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#walk-range').text(response[i].data.distance);
-                $('#walk-time').text(getFormatedTime(duration));
+                $('#cityTo').text(response[i].data.end_address_name);
+                $('#cityFrom').text(response[i].data.start_address_name);
+                $('#walk-time').text(getFormatedTime(duration,1));
             }
             else if (response[i].type === "transport.google_direction.bicycling") {
 
 
                 duration = new Date(response[i].data.duration * 1000);
                 duration.setHours(duration.getHours() - 1);
-                $('.actual-time-span-bike').text(getFormatedTime(date));
-                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('.actual-time-span-bike').text(getFormatedTime(date,0));
+                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#bike-range').text(response[i].data.distance);
-                $('#bike-time').text(getFormatedTime(duration));
+                $('#bike-time').text(getFormatedTime(duration,1));
             }
             else if (response[i].type === "transport.google_direction.driving") {
 
 
                 duration = new Date(response[i].data.duration * 1000);
                 duration.setHours(duration.getHours() - 1);
-                $('.actual-time-span-car').text(getFormatedTime(date));
-                $('.arrival-time-span-car').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('.actual-time-span-car').text(getFormatedTime(date,0));
+                $('.arrival-time-span-car').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#car-range').text(response[i].data.distance);
-                $('#car-time').text(getFormatedTime(duration));
+                $('#car-time').text(getFormatedTime(duration,1));
             }
             else if (response[i].type === "weatherTo")
             {
@@ -119,8 +121,8 @@ function ResultResponse(response) {
                 for (var y in arret.localisation){
                     latVelovFrom[y] =  arret.localisation.lat;
                     lngVelovFrom[y]=  arret.localisation.lng;
-
                 }
+
                 adressStation.from = arret.address;
                 nameStation.from = arret.name;
                 placeDispo.from = arret.available_stand;
@@ -137,7 +139,7 @@ function ResultResponse(response) {
                 {
                     arret =  response[i].data[0].arret;
                 }
-                console.log(arret.localisation.lat);
+
                 for (var y in arret.localisation){
                     latVelovTo[y] =  arret.localisation.lat;
                     lngVelovTo[y]=  arret.localisation.lng;
@@ -178,18 +180,21 @@ $.getJSON( "result.json", function( data ) {
 });
 
 
-function getFormatedTime(date)
+function getFormatedTime(date, durée)
 {
-    var dateArriveStr ;
-    if(date.getHours() < 10)
+    var dateArriveStr = "";
+    if ( date.getHours > 0 || durée === 0)
     {
-        dateArriveStr = '0' + date.getHours();
+        if(date.getHours() < 10)
+        {
+            dateArriveStr = '0' + date.getHours();
+        }
+        else
+        {
+            dateArriveStr = date.getHours();
+        }
+        dateArriveStr += ":";
     }
-    else
-    {
-        dateArriveStr = date.getHours();
-    }
-    dateArriveStr += ":";
     if(date.getMinutes() < 10)
     {
         dateArriveStr += '0' + date.getMinutes();
@@ -198,6 +203,10 @@ function getFormatedTime(date)
     {
         dateArriveStr += date.getMinutes();
 
+    }
+    if(durée === 1)
+    {
+        dateArriveStr += " minute(s)";
     }
     return dateArriveStr;
 
@@ -221,6 +230,14 @@ function weatherShow(weather, where)
     temps[4] = "neige";
     temps[5] = "venteux";
 
+    var choice = {};
+    choice.soleil = "walk";
+    choice.nuage = "bike";
+    choice.pluie = "car";
+    choice.orage = "car";
+    choice.neige = "car";
+    choice.venteux = "car";
+
     for(var i in temps)
     {
         if(weather === temps[i])
@@ -232,5 +249,17 @@ function weatherShow(weather, where)
             $("#"+temps[i]+where).hide();
         }
     }
+    for( var weatherProto in choice)
+    {
+        if(weatherProto == weather)
+        {
+            $('#'+choice[weatherProto]).addClass("mainChoose");
+        }
+        else
+        {
+            $('#'+choice[weatherProto]).removeClass("mainChoose");
+        }
+    }
+
 
 }
