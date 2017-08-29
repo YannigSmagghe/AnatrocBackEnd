@@ -89,8 +89,8 @@ function ResultResponse(response) {
 
                 duration = new Date(response[i].data.duration * 1000);
                 duration.setHours(duration.getHours() - 1);
-                $('.actual-time-span-bike').text(getFormatedTime(date));
-                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('.actual-time-span-bike').text(getFormatedTime(date,0));
+                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#bike-range').text(response[i].data.distance);
                 $('#bike-time').text(getFormatedTime(duration,1));
                 dataVoice.transport.duration.bicycling = getFormatedTime(duration,1);
@@ -172,15 +172,17 @@ $.getJSON( "result.json", function( data ) {
 function getFormatedTime(date, duree)
 {
     var dateArriveStr = "";
-    if ( date.getHours > 0 || duree === 0)
+    if (!(date.getHours === 0 && duree === 1))
     {
+
+        console.log(date.getHours());
         if(date.getHours() < 10)
         {
-            dateArriveStr = '0' + date.getHours();
+            dateArriveStr += '0' + date.getHours();
         }
         else
         {
-            dateArriveStr = date.getHours();
+            dateArriveStr += date.getHours();
         }
         dateArriveStr += ":";
     }
@@ -193,7 +195,8 @@ function getFormatedTime(date, duree)
         dateArriveStr += date.getMinutes();
 
     }
-    if(duree === 1)
+
+    if(duree === 1 && date.getHours === 0)
     {
         dateArriveStr += " minute";
         if(date.getMinutes() > 1)
@@ -242,17 +245,19 @@ function weatherShow(weather, where)
             $("#"+temps[i]+where).hide();
         }
     }
-    for( var weatherProto in choice)
+    if(where === "From")
     {
-        if(weatherProto == weather)
+        for( var weatherProto in choice)
         {
-            $('#'+choice[weatherProto]).addClass("mainChoose");
-        }
-        else
-        {
-            $('#'+choice[weatherProto]).removeClass("mainChoose");
+            if(weatherProto == weather)
+            {
+                $('#'+choice[weatherProto]).addClass("mainChoose");
+            }
+            else
+            {
+                $('#'+choice[weatherProto]).removeClass("mainChoose");
+            }
         }
     }
-
 
 }
