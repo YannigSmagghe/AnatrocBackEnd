@@ -66,7 +66,6 @@ function ResultResponse(response) {
     var date = new Date();
     var duration;
 
-    console.log(response);
     for (var i in response) {
         if (response[i].hasOwnProperty('type')) {
             var arret;
