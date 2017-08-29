@@ -66,9 +66,10 @@ function ResultResponse(response) {
     var date = new Date();
     var duration;
 
-
+    console.log(response);
     for (var i in response) {
         if (response[i].hasOwnProperty('type')) {
+            var arret;
             if (response[i].type === "transport.google_direction.walking") {
 
                 duration = new Date(response[i].data.duration * 1000);
@@ -107,32 +108,49 @@ function ResultResponse(response) {
                 weatherShow(response[i].data.weather, "From");
             }
             else if(response[i].type ==="transport.velov.nearFrom") {
+                if(typeof response[i].data === "object")
+                {
+                    arret =  response[i].data.arret;
+                }
+                else if(Array.isArray(response[i].data ))
+                {
+                    arret =  response[i].data[0].arret;
+                }
                // console.log(response[i].data[0].arret.localisation.lat);
-                for (var y in response[i].data[0].arret.localisation){
-                    latVelovFrom[y] =  response[i].data[0].arret.localisation.lat;
-                    lngVelovFrom[y]=  response[i].data[0].arret.localisation.lng;
+                for (var y in arret.localisation){
+                    latVelovFrom[y] =  arret.localisation.lat;
+                    lngVelovFrom[y]=  arret.localisation.lng;
 
                 }
-                adressStation.from = response[i].data[0].arret.address;
-                nameStation.from = response[i].data[0].arret.name;
-                placeDispo.from = response[i].data[0].arret.available_stand;
-                placeTotal.from = response[i].data[0].arret.bike_stands;
-                distanceVelov.from = response[i].data[0].distance;
-                statusVelov.from = response[i].data[0].arret.status;
+                adressStation.from = arret.address;
+                nameStation.from = arret.name;
+                placeDispo.from = arret.available_stand;
+                placeTotal.from = arret.bike_stands;
+                distanceVelov.from = response[i].data.distance;
+                statusVelov.from = arret.status;
 
             } else if(response[i].type ==="transport.velov.nearTo") {
-                console.log(response[i].data[0].arret.localisation.lat);
-                for (var y in response[i].data[0].arret.localisation){
-                    latVelovTo[y] =  response[i].data[0].arret.localisation.lat;
-                    lngVelovTo[y]=  response[i].data[0].arret.localisation.lng;
+                if(typeof response[i].data === "object")
+                {
+                    arret =  response[i].data.arret;
                 }
-                adressStation.to = response[i].data[0].arret.address;
-                nameStation.to = response[i].data[0].arret.name;
-                placeDispo.to = response[i].data[0].arret.available_stand;
-                placeTotal.to = response[i].data[0].arret.bike_stands;
-                distanceVelov.to = response[i].data[0].distance;
-                console.log(response[i].data[0].distance);
-                statusVelov.to = response[i].data[0].arret.status;
+                else if(Array.isArray(response[i].data ))
+                {
+                    arret =  response[i].data[0].arret;
+                }
+                console.log(arret.localisation.lat);
+                for (var y in arret.localisation){
+                    latVelovTo[y] =  arret.localisation.lat;
+                    lngVelovTo[y]=  arret.localisation.lng;
+                }
+                adressStation.to = arret.address;
+                adressStation.to = arret.address;
+                nameStation.to = arret.name;
+                placeDispo.to = arret.available_stand;
+                placeTotal.to = arret.bike_stands;
+                distanceVelov.to = response[i].data.distance;
+                console.log(response[i].data.distance);
+                statusVelov.to = arret.status;
 
             }
 
