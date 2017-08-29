@@ -41,25 +41,6 @@ $(document).ready(function () {
         });
     });
 
-    //Move back button
-    $( "#dropdownMenu1" ).click(function() {
-            $( "#button-back" ).animate({
-                "margin-top": "-51px",
-                "margin-left": "+54px"
-            }, 1500 );
-
-    });
-
-    $(document).click(function() {
-        if ($( "#button-back" ).position().top !== 0){
-            $( "#button-back" ).animate({
-                "margin-top": "15px",
-                "margin-left": "0px"
-            }, 1500 );
-        }
-    });
-
-
 
 
     // show/hide title

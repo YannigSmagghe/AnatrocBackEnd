@@ -81,19 +81,23 @@
                 <span id="interim_span" class="interim"></span>
                 <p>
             </div>
+            <div class="row">
+                <input id="search-input-from"
+                       type="search"
+                       placeholder="Départ"
+                       onchange="geolocate('search-input-from')"
+                       class="form-control box-shadow col-lg-12 col-md-12 col-sm-12"
+                >
+            </div>
+            <div class="row">
+                <input id="search-input-to"
+                       type="search"
+                       placeholder="Arrivée"
+                       onchange="geolocate('search-input-to')"
+                       class="form-control box-shadow col-lg-12 col-md-12 col-sm-12"
+                >
+            </div>
 
-            <input id="search-input-from"
-                   type="search"
-                   placeholder="Départ"
-                   onchange="geolocate('search-input-from')"
-                   class="form-control box-shadow col-lg-8"
-            >
-            <input id="search-input-to"
-                   type="search"
-                   placeholder="Arrivée"
-                   onchange="geolocate('search-input-to')"
-                   class="form-control box-shadow col-lg-8"
-            >
             <span class="notice-textToSpeech">Cliquer sur votre phrase pour valider</span>
             <!--<span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>-->
         </div>
@@ -130,18 +134,27 @@
     </section>
 
     <section class="myAccount-container col-lg-6 col-md-6 col-sm-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2"
-             style="display: none">
+             style="display: none"
+    >
         <h1 id="myAccount-title" class="tlt col-lg-offset-4 col-md-offset-4 col-sm-offset-4">Espace Personnel</h1>
         <p>
             Mon domicile
-            <input id="account-myHome" type="search" class="form-control box-shadow col-lg-8">
+            <input id="account-myHome" type="search" class="form-control box-shadow col-lg-12 col-md-6 col-sm-12">
         </p>
         <p>
             Travail
-            <input id="account-myJob" type="search" class="form-control box-shadow col-lg-8">
+            <input id="account-myJob" type="search" class="form-control box-shadow col-lg-12 col-md-6 col-sm-12">
         </p>
         <p id="favoris">
-            ajouter des favoris
+            Ajouter des favoris
+        <div class="row">
+            <input id="account-addFavorite" type="search" class="form-control box-shadow col-lg-11 col-md-11 col-sm-11">
+            <button class="btn btn-default col-lg-1" type="button" id="button-addFavorite"
+                    aria-haspopup="true" aria-expanded="true">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+        </div>
+
         </p>
     </section>
 
