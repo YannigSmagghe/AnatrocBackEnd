@@ -162,7 +162,7 @@ body {
       font-size: 1.5em;
     }
   }
-  .menu-click {
+  .menu-click{
     margin-top: 150px;
   }
   @media screen and (max-width: 886px) {
@@ -182,6 +182,8 @@ body {
 }
 
 /** End Captcha **/
+
+
 
 .footer-container {
   position: absolute;
@@ -295,7 +297,9 @@ body {
   display: none;
 }
 
+
 // End Css Title
+
 
 /** Favorite button **/
 .address-btn {
@@ -319,6 +323,7 @@ body {
 }
 
 /** End Favorite button **/
+
 
 // Style input
 .input-container {
@@ -381,6 +386,7 @@ body {
     border-bottom: 1px solid #5a5a5a;
     //.transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
   }
+
 
 }
 
@@ -552,7 +558,22 @@ canvas {
     margin-top: 20px;
     margin-bottom: 20px;
     height: 150px;
+    cursor: pointer;
+
+
+
+    .city{
+      margin: auto auto auto auto;
+    }
+
   }
+
+  .mainChoose {
+    background-color: rgba(30, 15, 15, 0.05);
+    border-style: solid;
+    border-left: thick groove #f5f5f5;
+  }
+
 
   .choice {
     //box-shadow: 0 0 0px 1px rgba(146, 146, 146, 0.37);
@@ -879,12 +900,16 @@ canvas {
 svg {
   width: 68px;
   height: 68px;
-  margin: 24px 0 0 40px;
+  margin: 24px 0 0 0px;
   fill: #8e8e8e;
 }
 
 /* Thunder Bolt Animation */
-#Orageux .bolt {
+#orageFrom .bolt {
+  animation: flash 2s infinite;
+}
+
+#orageTo .bolt {
   animation: flash 2s infinite;
 }
 
@@ -914,23 +939,46 @@ svg {
 }
 
 /* Raindrops Animation */
-#pluie .raindrop-one,
-#pluie .raindrop-two,
-#pluie .raindrop-three {
+#pluieFrom .raindrop-one,
+#pluieFrom .raindrop-two,
+#pluieFrom .raindrop-three {
   opacity: 0;
   animation-timing-function: cubic-bezier(1, 0, 1, 1);
 }
 
-#pluie .raindrop-one {
+#pluieFrom .raindrop-one {
   animation: falling-drop-one 2s infinite;
 }
 
-#pluie .raindrop-two {
+#pluieFrom .raindrop-two {
   animation: falling-drop-two 1.90s infinite;
   animation-delay: 0.8s;
 }
 
-#pluie .raindrop-three {
+#pluieFrom .raindrop-three {
+  animation: falling-drop-three 1.80s infinite;
+  animation-delay: 0.5s;
+}
+
+
+/* Raindrops Animation */
+#pluieTo .raindrop-one,
+#pluieTo .raindrop-two,
+#pluieTo .raindrop-three {
+  opacity: 0;
+  animation-timing-function: cubic-bezier(1, 0, 1, 1);
+}
+
+#pluieTo .raindrop-one {
+  animation: falling-drop-one 2s infinite;
+}
+
+#pluieTo .raindrop-two {
+  animation: falling-drop-two 1.90s infinite;
+  animation-delay: 0.8s;
+}
+
+#pluieTo .raindrop-three {
   animation: falling-drop-three 1.80s infinite;
   animation-delay: 0.5s;
 }
@@ -1002,27 +1050,52 @@ svg {
 }
 
 /* Snowflake Animations */
-#Neige .snowflake-one,
-#Neige .snowflake-two,
-#Neige .snowflake-three {
+#neigeTo .snowflake-one,
+#neigeTo .snowflake-two,
+#neigeTo .snowflake-three {
   opacity: 0;
   transform-origin: center center;
   animation-timing-function: ease-in;
 }
 
-#Neige .snowflake-one {
+#neigeTo .snowflake-one {
   animation: falling-snow-one 4s infinite;
 }
 
-#Neige .snowflake-two {
+#neigeTo .snowflake-two {
   animation: falling-snow-two 3.8s infinite;
   animation-delay: 2.5s;
 }
 
-#Neige .snowflake-three {
+#neigeTo .snowflake-three {
   animation: falling-snow-three 3.9s infinite;
   animation-delay: 1.5s;
 }
+
+
+/* Snowflake Animations */
+#neigeFrom .snowflake-one,
+#neigeFrom .snowflake-two,
+#neigeFrom .snowflake-three {
+  opacity: 0;
+  transform-origin: center center;
+  animation-timing-function: ease-in;
+}
+
+#neigeFrom .snowflake-one {
+  animation: falling-snow-one 4s infinite;
+}
+
+#neigeFrom .snowflake-two {
+  animation: falling-snow-two 3.8s infinite;
+  animation-delay: 2.5s;
+}
+
+#neigeFrom .snowflake-three {
+  animation: falling-snow-three 3.9s infinite;
+  animation-delay: 1.5s;
+}
+
 
 @keyframes falling-snow-one {
   0% {
@@ -1100,35 +1173,68 @@ svg {
 }
 
 /* Sunny Cloud Animations */
-#Nuageux .sun-half {
+#nuageTo .sun-half {
   animation: sun-grow 4s infinite cubic-bezier(0.2, 0.85, 0.4, 1.5);
   transform-origin: bottom center;
 }
 
-#Nuageux .ray-one {
+#nuageTo .ray-one {
   animation: ray-show-one 4s infinite linear;
   transform-origin: center right;
 }
 
-#Nuageux .ray-two {
+#nuageTo .ray-two {
   animation: ray-show-two 4s infinite linear;
   transform-origin: bottom right;
 }
 
-#Nuageux .ray-three {
+#nuageTo .ray-three {
   animation: ray-show-three 4s infinite linear;
   transform-origin: bottom center;
 }
 
-#Nuageux .ray-four {
+#nuageTo .ray-four {
   animation: ray-show-four 4s infinite linear;
   transform-origin: bottom left;
 }
 
-#Nuageux .ray-five {
+#nuageTo .ray-five {
   animation: ray-show-five 4s infinite linear;
   transform-origin: center left;
 }
+
+/* Sunny Cloud Animations */
+#nuageFrom .sun-half {
+  animation: sun-grow 4s infinite cubic-bezier(0.2, 0.85, 0.4, 1.5);
+  transform-origin: bottom center;
+}
+
+#nuageFrom .ray-one {
+  animation: ray-show-one 4s infinite linear;
+  transform-origin: center right;
+}
+
+#nuageFrom .ray-two {
+  animation: ray-show-two 4s infinite linear;
+  transform-origin: bottom right;
+}
+
+#nuageFrom .ray-three {
+  animation: ray-show-three 4s infinite linear;
+  transform-origin: bottom center;
+}
+
+#nuageFrom .ray-four {
+  animation: ray-show-four 4s infinite linear;
+  transform-origin: bottom left;
+}
+
+#nuageFrom .ray-five {
+  animation: ray-show-five 4s infinite linear;
+  transform-origin: center left;
+}
+
+
 
 // bug sur le titre en fip in jusqu'à la prochaine marque
 @keyframes sun-grow {
@@ -1230,72 +1336,141 @@ svg {
   }
 }
 
-/* soleil Animation */
+/* soleilTo Animation */
 /* If only using this animation be sure to grab the sun-grow and ray-show-x keyframes set above */
-#soleil .sun-full {
+#soleilTo .sun-full {
   animation: sun-grow 4s infinite cubic-bezier(0.2, 0.85, 0.4, 1.5);
   transform-origin: center center;
 }
 
-#soleil .sun-ray-one {
+#soleilTo .sun-ray-one {
   animation: ray-show-one 4s infinite ease-in;
   transform-origin: center right;
 }
 
-#soleil .sun-ray-two {
+#soleilTo .sun-ray-two {
   animation: ray-show-two 4s infinite ease-in;
   transform-origin: bottom right;
 }
 
-#soleil .sun-ray-three {
+#soleilTo .sun-ray-three {
   animation: ray-show-three 4s infinite ease-in;
   transform-origin: bottom center;
 }
 
-#soleil .sun-ray-four {
+#soleilTo .sun-ray-four {
   animation: ray-show-four 4s infinite ease-in;
   transform-origin: bottom left;
 }
 
-#soleil .sun-ray-five {
+#soleilTo .sun-ray-five {
   animation: ray-show-five 4s infinite ease-in;
   transform-origin: center left;
 }
 
-#soleil .sun-ray-six {
+#soleilTo .sun-ray-six {
   animation: ray-show-six 4s infinite ease-in;
   transform-origin: top left;
 }
 
-#soleil .sun-ray-seven {
+#soleilTo .sun-ray-seven {
   animation: ray-show-seven 4s infinite ease-in;
   transform-origin: top center;
 }
 
-#soleil .sun-ray-eight {
+#soleilTo .sun-ray-eight {
   animation: ray-show-eight 4s infinite ease-in;
   transform-origin: top right;
 }
 
+
+#soleilFrom .sun-full {
+  animation: sun-grow 4s infinite cubic-bezier(0.2, 0.85, 0.4, 1.5);
+  transform-origin: center center;
+}
+
+#soleilFrom .sun-ray-one {
+  animation: ray-show-one 4s infinite ease-in;
+  transform-origin: center right;
+}
+
+#soleilFrom .sun-ray-two {
+  animation: ray-show-two 4s infinite ease-in;
+  transform-origin: bottom right;
+}
+
+#soleilFrom .sun-ray-three {
+  animation: ray-show-three 4s infinite ease-in;
+  transform-origin: bottom center;
+}
+
+#soleilFrom .sun-ray-four {
+  animation: ray-show-four 4s infinite ease-in;
+  transform-origin: bottom left;
+}
+
+#soleilFrom .sun-ray-five {
+  animation: ray-show-five 4s infinite ease-in;
+  transform-origin: center left;
+}
+
+#soleilFrom .sun-ray-six {
+  animation: ray-show-six 4s infinite ease-in;
+  transform-origin: top left;
+}
+
+#soleilFrom .sun-ray-seven {
+  animation: ray-show-seven 4s infinite ease-in;
+  transform-origin: top center;
+}
+
+#soleilFrom .sun-ray-eight {
+  animation: ray-show-eight 4s infinite ease-in;
+  transform-origin: top right;
+}
+
+
 /* Windy Cloud Animation */
-#Venteux .cloud-wrap {
+#venteuxFrom .cloud-wrap {
   animation: bob 2s infinite cubic-bezier(0, 0, .5, 1.5);
 }
 
-#Venteux .cloud {
+#venteuxFrom .cloud {
   animation: cloud-push 4s infinite;
   transform-origin: left center;
 }
 
-#Venteux .wind-one {
+#venteuxFrom .wind-one {
   animation: wind-slide-one 4s infinite;
 }
 
-#Venteux .wind-two {
+#venteuxFrom .wind-two {
   animation: wind-slide-two 4s infinite;
 }
 
-#Venteux .wind-three {
+#venteuxFrom .wind-three {
+  animation: wind-slide-three 4s infinite;
+}
+
+/* Windy Cloud Animation */
+#venteuxTo .cloud-wrap {
+  animation: bob 2s infinite cubic-bezier(0, 0, .5, 1.5);
+}
+
+#venteuxTo .cloud {
+  animation: cloud-push 4s infinite;
+  transform-origin: left center;
+}
+
+#venteuxTo .wind-one {
+  animation: wind-slide-one 4s infinite;
+}
+
+#venteuxTo .wind-two {
+  animation: wind-slide-two 4s infinite;
+}
+
+#venteuxTo .wind-three {
   animation: wind-slide-three 4s infinite;
 }
 

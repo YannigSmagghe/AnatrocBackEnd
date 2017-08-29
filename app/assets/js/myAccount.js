@@ -1,8 +1,18 @@
 /** Connexion **/
 
+function verifyToken() {
+    $.get(App.baseUri + '/token/verify?token=' + getUserToken())
+        .done(function (response) {
+            if (response.data === true) {
+                $('#menu_login').text('Espace membre');
+            }
+            $("#menu_login").click(function () {
+                showMyAccount();
+            });
+        });
+}
 
 function addFavorite(){
-
     var address = $('#account-myJob').val();
     var description = $('#account-myHome').val();
 
@@ -20,6 +30,12 @@ function addFavorite(){
             console.log(data + 'erreur');
         },
     });
+}
+
+function showMyAccount() {
+    $(".connexion-container").fadeOut();
+    $("#main-title").fadeOut();
+    $(".myAccount-container").fadeIn("slow");
 }
 
 var xhrFavorites = null;
@@ -129,6 +145,7 @@ function responseApiHasError(response) {
 
 $(function () {
 
+    verifyToken();
     // fetchUserFavorites(function (response) {
     //     if (!responseApiHasError(response)) {
     //         $("#favorites").append(createFavoriteElements(response.data));

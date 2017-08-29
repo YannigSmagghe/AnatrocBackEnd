@@ -14,6 +14,7 @@
         var App = {};
 
         App.baseUri = 'https://api.anatroc/app_dev.php';
+
     </script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
@@ -125,10 +126,11 @@
              style="display: none">
         <button class="btn btn-default" type="button" onclick="getGoogleAuth()"
                 aria-haspopup="true" aria-expanded="false">
-            <div class="g-signin2" id="googleAuth" data-onsuccess="onSignIn" data-theme="dark"
-                 style="display: none"></div>
+
             Se connecter via Google
         </button>
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"
+            style="display: none" ></div>
         <!-- Google connect button  -->
 
     </section>
@@ -212,7 +214,6 @@
                     col-lg-offset-2 col-lg-8 col-lg-offset-2
                     "
              style="display: none">
-
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="row travel-container-result choice" id="walk">
                 <div class="col-lg-2 col-md-2 col-sm-2">
@@ -220,7 +221,7 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10">
                     <div class="timeandrange col-lg-12 col-md-12 col-sm-12">
-                        <span>Temps:<span id="walk-time"></span></span> |
+                        <span>Temps: <span id="walk-time"></span></span> |
                         <span>Distance: <span id="walk-range"></span></span>
                     </div>
                     <div class="actual-time col-lg-6 col-md-6 col-sm-6">
@@ -256,7 +257,7 @@
                 </div>
                 <div class="col-lg-10 col-md-10 col-sm-10">
                     <div class="timeandrange col-lg-12 col-md-12 col-sm-12">
-                        <span>Temps:<span id="car-time"></span></span> |
+                        <span>Temps: <span id="car-time"></span></span> |
                         <span>Distance: <span id="car-range"></span></span>
                     </div>
                     <div class="actual-time col-lg-6 col-md-6 col-sm-6">
@@ -273,13 +274,13 @@
                     <div class="col-lg-6 col-md-6 col-sm-6" id="temperature"></div>
                     <div class="col-lg-6 col-md-6 col-sm-6" id="city"></div>
                 </div>
+
                 <div class="row">
                     <div class="stage col-lg-12 col-md-12 col-sm-12">
-                        <div class="col-sm-offset-1 col-sm-3
-                                    col-md-offset-1 col-md-3
-                                    col-lg-offset-1 col-lg-3
+                        <div class="col-sm-offset-1 col-sm-4
+                                    col-md-offset-1 col-md-4
+                                    col-lg-offset-1 col-lg-4
                                     ">
-                            <span>nom de la ville</span>
                             <svg class="temps" id="orageFrom" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
                                 <path d="M400,64c-5.3,0-10.6,0.4-15.8,1.1C354.3,24.4,307.2,0,256,0s-98.3,24.4-128.2,65.1c-5.2-0.8-10.5-1.1-15.8-1.1
@@ -407,10 +408,11 @@
                             </svg>
                         </div>
                         <!--attention div-->
-                        <div class="col-sm-offset-4 col-sm-3
-                                    col-md-offset-4 col-md-3
-                                    col-lg-offset-4 col-lg-3
+                        <div class="col-sm-offset-2 col-sm-4
+                                    col-md-offset-2 col-md-4
+                                    col-lg-offset-2 col-lg-4
                                 ">
+
                             <svg class="temps" id="orageTo" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
                                 <path d="M400,64c-5.3,0-10.6,0.4-15.8,1.1C354.3,24.4,307.2,0,256,0s-98.3,24.4-128.2,65.1c-5.2-0.8-10.5-1.1-15.8-1.1
@@ -536,8 +538,22 @@
                                 <path class="wind-one"
                                       d="M16,256h64c8.8,0,16-7.2,16-16s-7.2-16-16-16H16c-8.8,0-16,7.2-16,16S7.2,256,16,256z"/>
                             </svg>
-                            <span>nom de la ville</span>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-4
+                                    col-md-offset-1 col-md-4
+                                    col-lg-offset-1 col-lg-4">
+                        <span class="city" id="cityFrom">nom de la ville</span><br>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-4
+                                    col-md-offset-2 col-md-4
+                                    col-lg-offset-2 col-lg-4
+                                ">
+
+
+                        <span class="city" id="cityTo">nom de la ville</span>
                     </div>
                 </div>
                 <!--attention div-->
