@@ -155,14 +155,14 @@ function GetPosition(ori,dest,travelM){
 }
 
 $.getJSON( "result.json", function( data ) {
-    // console.log(data.data.type);
-    // console.log(data.data.data.temperature);
-    //console.log(data.data.data.temps);
+    // console.log(data.data[0].type);
+    // console.log(data.data[0].data.temperature);
+    //console.log(data.data[0].data.temps);
     // displayFromResponse(data.data);
     // displayTransport(data);
     // GetJsonPosition('grenoble','lyon','WALKING');
     //recupLocation(data.data);
-    $('.result_type').text(data.data.type);
+    $('.result_type').text(data.data[0].type);
 });
 
 
