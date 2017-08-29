@@ -4,7 +4,10 @@ var urlRoot = "https://api.anatroc/";
 var dev = 1;
 
 var urlApi;
-
+dataVoice = {};
+dataVoice.weather = {};
+dataVoice.transport = {};
+dataVoice.transport.duration = {};
 if(dev === 1)
 {
     urlApi = urlRoot + "app_dev.php";
@@ -66,90 +69,78 @@ function ResultResponse(response) {
     var date = new Date();
     var duration;
 
+
     for (var i in response) {
         if (response[i].hasOwnProperty('type')) {
-            var arret;
             if (response[i].type === "transport.google_direction.walking") {
 
                 duration = new Date(response[i].data.duration * 1000);
                 duration.setHours(duration.getHours() - 1);
-                $('.actual-time-span-walk').text(getFormatedTime(date));
-                $('.arrival-time-span-walk').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('.actual-time-span-walk').text(getFormatedTime(date,0));
+                $('.arrival-time-span-walk').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#walk-range').text(response[i].data.distance);
-                $('#walk-time').text(getFormatedTime(duration));
+                $('#cityTo').text(response[i].data.end_address_name);
+                $('#cityFrom').text(response[i].data.start_address_name);
+                $('#walk-time').text(getFormatedTime(duration,1));
+                dataVoice.transport.duration.walking = getFormatedTime(duration,1);
             }
             else if (response[i].type === "transport.google_direction.bicycling") {
 
 
                 duration = new Date(response[i].data.duration * 1000);
                 duration.setHours(duration.getHours() - 1);
-                $('.actual-time-span-bike').text(getFormatedTime(date));
-                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('.actual-time-span-bike').text(getFormatedTime(date,0));
+                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#bike-range').text(response[i].data.distance);
-                $('#bike-time').text(getFormatedTime(duration));
+                $('#bike-time').text(getFormatedTime(duration,1));
+                dataVoice.transport.duration.bicycling = getFormatedTime(duration,1);
             }
             else if (response[i].type === "transport.google_direction.driving") {
 
 
                 duration = new Date(response[i].data.duration * 1000);
                 duration.setHours(duration.getHours() - 1);
-                $('.actual-time-span-car').text(getFormatedTime(date));
-                $('.arrival-time-span-car').text(getFormatedTime(getDateEnd(response[i].data.duration)));
+                $('.actual-time-span-car').text(getFormatedTime(date,0));
+                $('.arrival-time-span-car').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#car-range').text(response[i].data.distance);
-                $('#car-time').text(getFormatedTime(duration));
+                $('#car-time').text(getFormatedTime(duration,1));
+                dataVoice.transport.duration.driving = getFormatedTime(duration,1);
             }
             else if (response[i].type === "weatherTo")
             {
+                dataVoice.weather.to = response[i].data.weather;
                 weatherShow(response[i].data.weather, "To");
             }
             else if (response[i].type === "weatherFrom")
             {
+                dataVoice.weather.from = response[i].data.weather;
                 weatherShow(response[i].data.weather, "From");
             }
             else if(response[i].type ==="transport.velov.nearFrom") {
-                if(typeof response[i].data === "object")
-                {
-                    arret =  response[i].data.arret;
-                }
-                else if(Array.isArray(response[i].data ))
-                {
-                    arret =  response[i].data[0].arret;
-                }
-               // console.log(response[i].data[0].arret.localisation.lat);
-                for (var y in arret.localisation){
-                    latVelovFrom[y] =  arret.localisation.lat;
-                    lngVelovFrom[y]=  arret.localisation.lng;
+               // console.log(response[i].data.arret.localisation.lat);
+                for (var y in response[i].data.arret.localisation){
+                    latVelovFrom[y] =  response[i].data.arret.localisation.lat;
+                    lngVelovFrom[y]=  response[i].data.arret.localisation.lng;
 
                 }
-                adressStation.from = arret.address;
-                nameStation.from = arret.name;
-                placeDispo.from = arret.available_stand;
-                placeTotal.from = arret.bike_stands;
+                adressStation.from = response[i].data.arret.address;
+                nameStation.from = response[i].data.arret.name;
+                placeDispo.from = response[i].data.arret.available_stand;
+                placeTotal.from = response[i].data.arret.bike_stands;
                 distanceVelov.from = response[i].data.distance;
-                statusVelov.from = arret.status;
+                statusVelov.from = response[i].data.arret.status;
 
             } else if(response[i].type ==="transport.velov.nearTo") {
-                if(typeof response[i].data === "object")
-                {
-                    arret =  response[i].data.arret;
+                for (var y in response[i].data.arret.localisation){
+                    latVelovTo[y] =  response[i].data.arret.localisation.lat;
+                    lngVelovTo[y]=  response[i].data.arret.localisation.lng;
                 }
-                else if(Array.isArray(response[i].data ))
-                {
-                    arret =  response[i].data[0].arret;
-                }
-                console.log(arret.localisation.lat);
-                for (var y in arret.localisation){
-                    latVelovTo[y] =  arret.localisation.lat;
-                    lngVelovTo[y]=  arret.localisation.lng;
-                }
-                adressStation.to = arret.address;
-                adressStation.to = arret.address;
-                nameStation.to = arret.name;
-                placeDispo.to = arret.available_stand;
-                placeTotal.to = arret.bike_stands;
+                adressStation.to = response[i].data.arret.address;
+                nameStation.to = response[i].data.arret.name;
+                placeDispo.to = response[i].data.arret.available_stand;
+                placeTotal.to = response[i].data.arret.bike_stands;
                 distanceVelov.to = response[i].data.distance;
-                console.log(response[i].data.distance);
-                statusVelov.to = arret.status;
+                statusVelov.to = response[i].data.arret.status;
 
             }
 
@@ -178,18 +169,23 @@ $.getJSON( "result.json", function( data ) {
 });
 
 
-function getFormatedTime(date)
+function getFormatedTime(date, duree)
 {
-    var dateArriveStr ;
-    if(date.getHours() < 10)
+    var dateArriveStr = "";
+    if (!(date.getHours === 0 && duree === 1))
     {
-        dateArriveStr = '0' + date.getHours();
+
+        console.log(date.getHours());
+        if(date.getHours() < 10)
+        {
+            dateArriveStr += '0' + date.getHours();
+        }
+        else
+        {
+            dateArriveStr += date.getHours();
+        }
+        dateArriveStr += ":";
     }
-    else
-    {
-        dateArriveStr = date.getHours();
-    }
-    dateArriveStr += ":";
     if(date.getMinutes() < 10)
     {
         dateArriveStr += '0' + date.getMinutes();
@@ -198,6 +194,15 @@ function getFormatedTime(date)
     {
         dateArriveStr += date.getMinutes();
 
+    }
+
+    if(duree === 1 && date.getHours === 0)
+    {
+        dateArriveStr += " minute";
+        if(date.getMinutes() > 1)
+        {
+            dateArriveStr += "s";
+        }
     }
     return dateArriveStr;
 
@@ -221,6 +226,14 @@ function weatherShow(weather, where)
     temps[4] = "neige";
     temps[5] = "venteux";
 
+    var choice = {};
+    choice.soleil = "walk";
+    choice.nuage = "bike";
+    choice.pluie = "car";
+    choice.orage = "car";
+    choice.neige = "car";
+    choice.venteux = "car";
+
     for(var i in temps)
     {
         if(weather === temps[i])
@@ -230,6 +243,20 @@ function weatherShow(weather, where)
         else
         {
             $("#"+temps[i]+where).hide();
+        }
+    }
+    if(where === "From")
+    {
+        for( var weatherProto in choice)
+        {
+            if(weatherProto == weather)
+            {
+                $('#'+choice[weatherProto]).addClass("mainChoose");
+            }
+            else
+            {
+                $('#'+choice[weatherProto]).removeClass("mainChoose");
+            }
         }
     }
 
