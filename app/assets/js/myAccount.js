@@ -1,12 +1,26 @@
 /** Connexion **/
 
 
+function addFavorite(){
 
+    var address = $('#account-myJob').val();
+    var description = $('#account-myHome').val();
 
+    $.ajax({
+        url : App.baseUri+'/user/favorite',
+        type : 'POST',
+        data : 'address='+address + '&description='+ description + '&token='+getUserToken(),
+        dataType : 'JSON',
+        success : function(data){
+            console.log(data + 'succes');
 
-
-
-
+            showResultsPage(data);
+        },
+        error : function(data){
+            console.log(data + 'erreur');
+        },
+    });
+}
 
 var xhrFavorites = null;
 function fetchUserFavorites(callback) {
