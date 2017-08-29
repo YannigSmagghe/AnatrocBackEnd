@@ -172,10 +172,8 @@ $.getJSON( "result.json", function( data ) {
 function getFormatedTime(date, duree)
 {
     var dateArriveStr = "";
-    console.log(date.getHours());
     if(date.getHours() > 0 )
     {
-        console.log("if");
         if(date.getHours() < 10)
         {
             dateArriveStr += '0' + date.getHours();
