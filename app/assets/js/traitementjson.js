@@ -180,10 +180,10 @@ $.getJSON( "result.json", function( data ) {
 });
 
 
-function getFormatedTime(date, durée)
+function getFormatedTime(date, duree)
 {
     var dateArriveStr = "";
-    if ( date.getHours > 0 || durée === 0)
+    if ( date.getHours > 0 || duree === 0)
     {
         if(date.getHours() < 10)
         {
@@ -204,9 +204,13 @@ function getFormatedTime(date, durée)
         dateArriveStr += date.getMinutes();
 
     }
-    if(durée === 1)
+    if(duree === 1)
     {
-        dateArriveStr += " minute(s)";
+        dateArriveStr += " minute";
+        if(date.getMinutes() > 1)
+        {
+            dateArriveStr += "s";
+        }
     }
     return dateArriveStr;
 
