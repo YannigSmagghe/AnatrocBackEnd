@@ -81,19 +81,23 @@
                 <span id="interim_span" class="interim"></span>
                 <p>
             </div>
+            <div class="row">
+                <input id="search-input-from"
+                       type="search"
+                       placeholder="Départ"
+                       onchange="geolocate('search-input-from')"
+                       class="form-control box-shadow col-lg-12 col-md-12 col-sm-12"
+                >
+            </div>
+            <div class="row">
+                <input id="search-input-to"
+                       type="search"
+                       placeholder="Arrivée"
+                       onchange="geolocate('search-input-to')"
+                       class="form-control box-shadow col-lg-12 col-md-12 col-sm-12"
+                >
+            </div>
 
-            <input id="search-input-from"
-                   type="search"
-                   placeholder="Départ"
-                   onchange="geolocate('search-input-from')"
-                   class="form-control box-shadow col-lg-8"
-            >
-            <input id="search-input-to"
-                   type="search"
-                   placeholder="Arrivée"
-                   onchange="geolocate('search-input-to')"
-                   class="form-control box-shadow col-lg-8"
-            >
             <span class="notice-textToSpeech">Cliquer sur votre phrase pour valider</span>
             <!--<span class="voice-activation col-lg-4"><i class="fa fa-microphone fa-3x"></i></span>-->
         </div>
