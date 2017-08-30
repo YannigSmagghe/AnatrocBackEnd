@@ -35,33 +35,56 @@ function loadAutocomplete(inputAutocomplete){
 
     }
 }
+
+
+
 function showResults() {
     // Get the place details from the autocomplete object.
 
-    var addressFrom = $('#search-input-from').val();
-    var  addressTo = $('#search-input-to').val();
+    var place = autocomplete.getPlace();
 
-    if    (addressFrom !== '' && addressTo !== ''){
-        $('#loader').fadeIn();
-        showHideTitle();
-        $(".input-container").fadeOut();
-        $.ajax({
-            url : 'https://api.anatroc/app_dev.php/',
-            type : 'POST',
-            data : 'addressFrom='+addressFrom + '&addressTo='+addressTo,
-            dataType : 'JSON',
-            success : function(data){
-                console.log(data + 'succes');
+    if (!place) {
+        // User entered the name of a Place that was not suggested and
+        // pressed the Enter key, or the Place Details request failed.
 
-                showResultsPage(data);
-            },
-            error : function(data){
-                $('#loader').fadeOut();
-                $('.error-container').fadeIn();
-            },
-        });
-        //showResultsPage();
+        //window.alert("No details available for input: '" + place.name + "'");
+
+        //$("#"+inputAutocomplete).innerHTML('<span>Aucun résultat</span>');
+
+        //console.log("No details available for input");
+        //return;
+
+        noResultsAutocomplete();
+    } else {
+        var addressFrom = $('#search-input-from').val();
+        var  addressTo = $('#search-input-to').val();
+
+        if    (addressFrom !== '' && addressTo !== ''){
+            $('#loader').fadeIn();
+            showHideTitle();
+            $(".input-container").fadeOut();
+            $.ajax({
+                url : 'https://api.anatroc/app_dev.php/',
+                type : 'POST',
+                data : 'addressFrom='+addressFrom + '&addressTo='+addressTo,
+                dataType : 'JSON',
+                success : function(data){
+                    console.log(data + 'succes');
+
+                    showResultsPage(data);
+                },
+                error : function(data){
+                    $('#loader').fadeOut();
+                    $('.error-container').fadeIn();
+                },
+            });
+            //showResultsPage();
+        }
     }
+
+
+
+
 }
 // Bias the autocomplete object to the user's geographical location,
 // as supplied by the browser's 'navigator.geolocation' object.
@@ -90,4 +113,12 @@ function showHideTitle(){
     }else{
         $('#main-title').show();
     }
+}
+
+function noResultsAutocomplete() {
+    $('#no-result').css('display', 'block');
+    window.setInterval(function () {
+        $('#no-result').css('display', 'none');
+    }, 3000);
+
 }

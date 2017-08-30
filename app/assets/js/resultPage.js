@@ -61,7 +61,7 @@ function voiceResult(travelMode){
     {
         var duration = dataVoice.transport.duration.driving;
         responsiveVoice.speak('Vous avez choisis la voiture à pied pour atteindre '+addressTo+', cela vous prendra environ'+duration, "French Female");
-        responsiveVoice.speak('Vous arriverez à'+durationDrinvingEnd+'minutes à '+addressTo, "French Female");
+        responsiveVoice.speak('Vous arriverez à'+durationDrinvingEnd+'minutes à '+addressFrom, "French Female");
     }
     if(travelMode == 'BICYCLING')
     {

@@ -75,7 +75,6 @@ function ResultResponse(response) {
             if (response[i].type === "transport.google_direction.walking") {
 
                 duration = new Date(response[i].data.duration * 1000);
-                duration.setHours(duration.getHours() - 1);
                 $('.actual-time-span-walk').text(getFormatedTime(date,0));
                 $('.arrival-time-span-walk').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#walk-range').text(response[i].data.distance);
@@ -88,7 +87,6 @@ function ResultResponse(response) {
 
 
                 duration = new Date(response[i].data.duration * 1000);
-                duration.setHours(duration.getHours() - 1);
                 $('.actual-time-span-bike').text(getFormatedTime(date,0));
                 $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#bike-range').text(response[i].data.distance);
@@ -97,9 +95,7 @@ function ResultResponse(response) {
             }
             else if (response[i].type === "transport.google_direction.driving") {
 
-
                 duration = new Date(response[i].data.duration * 1000);
-                duration.setHours(duration.getHours() - 1);
                 $('.actual-time-span-car').text(getFormatedTime(date,0));
                 $('.arrival-time-span-car').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#car-range').text(response[i].data.distance);
@@ -171,7 +167,27 @@ $.getJSON( "result.json", function( data ) {
 
 function getFormatedTime(date, duree)
 {
+
     var dateArriveStr = "";
+    var timestampOrigin = new Date(0);
+
+    if(duree === 1)
+    {
+
+        date.setHours(date.getHours() - timestampOrigin.getHours());
+    }
+
+
+    if(dateDiffInDays(date,timestampOrigin) > 0 && duree === 1)
+    {
+
+        dateArriveStr += dateDiffInDays(date,timestampOrigin) + " jour";
+        if(date.getDay() > 1)
+        {
+            dateArriveStr += "s";
+        }
+        dateArriveStr += " ";
+    }
     if(date.getHours() > 0 )
     {
         if(date.getHours() < 10)
@@ -246,6 +262,7 @@ function weatherShow(weather, where)
     choice.neige = "car";
     choice.venteux = "car";
 
+
     for(var i in temps)
     {
         if(weather === temps[i])
@@ -259,17 +276,27 @@ function weatherShow(weather, where)
     }
     if(where === "From")
     {
+        var set = "";
         for( var weatherProto in choice)
         {
             if(weatherProto == weather)
             {
                 $('#'+choice[weatherProto]).addClass("mainChoose");
+                set = choice[weatherProto];
             }
-            else
+            else if(set !== choice[weatherProto])
             {
                 $('#'+choice[weatherProto]).removeClass("mainChoose");
             }
         }
     }
 
+
+
+}
+
+function dateDiffInDays(a, b) {
+    var _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    return Math.floor((a - b) / _MS_PER_DAY);
 }
