@@ -139,27 +139,15 @@
              style="display: none"
     >
         <h1 id="myAccount-title" class="tlt col-lg-offset-4 col-md-offset-4 col-sm-offset-4">Espace Personnel</h1>
-        <p>
-           <span class="name">Mon domicile</span>
-            <input id="account-myHome-address" type="search" placeholder="Addresse"
-                   class="form-control box-shadow col-lg-12 col-md-6 col-sm-12">
-            <input id="account-myHome-desc" type="search" placeholder="Description" class="form-control box-shadow col-lg-12 col-md-6 col-sm-12">
-        </p>
-        <p>
-            <span class="name">Travail</span>
-            <input id="account-myJob-address" type="search" placeholder="Addresse"
-                   class="form-control box-shadow col-lg-12 col-md-6 col-sm-12">
-            <input id="account-myJob-desc" type="search" placeholder="Description" class="form-control box-shadow col-lg-12 col-md-6 col-sm-12">
-        </p>
         <p id="favoris">
-           <span class="name">Ajouter des favoris</span>
+           <span class="name">Ajouter un favori</span>
         <div class="row">
-            <input id="account-addFavorite-address" type="search" placeholder="Addresse"
-                   class="form-control box-shadow col-lg-12 col-md-12 col-sm-12">
-            <input id="account-addFavorite-desc" type="search" placeholder="Description"
-                   class="form-control box-shadow col-lg-12 col-md-12 col-sm-12">
-        </div>
-        <button type="button" class="btn btn-outline-primary">Sauvegarder</button>
+        <input id="account-addFavorite-desc" type="search" placeholder="Description"
+               class="form-control box-shadow col-lg-12 col-md-12 col-sm-12">
+        <input id="account-addFavorite-address" type="search" placeholder="Addresse"
+               class="form-control box-shadow col-lg-12 col-md-12 col-sm-12">
+    </div>
+            <button type="button" class="btn btn-outline-primary" onclick="addFavorite()">Sauvegarder</button>
         </p>
     </section>
     <section class="error-container col-sm-offset-1 col-sm-10 col-sm-offset-1
