@@ -125,7 +125,7 @@ function createCookieAuthToken(token) {
 }
 
 function getUserToken() {
-    return "zob";
+    // return "zob";
     var name = AUTH_COOKIE_NAME + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
