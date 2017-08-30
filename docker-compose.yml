@@ -3,6 +3,10 @@ services:
     node:
         build:
             context: ./dockerfiles/node
+            args:
+                - USER=${USER}
+                - USER_GID=${USER_GID:-1000}
+                - USER_UID=${USER_UID:-1000}
         volumes:
             - ./app:/app
         networks:
@@ -11,8 +15,10 @@ services:
     nginx:
         build:
             context: dockerfiles/nginx/node
+            args:
+                - DNS_FRONT=${DNS_FRONT:-front.anatroc}
         volumes:
-            - ./app:/usr/share/nginx/html
+            - ./app:/app
         depends_on:
             - node
         links:

@@ -1,9 +1,8 @@
 server {
-    server_name front.anatroc;
-    root /usr/share/nginx/html/;
+    server_name %DNS_FRONT%;
+    root /usr/share/nginx/html;
 
     client_max_body_size 100m;
-
     index index.html index;
 
     location ~* \.(css|js)$ {
