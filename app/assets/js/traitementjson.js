@@ -262,6 +262,7 @@ function weatherShow(weather, where)
     choice.neige = "car";
     choice.venteux = "car";
 
+
     for(var i in temps)
     {
         if(weather === temps[i])
@@ -275,13 +276,15 @@ function weatherShow(weather, where)
     }
     if(where === "From")
     {
+        var set = "";
         for( var weatherProto in choice)
         {
             if(weatherProto == weather)
             {
                 $('#'+choice[weatherProto]).addClass("mainChoose");
+                set = choice[weatherProto];
             }
-            else
+            else if(set !== choice[weatherProto])
             {
                 $('#'+choice[weatherProto]).removeClass("mainChoose");
             }
