@@ -7,10 +7,11 @@ function initAutocomplete() {
     var  inputAutocompleteFrom = 'search-input-from';
     var account_addFavorite_address ='account-addFavorite-address'
 
-    if(document.getElementById(inputAutocompleteTo)){
+    if(document.getElementById(inputAutocompleteTo).value !== null){
+        console.log('to ')
         loadAutocomplete(inputAutocompleteTo);
     }
-    if(document.getElementById(inputAutocompleteFrom)){
+    if(document.getElementById(inputAutocompleteFrom).value !== null){
         loadAutocomplete(inputAutocompleteFrom);
     }
     if(document.getElementById(account_addFavorite_address))
@@ -55,7 +56,9 @@ function showResults() {
         //return;
 
         noResultsAutocomplete();
-    } else {
+
+
+    }
         var addressFrom = $('#search-input-from').val();
         var  addressTo = $('#search-input-to').val();
 
@@ -80,7 +83,7 @@ function showResults() {
             });
             //showResultsPage();
         }
-    }
+
 
 
 
