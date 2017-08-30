@@ -272,6 +272,7 @@ body {
       margin-left: 37%;
       margin-bottom: 15px;
     }
+
   }
   p {
     text-align: left;
@@ -392,6 +393,9 @@ body {
 
     #favorites{
       margin-top: 15px;
+      .favorite-desc{
+        padding-top: 12px;
+      }
     }
   }
 
@@ -439,10 +443,8 @@ body {
   }
 
   .no-result {
-    border: 0 solid rgba(90, 90, 90, 1);
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
+    padding-top: 50px;
+    color: @text-color;
   }
 }
 
@@ -515,7 +517,7 @@ body {
   #itinerary-board {
     border-bottom: solid 1px rgba(255, 255, 255, 0.87);
     overflow-y: scroll;
-    height: 160px;
+    //height: 160px;
     text-align: left;
   }
 }
@@ -613,7 +615,6 @@ canvas {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
-    height: 150px;
     cursor: pointer;
 
 
