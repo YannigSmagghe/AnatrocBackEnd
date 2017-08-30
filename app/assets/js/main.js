@@ -5,12 +5,16 @@ $(document).ready(function () {
     // Clear input From if clicked
     function clearInputFrom() {
         $( "#search-input-from" ).val('');
-        $('#interim_span').val();
+      //  $('#interim_span').val();
+        $('#interim_span').text('');
+        $('#final_span').text('');
 
     }
     function clearInputTo() {
         $( "#search-input-to" ).val('');
-        $('#interim_span').val();
+       // $('#interim_span').val();
+        $('#interim_span').text('');
+        $('#final_span').text('');
     }
     $( "#search-input-from" ).on( "click", clearInputFrom );
     $( "#search-input-to" ).on( "click", clearInputTo );
@@ -81,35 +85,36 @@ $(document).ready(function () {
                 $('.notice-textToSpeech').fadeIn();
                 $('#search-input-to').val($(voiceSpan).text());
             }else{
+
                 $('#search-input-from').val($(voiceSpan).text());
                 $('.notice-textToSpeech').fadeIn();
             }
         }else{
             $('.notice-textToSpeech').fadeOut();
-
         }
-
-    }, 1000);
+        $(voiceSpan).text('');
+        $('#final_span').text('');
+    }, 100);
 
     //Swap to result page
-    window.setInterval(function () {
-        var voiceSpan = '#interim_span';
-        if ($(voiceSpan).text().length > 0) {
-            $(voiceSpan).hide();
-            /** target input2 if 1 is not empty **/
-            if ($('#search-input-from').val() !== '' && !$("#search-input-from").is(":focus")) {
-                $('.notice-textToSpeech').fadeIn();
-                $('#search-input-to').val($(voiceSpan).text());
-            }else{
-                $('#search-input-from').val($(voiceSpan).text());
-                $('.notice-textToSpeech').fadeIn();
-            }
-        }else{
-            $('.notice-textToSpeech').fadeOut();
-
-        }
-
-    }, 3000);
+    // window.setInterval(function () {
+    //     var voiceSpan = '#interim_span';
+    //     if ($(voiceSpan).text().length > 0) {
+    //         $(voiceSpan).hide();
+    //         /** target input2 if 1 is not empty **/
+    //         if ($('#search-input-from').val() !== '' && !$("#search-input-from").is(":focus")) {
+    //             $('.notice-textToSpeech').fadeIn();
+    //             $('#search-input-to').val($(voiceSpan).text());
+    //         }else{
+    //             $('#search-input-from').val($(voiceSpan).text());
+    //             $('.notice-textToSpeech').fadeIn();
+    //         }
+    //     }else{
+    //         $('.notice-textToSpeech').fadeOut();
+    //
+    //     }
+    //
+    // }, 3000);
 
     /** RESULT PAGE PART**/
     // voir resultPage.js

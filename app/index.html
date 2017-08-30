@@ -83,7 +83,7 @@
                 <p>
             </div>
             <div class="row">
-                <input id="search-input-from"
+                <input id="search-input-from" onclick="startButton(event)"
                        type="search"
                        placeholder="Départ"
                        onchange="geolocate('search-input-from')"
@@ -91,7 +91,7 @@
                 >
             </div>
             <div class="row">
-                <input id="search-input-to"
+                <input id="search-input-to" onclick="startButton(event)"
                        type="search"
                        placeholder="Arrivée"
                        onchange="geolocate('search-input-to')"
