@@ -172,10 +172,8 @@ $.getJSON( "result.json", function( data ) {
 function getFormatedTime(date, duree)
 {
     var dateArriveStr = "";
-    if (!(date.getHours === 0 && duree === 1))
+    if(date.getHours() > 0 )
     {
-
-        console.log(date.getHours());
         if(date.getHours() < 10)
         {
             dateArriveStr += '0' + date.getHours();
@@ -184,8 +182,22 @@ function getFormatedTime(date, duree)
         {
             dateArriveStr += date.getHours();
         }
-        dateArriveStr += ":";
+
+        if(duree === 0)
+        {
+            dateArriveStr += ":";
+        }
+        else
+        {
+            dateArriveStr += " heure";
+            if(date.getHours()>1)
+            {
+                dateArriveStr += "s";
+            }
+            dateArriveStr += " ";
+        }
     }
+
     if(date.getMinutes() < 10)
     {
         dateArriveStr += '0' + date.getMinutes();
@@ -196,7 +208,7 @@ function getFormatedTime(date, duree)
 
     }
 
-    if(duree === 1 && date.getHours === 0)
+    if(duree === 1)
     {
         dateArriveStr += " minute";
         if(date.getMinutes() > 1)
