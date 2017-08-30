@@ -54,19 +54,19 @@ function voiceResult(travelMode){
     if(travelMode == 'WALKING')
     {   // var timeTravel = $('.adp-summary span:nth-child(3)').attr('jstcache','50').text();
         var duration = dataVoice.transport.duration.walking;
-        responsiveVoice.speak('Vous avez choisis la marche à pied pour atteindre '+addressTo+', cela vous prendra environ'+duration+'minutes', "French Female");
+        responsiveVoice.speak('Vous avez choisis la marche à pied pour atteindre '+addressTo+', cela vous prendra environ'+duration, "French Female");
         responsiveVoice.speak('Vous arriverez à'+durationWalkingEnd+'minutes à '+addressFrom, "French Female");
     }
     if(travelMode == 'DRIVING')
     {
         var duration = dataVoice.transport.duration.driving;
-        responsiveVoice.speak('Vous avez choisis la voiture à pied pour atteindre '+addressTo+', cela vous prendra environ'+duration+'minutes', "French Female");
-        responsiveVoice.speak('Vous arriverez à'+durationDrinvingEnd+'minutes à '+addressFrom, "French Female");
+        responsiveVoice.speak('Vous avez choisis la voiture à pied pour atteindre '+addressTo+', cela vous prendra environ'+duration, "French Female");
+        responsiveVoice.speak('Vous arriverez à'+durationDrinvingEnd+'minutes à '+addressTo, "French Female");
     }
     if(travelMode == 'BICYCLING')
     {
         var duration = dataVoice.transport.duration.bicycling;
-        responsiveVoice.speak('Vous avez choisis le velo pour atteindre '+addressTo+', cela vous prendra environ'+duration+'minutes', "French Female");
+        responsiveVoice.speak('Vous avez choisis le velo pour atteindre '+addressTo+', cela vous prendra environ'+duration, "French Female");
         responsiveVoice.speak('Vous avez une station velov qui ce situe à'+distanceVelov.from+'Kilométre de votre position de départ', "French Female");
         responsiveVoice.speak('Vous arriverez à'+durationBycyclingEnd+'minutes', "French Female");
     }

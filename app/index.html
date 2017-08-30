@@ -158,7 +158,7 @@
         <input id="account-addFavorite-desc" type="search" placeholder="Description"
                class="form-control box-shadow col-lg-12 col-md-12 col-sm-12">
         <input id="account-addFavorite-address" type="search" placeholder="Addresse"
-               class="form-control box-shadow col-lg-12 col-md-12 col-sm-12">
+               class="form-control box-shadow col-lg-12 col-md-12 col-sm-12" onchange="geolocate('account-addFavorite-address')">
     </div>
             <button type="button" class="btn btn-outline-primary" onclick="addFavorite()">Sauvegarder</button>
         </p>

@@ -5,14 +5,17 @@ function initAutocomplete() {
     // location types.
     var inputAutocompleteTo = 'search-input-to';
     var  inputAutocompleteFrom = 'search-input-from';
+    var account_addFavorite_address ='account-addFavorite-address'
 
     if(document.getElementById(inputAutocompleteTo)){
         loadAutocomplete(inputAutocompleteTo);
-
     }
     if(document.getElementById(inputAutocompleteFrom)){
         loadAutocomplete(inputAutocompleteFrom);
-
+    }
+    if(document.getElementById(account_addFavorite_address))
+    {
+        loadAutocomplete(account_addFavorite_address);
     }
 
 }
@@ -26,8 +29,10 @@ function loadAutocomplete(inputAutocomplete){
 
         // When the user selects an address from the dropdown, populate the address
         // fields in the form.
+        if(inputAutocomplete !== "account-addFavorite-address"){
+            autocomplete.addListener('place_changed', showResults);
+        }
 
-        autocomplete.addListener('place_changed', showResults);
     }
 }
 function showResults() {
