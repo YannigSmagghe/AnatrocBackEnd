@@ -14,7 +14,28 @@ function verifyToken(){
         });
 }
 
+function addFavorite(){
+    var address = $('#account-addFavorite-address').val();
+    var description = $('#account-addFavorite-desc').val();
 
+    if (address !== '' && description !== ''){
+        $.ajax({
+            url : App.baseUri+'/user/favorite',
+            type : 'POST',
+            data : 'address='+address + '&description='+ description + '&token='+getUserToken(),
+            dataType : 'JSON',
+            success : function(data){
+                console.log(data + 'succes');
+
+                showResultsPage(data);
+            },
+            error : function(data){
+                console.log(data + 'erreur');
+                $('.error-container').fadeIn();
+            },
+        });
+    }
+}
 
 function showMyAccount() {
     $(".connexion-container").fadeOut();
@@ -22,10 +43,6 @@ function showMyAccount() {
     $(".myAccount-container").fadeIn("slow");
     $("#login").fadeIn();
 }
-
-
-
-
 
 var xhrFavorites = null;
 function fetchUserFavorites(callback) {
