@@ -30,6 +30,9 @@ function loadAutocomplete(inputAutocomplete){
         autocomplete.addListener('place_changed', showResults);
     }
 }
+
+
+
 function showResults() {
     // Get the place details from the autocomplete object.
 
