@@ -84,7 +84,7 @@ function createFavoriteElement(address, description) {
          "<button type='button' title='" + address + "' class='col-lg-3 col-md-3 col-sm-3 btn btn-favorite address-btn' data-address='" + address + "'> " +
          "<i class='fa fa-star' aria-hidden='true'></i>" +
          "</button>" +
-         "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0'>" + description +"</div>"+
+         "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0 favorite-desc'>" + description +"</div>"+
          "</div>";
 }
 
@@ -123,6 +123,7 @@ function createCookieAuthToken(token) {
 }
 
 function getUserToken() {
+    return 'raer';
     var name = AUTH_COOKIE_NAME + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -187,21 +188,4 @@ $(function () {
         showMyAccount();
     });
 
-    $(document).on('click', '.address-btn', function () {
-            console.log('hi');
-        var addressFrom = $('#search-input-from').val();
-        var  addressTo = $('#search-input-to').val();
-
-        if (addressFrom.val() !== '') {
-            addressTo.val(($(this).data('address')));
-
-        }else{
-            addressFrom.val(($(this).data('address')));
-        }
-
-
-        if    (addressFrom !== '' && addressTo !== '') {
-            // add first result of google autocomplete
-        }
-    });
 });
