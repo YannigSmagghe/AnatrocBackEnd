@@ -5,18 +5,21 @@ function verifyToken(){
         .done(function (response) {
             if (response.data === true){
                 $('#menu_login').text('Espace membre');
+                getUserInfos();
             }
             $("#menu_login").click(function () {
                 showMyAccount();
             });
         });
-
 }
+
+
 
 function showMyAccount() {
     $(".connexion-container").fadeOut();
     $("#main-title").fadeOut();
     $(".myAccount-container").fadeIn("slow");
+    $("#login").fadeIn();
 }
 
 
@@ -116,6 +119,13 @@ function getUserToken() {
         }
     }
     return "";
+}
+
+function getUserInfos() {
+    $.get(App.baseUri+'/user/info?token='+getUserToken())
+        .done(function (response) {
+            console.log(response);
+        });
 }
 
 
