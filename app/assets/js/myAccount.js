@@ -27,9 +27,7 @@ function addFavorite(){
             data : 'address='+address + '&description='+ description + '&token='+getUserToken(),
             dataType : 'JSON',
             success : function(data){
-
                 console.log(data + 'succes');
-
             },
             error : function(data){
                 console.log(data + 'erreur');
@@ -125,7 +123,6 @@ function createCookieAuthToken(token) {
 }
 
 function getUserToken() {
-    // return "zob";
     var name = AUTH_COOKIE_NAME + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
