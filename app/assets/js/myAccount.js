@@ -6,6 +6,7 @@ function verifyToken(){
             if (response.data === true){
                 $('#menu_login').text('Espace membre');
                 getUserInfos();
+                addFavorite();
 
             }
             $("#menu_login").click(function () {
@@ -15,6 +16,7 @@ function verifyToken(){
 }
 
 function addFavorite(){
+
     var address = $('#account-addFavorite-address').val();
     var description = $('#account-addFavorite-desc').val();
 
@@ -25,9 +27,9 @@ function addFavorite(){
             data : 'address='+address + '&description='+ description + '&token='+getUserToken(),
             dataType : 'JSON',
             success : function(data){
+
                 console.log(data + 'succes');
 
-                showResultsPage(data);
             },
             error : function(data){
                 console.log(data + 'erreur');
@@ -80,12 +82,12 @@ function createFavoriteElement(address, description) {
     address = escapeHtml(address);
     description = escapeHtml(description);
 
-     return "<div class='col-lg-2 col-md-2 col-sm-2'>" +
-         "<button type='button' title='" + address + "' class='col-lg-3 col-md-3 col-sm-3 btn btn-primary address-btn' data-address='" + address + "'> " +
+     return "<div class='col-lg-6 col-md-6 col-sm-6'>" +
+         "<button type='button' title='" + address + "' class='col-lg-3 col-md-3 col-sm-3 btn btn-favorite address-btn' data-address='" + address + "'> " +
          "<i class='fa fa-star' aria-hidden='true'></i>" +
          "</button>" +
-         "</div>" +
-         "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0'>" + description +"</div>";
+         "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0'>" + description +"</div>"+
+         "</div>";
 }
 
 function createFavoriteElements(data) {
@@ -123,6 +125,7 @@ function createCookieAuthToken(token) {
 }
 
 function getUserToken() {
+    // return "zob";
     var name = AUTH_COOKIE_NAME + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -160,37 +163,48 @@ function responseApiHasError(response) {
 $(function () {
 
     verifyToken();
-    // fetchUserFavorites(function (response) {
-    //     if (!responseApiHasError(response)) {
-    //         $("#favorites").append(createFavoriteElements(response.data));
-    //     }
-    // });
+    fetchUserFavorites(function (response) {
+        if (!responseApiHasError(response)) {
+            $("#favorites").append(createFavoriteElements(response.data));
+        }
+    });
     //
-    // $("#favorites").on('click', 'button', function () {
-    //     var favorite = $(this).data('address');
-    //     var fromInput = $("#search-input-from");
-    //
-    //     if (($.trim(fromInput.val())).length === 0) {
-    //         fromInput.val(favorite);
-    //         return;
-    //     }
-    //
-    //     var toInput = $("#search-input-to");
-    //
-    //     if (($.trim(toInput.val())).length === 0) {
-    //         toInput.val(favorite);
-    //         return;
-    //     }
-    // });
+    $("#favorites").on('click', 'button', function () {
+        var favorite = $(this).data('address');
+        var fromInput = $("#search-input-from");
+
+        if (($.trim(fromInput.val())).length === 0) {
+            fromInput.val(favorite);
+            return;
+        }
+
+        var toInput = $("#search-input-to");
+
+        if (($.trim(toInput.val())).length === 0) {
+            toInput.val(favorite);
+            return;
+        }
+    });
 
     $('#button-connect').on("click", function () {
         showMyAccount();
     });
 
     $(document).on('click', '.address-btn', function () {
-        if ($('#search-input-from').val() !== '') {
-            $('#search-input-to').val(($(this).data('address')));
-            showResultsPage();
+            console.log('hi');
+        var addressFrom = $('#search-input-from').val();
+        var  addressTo = $('#search-input-to').val();
+
+        if (addressFrom.val() !== '') {
+            addressTo.val(($(this).data('address')));
+
+        }else{
+            addressFrom.val(($(this).data('address')));
+        }
+
+
+        if    (addressFrom !== '' && addressTo !== '') {
+            // add first result of google autocomplete
         }
     });
 });
