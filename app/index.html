@@ -36,8 +36,6 @@
                     <!--<li role="separator" class="divider"></li>-->
                     <!--<li><a href="#">Separated link</a></li>-->
                 </ul>
-            </div>
-            <div class="dropdown col-md-1 col-sm-1">
                 <button class="btn btn-default" type="button" id="button-back"
                         aria-haspopup="true" aria-expanded="true">
                     <i class="fa fa-arrow-left" aria-hidden="true"></i>
@@ -109,6 +107,7 @@
                        onchange="geolocate('search-input-to')"
                        class="form-control box-shadow col-lg-12 col-md-12 col-sm-12"
                 >
+                <div class="no-result" style="display: none;" id="no-result">Aucun résultat</div>
             </div>
 
             <span class="notice-textToSpeech">Cliquer sur votre phrase pour valider</span>
@@ -582,6 +581,6 @@
 <script type="text/javascript" src="./assets/compiled/js/app.min.js"></script>
 
 <!--Charge la fonction innitialize qui va aller lancer les fonction initmap et initAutocomplete-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfCefb7M8oW96-I4pDtMqDZbBy0vQ91DI&libraries=places&callback=initialize"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDHxPjPipevQoQPKVbBizH-aF5HLM4GHQ&libraries=places&callback=initialize"
         async defer></script>
 </html>
