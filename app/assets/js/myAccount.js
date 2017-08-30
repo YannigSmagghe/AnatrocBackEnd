@@ -123,7 +123,7 @@ function createCookieAuthToken(token) {
 }
 
 function getUserToken() {
-    return 'raer';
+    // return 'raer';
     var name = AUTH_COOKIE_NAME + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
