@@ -7,12 +7,39 @@ function verifyToken(){
                 $('#menu_login').text('Espace membre');
                 $('#menu_logout').css("display", "block");
                 getUserInfos();
+                verrifAdressPerso();
+                addFavorite();
 
             }
             $("#menu_login").click(function () {
                 showMyAccount();
             });
         });
+}
+
+
+function verrifAdressPerso(){
+    var inputDesc = $('#account-addFavorite-desc');
+    var inputAdress = $('#account-addFavorite-address');
+
+
+     inputDesc.keyup(function() {
+         if( inputDesc.val() !== '' && inputAdress.val() !== ''){
+             $('.save-button').removeClass('disabled');
+
+         }else {
+             $('.save-button').addClass('disabled');
+
+         }
+     });
+
+    inputAdress.keyup(function() {
+        if( inputDesc.val() !== '' && inputAdress.val() !== ''){
+            $('.save-button').removeClass('disabled');
+        }else {
+            $('.save-button').addClass('disabled');
+        }
+    });
 }
 
 function addFavorite(){
@@ -27,8 +54,6 @@ function addFavorite(){
             dataType : 'JSON',
             success : function(data){
                 console.log(data + 'succes');
-
-                showResultsPage(data);
             },
             error : function(data){
                 console.log(data + 'erreur');
@@ -85,8 +110,8 @@ function createFavoriteElement(address, description) {
          "<button type='button' title='" + address + "' class='col-lg-3 col-md-3 col-sm-3 btn btn-primary address-btn' data-address='" + address + "'> " +
          "<i class='fa fa-star' aria-hidden='true'></i>" +
          "</button>" +
-         "</div>" +
-         "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0'>" + description +"</div>";
+         "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0 favorite-desc'>" + description +"</div>"+
+         "</div>";
 }
 
 function createFavoriteElements(data) {
@@ -100,7 +125,6 @@ function createFavoriteElements(data) {
 
 var google = null;
 function onSignIn(googleUser) {
-    console.log('dffdfds');
     google = googleUser;
     var id_token = googleUser.getAuthResponse().id_token;
     var xhr = new XMLHttpRequest();
@@ -111,7 +135,6 @@ function onSignIn(googleUser) {
         var json = JSON.parse(xhr.responseText);
 
         var a = getUserToken();
-        console.log(a);
         createCookieAuthToken(json.data.token);
         if (a.length === 0 && getUserToken().length > 0) {
             document.location.reload();
@@ -119,7 +142,6 @@ function onSignIn(googleUser) {
     };
     xhr.send('token=' + id_token+'&email='+googleUser.getBasicProfile().getEmail());
 }
-
 
 const AUTH_COOKIE_NAME = 'anatroc.auth.token';
 const USER_INFO_KEY = 'user.info';
@@ -162,6 +184,7 @@ function getUserInfos() {
         });
 }
 
+
 function responseApiHasError(response) {
     return typeof response.hasOwnProperty('errors') && response.errors.length > 0;
 }
@@ -192,29 +215,29 @@ var delete_cookie = function(name) {
 $(function () {
 
     verifyToken();
-    // fetchUserFavorites(function (response) {
-    //     if (!responseApiHasError(response)) {
-    //         $("#favorites").append(createFavoriteElements(response.data));
-    //     }
-    // });
+    fetchUserFavorites(function (response) {
+        if (!responseApiHasError(response)) {
+            $("#favorites").append(createFavoriteElements(response.data));
+        }
+    });
     //
-    // $("#favorites").on('click', 'button', function () {
-    //     var favorite = $(this).data('address');
-    //     var fromInput = $("#search-input-from");
-    //
-    //     if (($.trim(fromInput.val())).length === 0) {
-    //         fromInput.val(favorite);
-    //         return;
-    //     }
-    //
-    //     var toInput = $("#search-input-to");
-    //
-    //     if (($.trim(toInput.val())).length === 0) {
-    //         toInput.val(favorite);
-    //         return;
-    //     }
-    // });
-    
+    $("#favorites").on('click', 'button', function () {
+        var favorite = $(this).data('address');
+        var fromInput = $("#search-input-from");
+
+        if (($.trim(fromInput.val())).length === 0) {
+            fromInput.val(favorite);
+            return;
+        }
+
+        var toInput = $("#search-input-to");
+
+        if (($.trim(toInput.val())).length === 0) {
+            toInput.val(favorite);
+            return;
+        }
+    });
+
     $('#button-connect').on("click", function () {
         showMyAccount();
     });
@@ -224,10 +247,4 @@ $(function () {
         delete_cookie('anatroc.auth.token');
     });
 
-    $(document).on('click', '.address-btn', function () {
-        if ($('#search-input-from').val() !== '') {
-            $('#search-input-to').val(($(this).data('address')));
-            showResultsPage();
-        }
-    });
 });
