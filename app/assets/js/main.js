@@ -94,6 +94,12 @@ $(document).ready(function () {
         }
         $(voiceSpan).text('');
         $('#final_span').text('');
+
+        if ($('#loader').is(":visible")){
+            $('.menu-container').fadeOut();
+        }else{
+            $('.menu-container').fadeIn();
+        }
     }, 100);
 
     //Swap to result page

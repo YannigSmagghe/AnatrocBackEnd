@@ -94,5 +94,5 @@ function showResults() {
 
     // show results with btn favorite
 $(document).on('click', '.address-btn', function () {
-    setTimeout(showResults, 2000);
+    setTimeout(showResults, 3000);
 });
