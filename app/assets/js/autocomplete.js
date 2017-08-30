@@ -51,7 +51,8 @@ function showResults() {
                 showResultsPage(data);
             },
             error : function(data){
-                console.log(data + 'erreur');
+                $('#loader').fadeOut();
+                $('.error-container').fadeIn();
             },
         });
         //showResultsPage();

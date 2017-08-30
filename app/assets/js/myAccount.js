@@ -5,23 +5,44 @@ function verifyToken(){
         .done(function (response) {
             if (response.data === true){
                 $('#menu_login').text('Espace membre');
+                getUserInfos();
+
             }
             $("#menu_login").click(function () {
                 showMyAccount();
             });
         });
+}
 
+function addFavorite(){
+    var address = $('#account-addFavorite-address').val();
+    var description = $('#account-addFavorite-desc').val();
+
+    if (address !== '' && description !== ''){
+        $.ajax({
+            url : App.baseUri+'/user/favorite',
+            type : 'POST',
+            data : 'address='+address + '&description='+ description + '&token='+getUserToken(),
+            dataType : 'JSON',
+            success : function(data){
+                console.log(data + 'succes');
+
+                showResultsPage(data);
+            },
+            error : function(data){
+                console.log(data + 'erreur');
+                $('.error-container').fadeIn();
+            },
+        });
+    }
 }
 
 function showMyAccount() {
     $(".connexion-container").fadeOut();
     $("#main-title").fadeOut();
     $(".myAccount-container").fadeIn("slow");
+    $("#login").fadeIn();
 }
-
-
-
-
 
 var xhrFavorites = null;
 function fetchUserFavorites(callback) {
@@ -116,6 +137,19 @@ function getUserToken() {
         }
     }
     return "";
+}
+
+function getUserInfos() {
+    $.get(App.baseUri+'/user/info?token='+getUserToken())
+        .done(function (response) {
+            var email = response.data.email;
+            var n = email.indexOf('@');
+            var name = email.substring(0, n != -1 ? n : email.length);
+
+            $('.login-container').fadeIn();
+
+            $('#nameAccount').text(name);
+        });
 }
 
 

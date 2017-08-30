@@ -80,8 +80,8 @@ body {
     z-index: 999;
 
     #button-back {
-      margin-top: -51px;
-      margin-left: 54px
+      //margin-top: -51px;
+      //margin-left: 54px
     }
   }
   //end placeholder
@@ -265,10 +265,47 @@ body {
   }
   p {
     text-align: left;
-    margin-bottom: 10%;
+    //margin-bottom: 10%;
   }
+ #account-addFavorite-address, #account-myJob-address,#account-myHome-address{
+   margin-top: 0px;
+ }
+  #account-addFavorite-desc, #account-myJob-desc,#account-myHome-desc{
+    margin-bottom: 39px;
+  }
+
   #account-addFavorite{
     width: inherit;
+  }
+  .form-control {
+    display: inline-block;
+    .box-sizing(content-box);
+    padding: 10px 20px;
+    border: 0 solid rgba(183, 183, 183, 0);
+    border-bottom: 1px solid @text-color;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    font: @fontPrimary;
+    color: @text-color;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: rgba(252, 252, 252, 0.03);
+    .box-shadow(0 0 0 0 rgba(40, 40, 40, 1));
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
+    // .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), border-width 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
+  }
+
+  .form-control:hover {
+    border: 0 solid rgba(90, 90, 90, 1);
+    border-bottom-width: 1px;
+    .box-shadow(none);
+    // .transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1));
+  }
+
+  .form-control:focus {
+    border: 0 solid rgba(183, 183, 183, 0);
+    border-bottom: 1px solid #5a5a5a;
+    //.transition(all 200ms cubic-bezier(0.42, 0, 0.58, 1), all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms);
   }
 }
 
@@ -391,9 +428,9 @@ body {
 }
 
 .voice-activation {
-  position: absolute;
-  margin-left: 10px;
-  margin-top: -10px;
+  //position: absolute;
+  //margin-left: 10px;
+  margin-top: 10px;
 }
 
 #voice-activation-container {
