@@ -6,13 +6,41 @@ function verifyToken(){
             if (response.data === true){
                 $('#menu_login').text('Espace membre');
                 getUserInfos();
+                verrifAdressPerso();
                 addFavorite();
+
+
 
             }
             $("#menu_login").click(function () {
                 showMyAccount();
             });
         });
+}
+
+
+function verrifAdressPerso(){
+    var inputDesc = $('#account-addFavorite-desc');
+    var inputAdress = $('#account-addFavorite-address');
+
+
+     inputDesc.keyup(function() {
+         if( inputDesc.val() !== '' && inputAdress.val() !== ''){
+             $('.save-button').removeClass('disabled');
+
+         }else {
+             $('.save-button').addClass('disabled');
+
+         }
+     });
+
+    inputAdress.keyup(function() {
+        if( inputDesc.val() !== '' && inputAdress.val() !== ''){
+            $('.save-button').removeClass('disabled');
+        }else {
+            $('.save-button').addClass('disabled');
+        }
+    });
 }
 
 function addFavorite(){
@@ -42,6 +70,8 @@ function showMyAccount() {
     $("#main-title").fadeOut();
     $(".myAccount-container").fadeIn("slow");
     $("#login").fadeIn();
+
+
 }
 
 var xhrFavorites = null;
