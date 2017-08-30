@@ -17,7 +17,7 @@ $(document).ready(function () {
 
 
     /** MENU PART **/
-    var arrayContainer = ['travel-container','input-container','connexion-container','myAccount-container','result-container'];
+    var arrayContainer = ['travel-container','input-container','connexion-container','myAccount-container','result-container','error-container'];
     $("#menu_login").click(function () {
         showHideTitle();
         $.each(arrayContainer, function( index, value ) {
