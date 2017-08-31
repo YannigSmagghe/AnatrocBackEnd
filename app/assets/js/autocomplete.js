@@ -45,7 +45,7 @@ function showResults() {
         showHideTitle();
         $(".input-container").fadeOut();
         $.ajax({
-            url: 'https://api.anatroc/app_dev.php/',
+            url: App.baseUri,
             type: 'POST',
             data: 'addressFrom=' + addressFrom + '&addressTo=' + addressTo,
             dataType: 'JSON',
