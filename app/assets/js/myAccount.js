@@ -17,15 +17,19 @@ function verifyToken(){
         });
 }
 
+// vérify part
 var icon='';
+var inputDesc = $('#account-addFavorite-desc');
+var inputAdress = $('#account-addFavorite-address');
 function sendIcon(item){
     icon = item;
     verrifAdressPerso();
+    if( inputDesc.val() !== '' && inputAdress.val() !== ''){
+        $('.save-button').removeClass('disabled');
+
+    }
 }
 function verrifAdressPerso(){
-
-    var inputDesc = $('#account-addFavorite-desc');
-    var inputAdress = $('#account-addFavorite-address');
 
 
     //vérifié desc
