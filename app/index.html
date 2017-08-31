@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./assets/compiled/css/vendor.min.css">
     <link rel="stylesheet" href="./assets/compiled/css/app.min.css">
     <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css">
+    <link rel="icon" href="../assets/medias/favicon.jpg" />
     <script>
         var App = {};
 
@@ -31,7 +32,7 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="ul-menu">
                     <!--<li><a href="#" id="menu_home">Accueil</a></li>-->
-                    <li><a href="#" id="menu_login">Connexion</a></li>
+                    <li><a href="#" id="menu_login" onclick="getGoogleAuth()">Connexion</a></li>
                     <li><a href="#" style="display:none" id="menu_logout">Deconnexion</a></li>
                     <!--<li role="separator" class="divider"></li>-->
                     <!--<li><a href="#">Separated link</a></li>-->
@@ -119,20 +120,21 @@
                 class="fa fa-microphone fa-3x"></i></span>
 
         </div>
-    </section>
-
-    <section class="connexion-container  col-sm-offset-4 col-sm-4 col-sm-offset-4
-                                         col-md-offset-4 col-md-4 col-md-offset-4
-                                         col-lg-offset-4 col-lg-4 col-lg-offset-4"
-             style="display: none">
-        <button class="btn btn-default" type="button" onclick="getGoogleAuth()"
-                aria-haspopup="true" aria-expanded="false">
+        <button id="button-auth-google" class="btn btn-default" type="button"
+                aria-haspopup="true" aria-expanded="false" style="display: none;">
 
             Se connecter via Google
         </button>
         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"
              style="display: none"></div>
         <!-- Google connect button  -->
+    </section>
+
+    <section class="connexion-container  col-sm-offset-4 col-sm-4 col-sm-offset-4
+                                         col-md-offset-4 col-md-4 col-md-offset-4
+                                         col-lg-offset-4 col-lg-4 col-lg-offset-4"
+             style="display: none">
+
 
     </section>
 
