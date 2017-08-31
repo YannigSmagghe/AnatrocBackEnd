@@ -75,32 +75,35 @@ function ResultResponse(response) {
             if (response[i].type === "transport.google_direction.walking") {
 
                 duration = new Date(response[i].data.duration * 1000);
+                durationFormated = getFormatedTime(duration, 1);
                 $('.actual-time-span-walk').text(getFormatedTime(date,0));
                 $('.arrival-time-span-walk').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#walk-range').text(response[i].data.distance);
                 $('#cityTo').text(response[i].data.end_address_name);
                 $('#cityFrom').text(response[i].data.start_address_name);
-                $('#walk-time').text(getFormatedTime(duration,1));
-                dataVoice.transport.duration.walking = getFormatedTime(duration,1);
+                $('#walk-time').text(durationFormated);
+                dataVoice.transport.duration.walking = durationFormated;
             }
             else if (response[i].type === "transport.google_direction.bicycling") {
 
 
                 duration = new Date(response[i].data.duration * 1000);
-                $('.actual-time-span-bike').text(getFormatedTime(date,0));
-                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
+                durationFormated = getFormatedTime(duration, 1);
+                $('.actual-time-span-bike').text(getFormatedTime(date, 0));
+                $('.arrival-time-span-bike').text(getFormatedTime(getDateEnd(response[i].data.duration), 0));
                 $('#bike-range').text(response[i].data.distance);
-                $('#bike-time').text(getFormatedTime(duration,1));
-                dataVoice.transport.duration.bicycling = getFormatedTime(duration,1);
+                $('#bike-time').text(durationFormated);
+                dataVoice.transport.duration.bicycling = durationFormated;
             }
             else if (response[i].type === "transport.google_direction.driving") {
 
                 duration = new Date(response[i].data.duration * 1000);
+                durationFormated = getFormatedTime(duration, 1);
                 $('.actual-time-span-car').text(getFormatedTime(date,0));
                 $('.arrival-time-span-car').text(getFormatedTime(getDateEnd(response[i].data.duration),0));
                 $('#car-range').text(response[i].data.distance);
-                $('#car-time').text(getFormatedTime(duration,1));
-                dataVoice.transport.duration.driving = getFormatedTime(duration,1);
+                $('#car-time').text(durationFormated);
+                dataVoice.transport.duration.driving = durationFormated;
             }
             else if (response[i].type === "weatherTo")
             {
@@ -123,7 +126,7 @@ function ResultResponse(response) {
                 nameStation.from = response[i].data.arret.name;
                 placeDispo.from = response[i].data.arret.available_stand;
                 placeTotal.from = response[i].data.arret.bike_stands;
-                distanceVelov.from = response[i].data.distance;
+                distanceVelov.from = setLocalString(response[i].data.distance);
                 statusVelov.from = response[i].data.arret.status;
 
             } else if(response[i].type ==="transport.velov.nearTo") {
@@ -190,7 +193,7 @@ function getFormatedTime(date, duree)
     }
     if(date.getHours() > 0 )
     {
-        if(date.getHours() < 10)
+        if(date.getHours() < 10 && duree === 0)
         {
             dateArriveStr += '0' + date.getHours();
         }
@@ -244,6 +247,15 @@ function getDateEnd(dateEndData)
     return dateEnd;
 }
 
+
+function setLocalString(n)
+{
+    value = n.toLocaleString(
+        "fr-FR", // use a string like 'en-US' to override browser locale
+        { minimumFractionDigits: 1 }
+    );
+    return value;
+}
 function weatherShow(weather, where)
 {
     var temps = [];
