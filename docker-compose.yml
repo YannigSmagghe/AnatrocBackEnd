@@ -7,7 +7,7 @@ services:
                 - USER=${USER}
                 - USER_GID=${USER_GID:-1000}
                 - USER_UID=${USER_UID:-1000}
-                - API_URL="https://api.anatroc/app_dev.php"
+                - API_URL=${API_URL:-https://api.anatroc/app_dev.php}
         volumes:
             - ./app:/app
         networks:
@@ -19,7 +19,7 @@ services:
             args:
                 - DNS_FRONT=${DNS_FRONT:-front.anatroc}
         volumes:
-            - ./app:/app
+            - ./app:/usr/share/nginx/html
         depends_on:
             - node
         links:
