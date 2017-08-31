@@ -5,6 +5,7 @@ function verifyToken(){
         .done(function (response) {
             if (response.data === true){
                 $('#menu_login').text('Espace membre');
+                $('#menu_login').attr('onclick','');
                 $('#menu_logout').css("display", "block");
                 getUserInfos();
                 addFavorite();
@@ -199,7 +200,7 @@ function responseApiHasError(response) {
 
 function logout(){
     google.disconnect();
-
+    $('#menu_login').attr('onclick','getGoogleAuth()');
     $.ajax({
         url : App.baseUri+'/logout',
         type : 'POST',
