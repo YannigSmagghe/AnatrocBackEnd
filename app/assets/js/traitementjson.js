@@ -172,7 +172,7 @@ function getFormatedTime(date, duree)
     {
 
         dateArriveStr += dateDiffInDays(date,timestampOrigin) + " jour";
-        if(date.getDay() > 1)
+        if(dateDiffInDays(date,timestampOrigin) > 1)
         {
             dateArriveStr += "s";
         }
