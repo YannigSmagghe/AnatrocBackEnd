@@ -106,8 +106,8 @@ function createFavoriteElement(address, description) {
     address = escapeHtml(address);
     description = escapeHtml(description);
 
-     return "<div class='col-lg-2 col-md-2 col-sm-2'>" +
-         "<button type='button' title='" + address + "' class='col-lg-3 col-md-3 col-sm-3 btn btn-primary address-btn' data-address='" + address + "'> " +
+     return "<div class='col-lg-6 col-md-6 col-sm-6'>" +
+         "<button type='button' title='" + address + "' class='col-lg-3 col-md-3 col-sm-3 btn btn-favorite address-btn' data-address='" + address + "'> " +
          "<i class='fa fa-star' aria-hidden='true'></i>" +
          "</button>" +
          "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0 favorite-desc'>" + description +"</div>"+
