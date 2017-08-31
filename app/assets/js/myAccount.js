@@ -7,7 +7,6 @@ function verifyToken(){
                 $('#menu_login').text('Espace membre');
                 $('#menu_logout').css("display", "block");
                 getUserInfos();
-                verrifAdressPerso();
                 addFavorite();
 
             }
@@ -17,12 +16,18 @@ function verifyToken(){
         });
 }
 
-
+var icon='';
+function sendIcon(item){
+    icon = item;
+    verrifAdressPerso();
+}
 function verrifAdressPerso(){
+
     var inputDesc = $('#account-addFavorite-desc');
     var inputAdress = $('#account-addFavorite-address');
 
 
+    //vérifié desc
      inputDesc.keyup(function() {
          if( inputDesc.val() !== '' && inputAdress.val() !== ''){
              $('.save-button').removeClass('disabled');
@@ -33,6 +38,8 @@ function verrifAdressPerso(){
          }
      });
 
+     //vérifié addresse
+
     inputAdress.keyup(function() {
         if( inputDesc.val() !== '' && inputAdress.val() !== ''){
             $('.save-button').removeClass('disabled');
@@ -40,13 +47,14 @@ function verrifAdressPerso(){
             $('.save-button').addClass('disabled');
         }
     });
+
 }
 
 function addFavorite(){
     var address = $('#account-addFavorite-address').val();
     var description = $('#account-addFavorite-desc').val();
 
-    if (address !== '' && description !== ''){
+    if (address !== '' && description !== '' && icon !==''){
         $.ajax({
             url : App.baseUri+'/user/favorite',
             type : 'POST',
