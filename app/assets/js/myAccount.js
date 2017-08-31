@@ -5,6 +5,8 @@ function verifyToken(){
         .done(function (response) {
             if (response.data === true){
                 $('#menu_login').text('Espace membre');
+                $('#menu_login').attr('onclick','');
+                $('#menu_logout').css("display", "block");
                 getUserInfos();
                 addFavorite();
 
@@ -15,12 +17,49 @@ function verifyToken(){
         });
 }
 
-function addFavorite(){
+// vérify part
+var icon='';
+var inputDesc = $('#account-addFavorite-desc');
+var inputAdress = $('#account-addFavorite-address');
+function sendIcon(item){
+    icon = item;
+    verrifAdressPerso();
+    if( inputDesc.val() !== '' && inputAdress.val() !== ''){
+        $('.save-button').removeClass('disabled');
 
+    }
+}
+function verrifAdressPerso(){
+
+
+    //vérifié desc
+     inputDesc.keyup(function() {
+         if( inputDesc.val() !== '' && inputAdress.val() !== ''){
+             $('.save-button').removeClass('disabled');
+
+         }else {
+             $('.save-button').addClass('disabled');
+
+         }
+     });
+
+     //vérifié addresse
+
+    inputAdress.keyup(function() {
+        if( inputDesc.val() !== '' && inputAdress.val() !== ''){
+            $('.save-button').removeClass('disabled');
+        }else {
+            $('.save-button').addClass('disabled');
+        }
+    });
+
+}
+
+function addFavorite(){
     var address = $('#account-addFavorite-address').val();
     var description = $('#account-addFavorite-desc').val();
 
-    if (address !== '' && description !== ''){
+    if (address !== '' && description !== '' && icon !==''){
         $.ajax({
             url : App.baseUri+'/user/favorite',
             type : 'POST',
@@ -97,7 +136,9 @@ function createFavoriteElements(data) {
     return elements;
 }
 
+var google = null;
 function onSignIn(googleUser) {
+    google = googleUser;
     var id_token = googleUser.getAuthResponse().id_token;
     var xhr = new XMLHttpRequest();
 
@@ -106,7 +147,11 @@ function onSignIn(googleUser) {
     xhr.onload = function() {
         var json = JSON.parse(xhr.responseText);
 
+        var a = getUserToken();
         createCookieAuthToken(json.data.token);
+        if (a.length === 0 && getUserToken().length > 0) {
+            document.location.reload();
+        }
     };
     xhr.send('token=' + id_token+'&email='+googleUser.getBasicProfile().getEmail());
 }
@@ -123,7 +168,6 @@ function createCookieAuthToken(token) {
 }
 
 function getUserToken() {
-    // return 'raer';
     var name = AUTH_COOKIE_NAME + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -158,6 +202,29 @@ function responseApiHasError(response) {
     return typeof response.hasOwnProperty('errors') && response.errors.length > 0;
 }
 
+function logout(){
+    google.disconnect();
+    $('#menu_login').attr('onclick','getGoogleAuth()');
+    $.ajax({
+        url : App.baseUri+'/logout',
+        type : 'POST',
+        data : 'token='+getUserToken(),
+        dataType : 'JSON',
+        success : function(data){
+            delete_cookie('anatroc.auth.token');
+            document.location.reload();
+        },
+        error : function(data){
+            console.log(data + 'erreur');
+            $('.error-container').fadeIn();
+        },
+    });
+}
+
+var delete_cookie = function(name) {
+    document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+};
+
 $(function () {
 
     verifyToken();
@@ -186,6 +253,11 @@ $(function () {
 
     $('#button-connect').on("click", function () {
         showMyAccount();
+    });
+
+    $('#menu_logout').on("click", function () {
+        logout();
+        delete_cookie('anatroc.auth.token');
     });
 
 });

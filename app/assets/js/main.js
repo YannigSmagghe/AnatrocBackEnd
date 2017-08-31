@@ -4,57 +4,59 @@ $(document).ready(function () {
 
     // Clear input From if clicked
     function clearInputFrom() {
-        $( "#search-input-from" ).val('');
-      //  $('#interim_span').val();
+        $("#search-input-from").val('');
+        //  $('#interim_span').val();
         $('#interim_span').text('');
         $('#final_span').text('');
 
     }
+
     function clearInputTo() {
-        $( "#search-input-to" ).val('');
-       // $('#interim_span').val();
+        $("#search-input-to").val('');
+        // $('#interim_span').val();
         $('#interim_span').text('');
         $('#final_span').text('');
     }
-    $( "#search-input-from" ).on( "click", clearInputFrom );
-    $( "#search-input-to" ).on( "click", clearInputTo );
+
+    $("#search-input-from").on("click", clearInputFrom);
+    $("#search-input-to").on("click", clearInputTo);
 
 
     /** MENU PART **/
-    var arrayContainer = ['travel-container','input-container','connexion-container','myAccount-container','result-container','error-container'];
+    var arrayContainer = ['travel-container', 'input-container', 'connexion-container', 'myAccount-container', 'result-container', 'error-container'];
     $("#menu_login").click(function () {
         showHideTitle();
-        $.each(arrayContainer, function( index, value ) {
+        $.each(arrayContainer, function (index, value) {
 
-            if (value !== 'connexion-container'){
-                $('.'+value).fadeOut();
-            }else{
+            if (value !== 'connexion-container') {
+                $('.' + value).fadeOut();
+            } else {
                 $('.connexion-container').fadeIn();
             }
         });
     });
 
-    $( "#menu_accueil, #button-back" ).click(function() {
+    $("#menu_accueil, #button-back").click(function () {
         showHideTitle();
-        $.each(arrayContainer, function( index, value ) {
-            if (value !== 'input-container'){
-                $('.'+value).fadeOut();
-            }else{
+        $.each(arrayContainer, function (index, value) {
+            if (value !== 'input-container') {
+                $('.' + value).fadeOut();
+            } else {
                 $('.input-container').fadeIn();
             }
         });
     });
 
 
-
     // show/hide title
-    function showHideTitle(){
-        if ($('#main-title').is(":visible") && !$('.input-container').is(':visible')){
+    function showHideTitle() {
+        if ($('#main-title').is(":visible") && !$('.input-container').is(':visible')) {
             $('#main-title').fadeOut();
-        }else{
+        } else {
             $('#main-title').fadeIn();
         }
     }
+
     $('.tlt').textillate({
 
         loop: false,
@@ -84,20 +86,20 @@ $(document).ready(function () {
             if ($('#search-input-from').val() !== '' && !$("#search-input-from").is(":focus")) {
                 $('.notice-textToSpeech').fadeIn();
                 $('#search-input-to').val($(voiceSpan).text());
-            }else{
+            } else {
 
                 $('#search-input-from').val($(voiceSpan).text());
                 $('.notice-textToSpeech').fadeIn();
             }
-        }else{
+        } else {
             $('.notice-textToSpeech').fadeOut();
         }
         $(voiceSpan).text('');
         $('#final_span').text('');
 
-        if ($('#loader').is(":visible")){
+        if ($('#loader').is(":visible")) {
             $('.menu-container').fadeOut();
-        }else{
+        } else {
             $('.menu-container').fadeIn();
         }
     }, 100);

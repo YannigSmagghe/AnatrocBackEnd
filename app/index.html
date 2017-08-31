@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./assets/compiled/css/vendor.min.css">
     <link rel="stylesheet" href="./assets/compiled/css/app.min.css">
     <link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.min.css">
+    <link rel="icon" href="../assets/medias/favic.jpg" />
     <script>
         var App = {};
 
@@ -24,15 +25,15 @@
 <section class="main-container col-lg-12 col-md-12 col-sm-12 container-fluid">
     <section class="menu-container col-lg-12 col-md-12 col-sm-12">
         <div class="row">
-            <div class="dropdown col-md-1 col-sm-1">
+            <div class="dropdown col-md-2 col-sm-2">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" id="ul-menu">
                     <!--<li><a href="#" id="menu_home">Accueil</a></li>-->
-                    <li><a href="#" id="menu_login">Connexion</a></li>
-                    <!--<li><a href="#" id="menu_logout">Deconnexionzaaz</a></li>-->
+                    <li><a href="#" id="menu_login" onclick="getGoogleAuth()">Connexion</a></li>
+                    <li><a href="#" style="display:none" id="menu_logout">Deconnexion</a></li>
                     <!--<li role="separator" class="divider"></li>-->
                     <!--<li><a href="#">Separated link</a></li>-->
                 </ul>
@@ -52,7 +53,7 @@
             </div>
         </div>-->
     </section>
-    <section class="login-container col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 " style="display: none">
+    <section class="login-container col-md-offset-10 col-md-2 col-sm-offset-7 col-sm-5" style="display: none">
         <div id="login">
             <p>
                 <span id="nameAccount"></span>
@@ -61,7 +62,6 @@
 
         </div>
     </section>
-    <h1 id="main-title" class="tlt">Anatroc</h1>
     <img src="../assets/medias/DoubleRing.gif" id="loader" style="display: none"/>
 
     <input id="message-accueil"
@@ -86,7 +86,7 @@
 
     <section class="input-container col-lg-12 col-md-12 col-sm-12">
         <div class="input-group col-lg-12 col-md-12 col-sm-12">
-
+            <h1 id="main-title" class="tlt">Anatroc</h1>
             <div id="results">
                 <span id="final_span" class="final"></span>
                 <span id="interim_span" class="interim"></span>
@@ -120,27 +120,28 @@
                 class="fa fa-microphone fa-3x"></i></span>
 
         </div>
-    </section>
-
-    <section class="connexion-container  col-sm-offset-4 col-sm-4 col-sm-offset-4
-                                         col-md-offset-4 col-md-4 col-md-offset-4
-                                         col-lg-offset-4 col-lg-4 col-lg-offset-4"
-             style="display: none">
-        <button class="btn btn-default" type="button" onclick="getGoogleAuth()"
-                aria-haspopup="true" aria-expanded="false">
+        <button id="button-auth-google" class="btn btn-default" type="button"
+                aria-haspopup="true" aria-expanded="false" style="display: none;">
 
             Se connecter via Google
         </button>
         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"
              style="display: none"></div>
         <!-- Google connect button  -->
+    </section>
+
+    <section class="connexion-container  col-sm-offset-4 col-sm-4 col-sm-offset-4
+                                         col-md-offset-4 col-md-4 col-md-offset-4
+                                         col-lg-offset-4 col-lg-4 col-lg-offset-4"
+             style="display: none">
+
 
     </section>
 
-    <section class="myAccount-container col-lg-6 col-md-6 col-sm-12 col-lg-offset-2 col-md-offset-2 col-sm-offset-2"
+    <section class="myAccount-container col-lg-6 col-md-6 col-sm-12 col-lg-offset-2 col-md-offset-2"
              style="display: none"
     >
-        <h1 id="myAccount-title" class="tlt col-lg-offset-4 col-md-offset-4 col-sm-offset-4">Espace Personnel</h1>
+        <h1 id="myAccount-title" class="tlt col-lg-offset-4 col-md-offset-4">Espace Personnel</h1>
 
         <p id="favoris">
             <span class="name">Ajouter une addresse personnalisée</span>
@@ -152,84 +153,84 @@
         </div>
         <div class="row" id="choice-icon">
             <div class='col-lg-3 col-md-3 col-sm-3'>
-            <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-star '>
-                <i class='fa fa-star' aria-hidden='true'></i>
-            </button>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-star '>
+                    <i class='fa fa-star' aria-hidden='true'></i>
+                </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-building'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-building'>
                     <i class="fa fa-building" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-briefcase '>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-briefcase '>
                     <i class="fa fa-briefcase" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-university '>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-university '>
                     <i class="fa fa-university" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-bed '>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-bed '>
                     <i class="fa fa-bed" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-credit-card'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-credit-card'>
                     <i class="fa fa-credit-card" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-envelope'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-envelope'>
                     <i class="fa fa-envelope" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-graduation-cap'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-graduation-cap'>
                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-life-ring'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-life-ring'>
                     <i class="fa fa-life-ring" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-paw'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-paw'>
                     <i class="fa fa-paw" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-shield'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-shield'>
                     <i class="fa fa-shield" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-shopping-basket'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-shopping-basket'>
                     <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-sitemap'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-sitemap'>
                     <i class="fa fa-sitemap" aria-hidden="true"></i>
                 </button>
             </div>
             <div class='col-lg-3 col-md-3 col-sm-3'>
-                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' data-icon='fa fa-space-shuttle'>
+                <button type='button' class='col-lg-3 col-md-3 col-sm-3 btn ' onclick="sendIcon(this.getAttribute('data-icon'))" data-icon='fa fa-space-shuttle'>
                     <i class="fa fa-space-shuttle" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
-        <button type="button" class="btn btn-outline-primary save-button" onclick="addFavorite()">Sauvegarder</button>
+        <button type="button" class="btn btn-outline-primary save-button disabled"  onclick="addFavorite()">Sauvegarder</button>
         </p>
     </section>
     <section class="error-container col-sm-offset-1 col-sm-10 col-sm-offset-1
                                      col-md-offset-1 col-md-10 col-md-offset-1
                                      col-lg-offset-1 col-lg-10 col-lg-offset-1"
              style="display: none">
-        <p>Anatroc est actuellement en maintenance</p>
+        <p>Votre recherche n'a pas donné résultats, merci de relancer une recherche en utilisant les adresses conseillées par google.</p>
     </section>
 
     <section class="result-container col-sm-offset-1 col-sm-10 col-sm-offset-1
