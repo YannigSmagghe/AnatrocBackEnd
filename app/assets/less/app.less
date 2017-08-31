@@ -183,46 +183,32 @@ body {
 
 /** End Captcha **/
 
-
-
-.footer-container {
-  position: absolute;
+.dropup {
+  position: fixed;
   bottom: 0px;
-  //animation
-  animation: fadein 10s;
-  -moz-animation: fadein 10s; /* Firefox */
-  -webkit-animation: fadein 10s; /* Safari et Chrome */
-  -o-animation: fadein 10s; /* Opera */
-  // fin animation
-  // aide en bas à droite
-  .dropup {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    .btn-default {
-      background-color: @bgTransparent;
-      margin-top: 10px;
-      border-radius: 100%;
-      border: @border;
-    }
-    .btn-default[aria-expanded~=true] {
-      background-color: @bgTransparent;
-    }
+  right: 0px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  .btn-default {
+    background-color: @bgTransparent;
+    margin-top: 10px;
+    border-radius: 100%;
+    border: @border;
+  }
+  .btn-default[aria-expanded~=true] {
+    background-color: @bgTransparent;
+  }
 
-    .dropdown-menu {
-      left: -160px;
-      background-color: @bgTransparentMenu;
-      li > a:focus, li > a:hover {
-        background-color: @bgTransparentFocus;
-      }
-      p {
-        padding: 4px 15px;
-      }
+  .dropdown-menu {
+    left: -160px;
+    background-color: @bgTransparentMenu;
+    li > a:focus, li > a:hover {
+      background-color: @bgTransparentFocus;
+    }
+    p {
+      padding: 4px 15px;
     }
   }
-  //fin aide en bas à  droite
 }
 
 // section connexion
