@@ -102,8 +102,15 @@ $(document).ready(function () {
         } else {
             $('.menu-container').fadeIn();
         }
-    }, 100);
+    }, 3000);
 
+    window.setInterval(function () {
+        if ($('#loader').is(":visible")) {
+            $('.menu-container').fadeOut();
+        } else {
+            $('.menu-container').fadeIn();
+        }
+    }, 100);
     //Swap to result page
     // window.setInterval(function () {
     //     var voiceSpan = '#interim_span';

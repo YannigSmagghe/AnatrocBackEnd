@@ -1,22 +1,9 @@
 //Traitement Json
 
-var urlRoot = "https://api.anatroc/";
-var dev = 1;
-
-var urlApi;
 dataVoice = {};
 dataVoice.weather = {};
 dataVoice.transport = {};
 dataVoice.transport.duration = {};
-if(dev === 1)
-{
-    urlApi = urlRoot + "app_dev.php";
-}
-else
-{
-    urlApi = urlRoot;
-}
-
 
 
 function traitementAjax(){
@@ -25,7 +12,7 @@ function traitementAjax(){
 
 
     $.ajax({
-        url : urlApi,
+        url : App.baseUri,
         type : 'POST',
         data : 'addressFrom='+addressFrom + '&addressTo='+addressTo,
         dataType : 'JSON',

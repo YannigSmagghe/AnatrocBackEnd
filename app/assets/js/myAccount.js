@@ -63,10 +63,11 @@ function addFavorite(){
         $.ajax({
             url : App.baseUri+'/user/favorite',
             type : 'POST',
-            data : 'address='+address + '&description='+ description + '&token='+getUserToken(),
+            data : 'address='+address + '&description='+ description + '&icon=' + icon +'&token='+getUserToken(),
             dataType : 'JSON',
             success : function(data){
                 console.log(data + 'succes');
+                document.location.reload();
             },
             error : function(data){
                 console.log(data + 'erreur');
@@ -115,13 +116,18 @@ function escapeHtml (string) {
     });
 }
 
-function createFavoriteElement(address, description) {
+function createFavoriteElement(address, description, icon) {
     address = escapeHtml(address);
     description = escapeHtml(description);
+    icon = escapeHtml(icon);
+
+    if (icon == ''){
+        icon = 'fa fa-star';
+    }
 
      return "<div class='col-lg-6 col-md-6 col-sm-6'>" +
          "<button type='button' title='" + address + "' class='col-lg-3 col-md-3 col-sm-3 btn btn-favorite address-btn' data-address='" + address + "'> " +
-         "<i class='fa fa-star' aria-hidden='true'></i>" +
+         "<i class='"+ icon +"' aria-hidden='true'></i>" +
          "</button>" +
          "<div class='col-lg-9 col-md-9 col-sm-6  col-sm-offset-3 col-md-offset-0 col-lg-offset-0 favorite-desc'>" + description +"</div>"+
          "</div>";
@@ -130,7 +136,7 @@ function createFavoriteElement(address, description) {
 function createFavoriteElements(data) {
     var elements = '';
     for (var i in data) {
-        elements += createFavoriteElement(data[i].address, data[i].description);
+        elements += createFavoriteElement(data[i].address, data[i].description, data[i].icon);
     }
 
     return elements;
