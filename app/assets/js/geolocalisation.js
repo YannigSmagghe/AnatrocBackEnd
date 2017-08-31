@@ -100,7 +100,6 @@ function initMap() {
 
 
     window.initMap = function () {
-        console.log('revoir els données lat lng');
         var myLatLng = {lat: 45.764043, lng: 4.835659};
         map = new google.maps.Map(document.getElementById('map-container'), {
             zoom: 16,
